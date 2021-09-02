@@ -1,15 +1,15 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<cabeça>
+<head>
   <meta charset="utf-8">
-  <meta nome="viewport" conteúdo="largura=largura do dispositivo, escala inicial=1">
-  <título>Fateb | </título dopainel>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fateb | Dashboard</title>
 
-  fonte <!-- Google Font: Source Sans Pro -->
+  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  fonte <!-- incrível -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons- >
+  <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -17,67 +17,67 @@
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
-  estilo tema <!-- -->
+  <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- sobreposiçãoScrollbars -->
-  <link rel="stylesheet" href="plugins/sobrelayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- picker Daterange -->
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
-  <!-- nota de verão- >
+  <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-</cabeça>
-< classecorporal ="hold-transition sidebar-mini layout-fixo">
-<classe div ="invólucro">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-  <!-- Pré-carregador -->
-  <classe div ="pré-carregador flex-coluna justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" altura="60" largura="60">
-  </Div>
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
 
-  <!-- Navbar- >
-  <nav class="cabeça-de-cabeça principal navbar navbar-expande navbar-branco navbar-light">
-    <!-- links de navbar à esquerda -->
-    < ul class="navbar-nav">
-      <li classe="nav-item">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        < a href="index3.html" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href ="#" class="nav-link">Contato</a>
+        <a href="#" class="nav-link">Contact</a>
       </li>
-    </Ul>
+    </ul>
 
     <!-- Right navbar links -->
-    < ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-      <li classe="nav-item">
+      <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i classe="fas fa-search"></i>
-        </um>
-        <classe div ="navbar-search-block">
-          <classe de forma ="form-inline">
-            <classe div ="input-group input-group-sm">
-              < classede entrada ="form-control form-control-navbar" type="pesquisa" placeholder=" Search " aria-label="Pesquisa ">
-              <classe div ="entrada-grupo-apêndice">
-                < classe debotão ="btn btn-navbar" tipo="enviar">
-                  <i classe="fas fa-search"></i>
-                </botão>
-                < classe debotão ="btn btn-navbar" tipo="botão" data-widget="navbar-search">
-                  <i classe="fas fa-times"></i>
-                </botão>
-              </Div>
-            </Div>
-          </forma>
-        </Div>
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </li>
 
-      Menu suspenso de mensagens <!-- -->
-      <li classe="nav-item dropdown">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i classe="far fa-comments"></i>
-          <classe span ="crachá-perigo de crachá navbar-badge">3</span>
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
@@ -151,153 +151,153 @@
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 novos relatórios
-            < classede span ="float-right text-muted text-sm">2 dias</span>
-          </um>
-          <classe div ="dropdown-divisor"></div>
-          <a href ="#" class="dropdown-item dropdown-footer">Ver todas as notificações</a>
-        </Div>
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
       </li>
-      <li classe="nav-item">
+      <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
-        </um>
+        </a>
       </li>
-      <li classe="nav-item">
-        <a class="nav-link" data-widget="barra lateral de controle" data-slide="true" href="#" role="button">
-          <i classe="fas fa-th-large"></i>
-        </um>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
       </li>
-    </Ul>
-  </Nav>
+    </ul>
+  </nav>
   <!-- /.navbar -->
 
-  <!-- recipiente de barra lateral principal -->
-  <classe de lado =" barralateral principal-escuridão-elevação primária-4">
-    Logotipo da marca <!-- -->
-    < a href="index3.html" classe=" linkde marca">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"opacidade: .8 ">
-      < classede span ="brand-text font-weight-light">Fateb</span>
-    </um>
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Fateb</span>
+    </a>
 
-    <!-- Sidebar- >
-    <classe div ="barra lateral">
-      <!-- painel de usuário sidebar (opcional) -->
-      <classe div ="painel de usuário mt-3 pb-3 mb-3 d-flex">
-        <classe div ="imagem">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt=" Imagemdo usuário">
-        </Div>
-        <classe div ="informações">
-          <a href ="#" class="d-block">Usuário</a>
-        </Div>
-      </Div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Usuário</a>
+        </div>
+      </div>
 
-      <!-- Forma SidebarSearch -->
-      <classe div ="form-inline">
-        <classe div ="grupo de entrada" grupo de entrada " de widget de dados="sidebar-search">
-          < classede entrada ="form-control form-control-sidebar" type="search" placeholder=" Search " aria-label="Pesquisa ">
-          <classe div ="entrada-grupo-apêndice">
-            < classede botão ="btn btn-sidebar">
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
-            </botão>
-          </Div>
-        </Div>
-      </Div>
+            </button>
+          </div>
+        </div>
+      </div>
 
-      menu sidebar <!-- -->
-      <nav classe="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-coluna" data-widget="treeview" role="menu" data-accordion="falso">
-          <!-- Adicionar ícones aos links usando a classe .nav-icon
- com fonte incrível ou qualquer outra biblioteca de fontes de ícone -->
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
 
-          <li classe="nav-item menu-aberto">
-            <a href ="#" classe="nav-link ativo">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Cadastros
-                <i classe="direito fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left"></i>
               </p>
-            </um>
+            </a>
               <ul class="nav nav-treeview">
-              <!--Link para cadastro CURSO ->
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para cadastro CURSO-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Curso</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para cadastro TURMA -- >
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para cadastro TURMA-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turma</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para cadastro ALUNO->
-              <li classe="nav-item">
-                < a href="./index .html" class="nav-link"><!--Página que será chamado href -->
+              <!--Link para cadastro ALUNO-->
+              <li class="nav-item">
+                <a href="./index  .html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Aluno</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para vincular ALUNO A TURMA -- >
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para VINCULAR ALUNO A TURMA-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vincular Aluno</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para DISCIPLINA - >
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para DISCIPLINA-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Disciplina</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para DETALHES DISCIPLINA -->
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para DETALHES DISCIPLINA-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Detalhes Disciplina</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para PROFESSOR - >
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para PROFESSOR-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Professor</p>
-                </um>
+                </a>
               </li>
 
-              <!--Link para CALENDARIO >
-              <li classe="nav-item">
-                <a href="./index.html" class="nav-link"><!--Página que será chamada href ->
+              <!--Link para CALENDARIO LETIVO-->
+              <li class="nav-item">
+                <a href="./index.html" class="nav-link"><!--Página que será chamada href-->
                   <i class="far fa-circle nav-icon"></i>
                   <p>Calendário</p>
-                </um>
+                </a>
               </li>
-            </Ul>
+            </ul>
           </li>
-          <!--Fim ul de cadastros - >
+          <!--Fim ul de cadastros-->
 
-              <li classe="nav-item">
-                <a href ="pages/widgets.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/widgets.html" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     Chamada Online
                   </p>
-                </um>
+                </a>
               </li>
           </li>
 
-          <li classe="nav-item">
-            <a href ="#" classe="nav-link">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Layout Options
@@ -576,87 +576,87 @@
                 Pages
                 <i class="fas fa-angle-left right"></i>
               </p>
-            </um>
+            </a>
             <ul class="nav nav-treeview">
-              <li classe="nav-item">
-                <a href ="pages/examples/invoice.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/invoice.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Nota fiscal</p>
-                </um>
+                  <p>Invoice</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/profile.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/profile.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Perfil</p>
-                </um>
+                  <p>Profile</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/e-commerce.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/e-commerce.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>E-commerce</p>
-                </um>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/projects.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/projects.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Projetos</p>
-                </um>
+                  <p>Projects</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/project-add.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/project-add.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Projeto Adicionar</p>
-                </um>
+                  <p>Project Add</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/project-edit.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/project-edit.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Projeto Editar</p>
-                </um>
+                  <p>Project Edit</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/project-detail.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/project-detail.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ProjetoDetalhes </p>
-                </um>
+                  <p>Project Detail</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/contacts.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/contacts.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Contatos</p>
-                </um>
+                  <p>Contacts</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/faq.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/faq.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>faq </p>
-                </um>
+                  <p>FAQ</p>
+                </a>
               </li>
-              <li classe="nav-item">
-                <a href ="pages/examples/contact-us.html" classe="nav-link">
+              <li class="nav-item">
+                <a href="pages/examples/contact-us.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Entre em contato conosco</p>
-                </um>
+                  <p>Contact us</p>
+                </a>
               </li>
-            </Ul>
+            </ul>
           </li>
-          <li classe="nav-item">
-            <a href ="#" classe="nav-link">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
                 Extras
-                <i classe="fas fa-angle-left right"></i>
+                <i class="fas fa-angle-left right"></i>
               </p>
-            </um>
+            </a>
             <ul class="nav nav-treeview">
-              <li classe="nav-item">
-                <a href ="#" classe="nav-link">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
- Login & Registro v1
-                    <i classe="fas fa-angle-left right"></i>
+                    Login & Register v1
+                    <i class="fas fa-angle-left right"></i>
                   </p>
-                </um>
+                </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="pages/examples/login.html" class="nav-link">
@@ -1293,263 +1293,263 @@
                     <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
                     <div class="tools">
                       <i class="fas fa-edit"></i>
-                      <i classe="fas fa-trash-o"></i>
-                    </Div>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
                   </li>
                   <li>
-                    <span classe="alça">
+                    <span class="handle">
                       <i class="fas fa-ellipsis-v"></i>
                       <i class="fas fa-ellipsis-v"></i>
-                    </palmo>
-                    <classe div ="icheck-primário d-inline ml-2">
-                      < tipo deentrada ="caixa de seleção" valor="" nome="todo4" id="todoCheck4">
-                      <rótulo para="todoCheck4"></rótulo>
-                    </Div>
-                    <span class="texto">Deixe o tema brilhar como uma estrela</span>
-                    <classe pequena ="badge-success"><classe ="far fa-clock"></i> 3 dias</pequeno>
-                    <classe div ="ferramentas">
-                      <i classe="fas fa-edit"></i>
-                      <i classe="fas fa-trash-o"></i>
-                    </Div>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo4" id="todoCheck4">
+                      <label for="todoCheck4"></label>
+                    </div>
+                    <span class="text">Let theme shine like a star</span>
+                    <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
                   </li>
                   <li>
-                    <span classe="alça">
+                    <span class="handle">
                       <i class="fas fa-ellipsis-v"></i>
                       <i class="fas fa-ellipsis-v"></i>
-                    </palmo>
-                    <classe div ="icheck-primário d-inline ml-2">
-                      < tipo deentrada ="caixa de seleção" valor="" nome="todo5" id="todoCheck5">
-                      <rótulo para="todoCheck5"></rótulo>
-                    </Div>
-                    <span class="texto">Verifique suas mensagens e notificações</span>
-                    <classe pequena ="crachá-primário"><classe ="far fa-clock"></i> 1 semana</pequeno>
-                    <classe div ="ferramentas">
-                      <i classe="fas fa-edit"></i>
-                      <i classe="fas fa-trash-o"></i>
-                    </Div>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo5" id="todoCheck5">
+                      <label for="todoCheck5"></label>
+                    </div>
+                    <span class="text">Check your messages and notifications</span>
+                    <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
                   </li>
                   <li>
-                    <span classe="alça">
+                    <span class="handle">
                       <i class="fas fa-ellipsis-v"></i>
                       <i class="fas fa-ellipsis-v"></i>
-                    </palmo>
-                    <classe div ="icheck-primário d-inline ml-2">
-                      < tipo deentrada ="caixa de seleção" valor="" nome="todo6" id="todoCheck6">
-                      <rótulo para="todoCheck6"></rótulo>
-                    </Div>
-                    <span class="texto">Deixe o tema brilhar como uma estrela</span>
-                    < classepequena ="crachá-secundário">< classe="far fa-clock"></i> 1 mês</pequeno>
-                    <classe div ="ferramentas">
-                      <i classe="fas fa-edit"></i>
-                      <i classe="fas fa-trash-o"></i>
-                    </Div>
+                    </span>
+                    <div  class="icheck-primary d-inline ml-2">
+                      <input type="checkbox" value="" name="todo6" id="todoCheck6">
+                      <label for="todoCheck6"></label>
+                    </div>
+                    <span class="text">Let theme shine like a star</span>
+                    <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                    <div class="tools">
+                      <i class="fas fa-edit"></i>
+                      <i class="fas fa-trash-o"></i>
+                    </div>
                   </li>
-                </Ul>
-              </Div>
+                </ul>
+              </div>
               <!-- /.card-body -->
-              <classe div ="card-footer clearfix">
-                < tipo debotão ="botão" classe="btn btn-primary float-right"><i class="fas fa-plus"></i> Adicionar item</botão>
-              </Div>
-            </Div>
+              <div class="card-footer clearfix">
+                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+              </div>
+            </div>
             <!-- /.card -->
-          </secção>
-          <!-- /. Col esquerdo - >
-          <!-- col direito (estamos apenas adicionando o ID para tornar os widgets classificados)->
-          <classe de seção ="col-lg-5 connectedSortable">
+          </section>
+          <!-- /.Left col -->
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-5 connectedSortable">
 
-            cartão mapa de <!-- -->
-            <classe div ="cartão bg-gradiente-primário">
-              <classe div ="cartão-cabeçalho border-0">
-                <h3 classe=" títulode cartão">
+            <!-- Map card -->
+            <div class="card bg-gradient-primary">
+              <div class="card-header border-0">
+                <h3 class="card-title">
                   <i class="fas fa-map-marker-alt mr-1"></i>
- Visitantes
+                  Visitors
                 </h3>
-                <!-- ferramentas de cartão -- >
-                <classe div ="ferramentas de cartão">
-                  < tipo debotão ="botão" classe="btn btn-primary btn-sm daterange" title=" Faixade data">
-                    <i classe="far fa-calendário-alt"></i>
-                  </botão>
-                  < tipo debotão ="botão" classe="btn btn-primary btn-sm" data-card-widget="colapso" título="Colapso">
-                    <i classe="fas fa-minus"></i>
-                  </botão>
-                </Div>
+                <!-- card tools -->
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
+                    <i class="far fa-calendar-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
                 <!-- /.card-tools -->
-              </Div>
-              <classe div ="cartão-corpo">
-                <div id=" mapa domundo" estilo="altura: 250px; largura: 100%;" ></div>
-              </Div>
-              <!-- /.card-body->
-              <classe div ="card-footer bg-transparente">
-                <classe div ="linha">
-                  <classe div ="col-4 text center">
+              </div>
+              <div class="card-body">
+                <div id="world-map" style="height: 250px; width: 100%;"></div>
+              </div>
+              <!-- /.card-body-->
+              <div class="card-footer bg-transparent">
+                <div class="row">
+                  <div class="col-4 text-center">
                     <div id="sparkline-1"></div>
-                    <classe div ="text-white">Visitantes</div>
-                  </Div>
+                    <div class="text-white">Visitors</div>
+                  </div>
                   <!-- ./col -->
-                  <classe div ="col-4 text center">
+                  <div class="col-4 text-center">
                     <div id="sparkline-2"></div>
-                    <classe div ="text-white">Online</div>
-                  </Div>
+                    <div class="text-white">Online</div>
+                  </div>
                   <!-- ./col -->
-                  <classe div ="col-4 text center">
+                  <div class="col-4 text-center">
                     <div id="sparkline-3"></div>
-                    <classe div ="text-white">Sales</div>
-                  </Div>
+                    <div class="text-white">Sales</div>
+                  </div>
                   <!-- ./col -->
-                </Div>
+                </div>
                 <!-- /.row -->
-              </Div>
-            </Div>
+              </div>
+            </div>
             <!-- /.card -->
 
-            <!-- gráfico sólido de vendas -->
-            <classe div ="cartão bg-gradiente-info">
-              <classe div ="cartão-cabeçalho border-0">
-                <h3 classe=" títulode cartão">
-                  <i classe="fas fa-th mr-1"></i>
- Gráfico de Vendas
+            <!-- solid sales graph -->
+            <div class="card bg-gradient-info">
+              <div class="card-header border-0">
+                <h3 class="card-title">
+                  <i class="fas fa-th mr-1"></i>
+                  Sales Graph
                 </h3>
 
-                <classe div ="ferramentas de cartão">
-                  < tipo debotão ="botão" classe="btn bg-info btn-sm" data-card-widget="colapso">
-                    <i classe="fas fa-minus"></i>
-                  </botão>
-                  < tipo debotão ="botão" classe="btn bg-info btn-sm" data-card-widget="remover">
-                    <i classe="fas fa-times"></i>
-                  </botão>
-                </Div>
-              </Div>
-              <classe div ="cartão-corpo">
-                < classede tela ="gráfico" id="line-chart" estilo="min-height: 250px; altura: 250px; altura máxima: 250px; largura máxima: 100%;" ></tela>
-              </Div>
+                <div class="card-tools">
+                  <button type="button" class="btn bg-info btn-sm" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn bg-info btn-sm" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas class="chart" id="line-chart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
               <!-- /.card-body -->
-              <classe div ="card-footer bg-transparente">
-                <classe div ="linha">
-                  <classe div ="col-4 text center">
-                    < tipo deentrada ="texto" classe="botão" data-readonly="verdadeiro" valor="20" largura de dados="60" data-height="60"
+              <div class="card-footer bg-transparent">
+                <div class="row">
+                  <div class="col-4 text-center">
+                    <input type="text" class="knob" data-readonly="true" value="20" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
 
-                    <classe div ="text-white">Mail-Orders</div>
-                  </Div>
+                    <div class="text-white">Mail-Orders</div>
+                  </div>
                   <!-- ./col -->
-                  <classe div ="col-4 text center">
-                    < tipo deentrada ="texto" classe="botão" data-readonly="verdadeiro" valor="50" largura de dados="60" data-height="60"
+                  <div class="col-4 text-center">
+                    <input type="text" class="knob" data-readonly="true" value="50" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
 
-                    <classe div ="text-white">Online</div>
-                  </Div>
+                    <div class="text-white">Online</div>
+                  </div>
                   <!-- ./col -->
-                  <classe div ="col-4 text center">
-                    < tipo deentrada ="texto" classe="botão" data-readonly="verdadeiro" valor="30" largura de dados="60" data-height="60"
+                  <div class="col-4 text-center">
+                    <input type="text" class="knob" data-readonly="true" value="30" data-width="60" data-height="60"
                            data-fgColor="#39CCCC">
 
-                    <classe div ="text-white">in-Store</div>
-                  </Div>
+                    <div class="text-white">In-Store</div>
+                  </div>
                   <!-- ./col -->
-                </Div>
+                </div>
                 <!-- /.row -->
-              </Div>
+              </div>
               <!-- /.card-footer -->
-            </Div>
+            </div>
             <!-- /.card -->
 
-            Calendário <!-- -- >
-            <classe div ="cartão bg-gradiente-sucesso">
-              <classe div ="cartão-cabeçalho border-0">
+            <!-- Calendar -->
+            <div class="card bg-gradient-success">
+              <div class="card-header border-0">
 
-                <h3 classe=" títulode cartão">
-                  <i classe="far fa-calendário-alt"></i>
- Calendário
+                <h3 class="card-title">
+                  <i class="far fa-calendar-alt"></i>
+                  Calendar
                 </h3>
-                cartão de ferramentas <!-- -->
-                <classe div ="ferramentas de cartão">
-                  botão <!-- com um dropdown -->
-                  <classe div ="btn-group">
-                    < tipo debotão ="botão" classe="btn btn-sucesso btn-sm dropdown-alternar" data-toggle="dropdown" data-offset="-52">
-                      <i classe="fas fa-bars"></i>
-                    </botão>
-                    <div classe="dropdown-menu" role="menu">
-                      < ahref ="#" class="dropdown-item">Adicionar novo evento</a>
-                      <a href ="#" class="dropdown-item">Eventosclaros </a>
-                      <classe div ="dropdown-divisor"></div>
-                      < ahref ="#" class="dropdown-item">Ver calendário</a>
-                    </Div>
-                  </Div>
-                  < tipo debotão ="botão" classe="btn btn-sucesso btn-sm" data-card-widget="colapso">
-                    <i classe="fas fa-minus"></i>
-                  </botão>
-                  < tipo debotão ="botão" classe="btn btn-sucesso btn-sm" data-card-widget="remover">
-                    <i classe="fas fa-times"></i>
-                  </botão>
-                </Div>
-                <!-- /. ferramentas -->
-              </Div>
+                <!-- tools card -->
+                <div class="card-tools">
+                  <!-- button with a dropdown -->
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                      <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                      <a href="#" class="dropdown-item">Add new event</a>
+                      <a href="#" class="dropdown-item">Clear events</a>
+                      <div class="dropdown-divider"></div>
+                      <a href="#" class="dropdown-item">View calendar</a>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <!-- /. tools -->
+              </div>
               <!-- /.card-header -->
-              <classe div ="cartão-corpo pt-0">
-                <!--O calendário -- >
-                <div id="calendário" estilo="largura: 100%"></div>
-              </Div>
+              <div class="card-body pt-0">
+                <!--The calendar -->
+                <div id="calendar" style="width: 100%"></div>
+              </div>
               <!-- /.card-body -->
-            </Div>
+            </div>
             <!-- /.card -->
-          </secção>
-          <!-- col direito - >
-        </Div>
-        <!-- /.row (linha principal) -->
-      </div><!-- /.container-fluido -->
-    </secção>
-    <!-- /.content >
-  </Div>
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
   <!-- /.content-wrapper -->
-  <classe footer ="pé-principal">
-    <> direitosautoraise cópia; 2014-2021 < ahref ="https://adminlte.io">AdminLTE.io </a>. </forte>
- Todos os direitos reservados.
-    <classe div ="float-right d-none d-sm-inline-block">
-      <b>Versão</b> 3.1.0
-    </Div>
-  </rodapé>
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
+    </div>
+  </footer>
 
-  Barra lateral de controle de <!-- -->
-  <classe de lado ="controle-barra lateral-controle-barra-escuro">
-    <!-- o conteúdo da barra lateral do Controle vai aqui -->
-  </à parte>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
   <!-- /.control-sidebar -->
-</Div>
-<!-- ./invólucro -->
+</div>
+<!-- ./wrapper -->
 
-<!-- jQuery ->
+<!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolver conflito na ponta de ferramenta jQuery UI com a ponta de ferramenta Bootstrap -->
-<roteiro>
-  $. . widget. ponte('uibutton', $. ui. botão)
-</roteiro>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline->
+<!-- Sparkline -->
 <script src="plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
 <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -- >
+<!-- daterangepicker -->
 <script src="plugins/moment/moment.min.js"></script>
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote- >
+<!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
-<!-- sobreposiçãoScrollbars -->
-<script src="plugins/sobreposiçãoScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- aplicativo AdminLTE -->
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE para fins de demonstração -->
+<!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-<!-- demonstração do painel AdminLTE (Isto é apenas para fins de demonstração) -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
-</corpo>
+</body>
 </html>
