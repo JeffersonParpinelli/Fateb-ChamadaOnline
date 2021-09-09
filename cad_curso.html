@@ -180,7 +180,6 @@
                         <a href="#" class="d-block">Usuário</a>
                     </div>
                 </div>
-
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
@@ -372,7 +371,7 @@
 
 </select>
                                             </div>
-                                            
+
 
 
 
@@ -384,7 +383,7 @@
                                                 <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar"
                                                     class="btn btn-primary pull-right">
                                                 <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
-                                                    class="btn btn-primary pull-right">
+                                                    class="btn btn-primary pull-right" onclick="limpaCampos()">
                                                 <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir"
                                                     class="btn btn-primary pull-right">
                                             </div>
@@ -437,6 +436,10 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
+        function limpaCampos() {
+            document.getElementsByName("form_txt").value = ''; // Limpa o campo
+            console.log(document.getElementsByName("form_txt").value);
+        }
         $(function () {
             /* jQueryKnob */
 
