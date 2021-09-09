@@ -353,7 +353,7 @@
                                         <div class="row">
                                             <div class="col-md-2 col-xs-3">
                                                 <label for="fullname">Código</label>
-                                                <input name="txtCodServico" type="text" id="txtCodServico"
+                                                <input name="txtCodCurso" type="text" id="txtCodCurso"
                                                     class="form-control">
                                             </div>
                                             <div class="col-md-8 col-xs-12">
@@ -383,7 +383,7 @@
                                                 <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar"
                                                     class="btn btn-primary pull-right">
                                                 <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
-                                                    class="btn btn-primary pull-right" onclick="limpaCampos()">
+                                                    class="btn btn-primary pull-right" onclick="limparCampo()">
                                                 <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir"
                                                     class="btn btn-primary pull-right">
                                             </div>
@@ -435,11 +435,15 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
+    <script type="text/javascript">
+        function limparCampo(){
+  document.getElementById("txtDescricao").value = "";
+  document.getElementById('txtDescricao').focus();
+  document.getElementById("txtCodCurso").value = "";
+  document.getElementById('txtCodCurso').focus();
+}    	
+    </script>
     <script>
-        function limpaCampos() {
-            document.getElementsByName("form_txt").value = ''; // Limpa o campo
-            console.log(document.getElementsByName("form_txt").value);
-        }
         $(function () {
             /* jQueryKnob */
 
