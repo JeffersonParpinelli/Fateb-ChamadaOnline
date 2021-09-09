@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <script>
+        function limparCampo(){
+  document.getElementById("txtDescricao").value = "";
+  document.getElementById('txtDescricao').focus();
+  document.getElementById("txtCodCurso").value = "";
+  document.getElementById('txtCodCurso').focus();
+}    	
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -435,14 +443,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
-    <script type="text/javascript">
-        function limparCampo(){
-  document.getElementById("txtDescricao").value = "";
-  document.getElementById('txtDescricao').focus();
-  document.getElementById("txtCodCurso").value = "";
-  document.getElementById('txtCodCurso').focus();
-}    	
-    </script>
+    
     <script>
         $(function () {
             /* jQueryKnob */
