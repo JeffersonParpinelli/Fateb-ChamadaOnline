@@ -1,4 +1,4 @@
-<?php
+<?php phpinfo();
 /*	
     //Connect To Database
 	$hostname="localhost:8080";
@@ -23,12 +23,13 @@
 		}
 	}
 ?>*/
-$servername = "http://localhost:3306";
+$servername = "http://localhost:8080";
 $database = "chamada";
 $username = "root";
 $password = "root";
+$port="8080";
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
+$conn = mysqli_connect($servername, $username, $password, $database, $port, $socket);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
