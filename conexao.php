@@ -1,16 +1,19 @@
 <?php
 
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$bd_name = 'chamada';
+    //Dados
+    $host = 'localhost';
+    $user = 'root';
+    $password = '';
+    $db_name = 'chamada';
 
-$connx = mysqli_connect($host, $user, $password, $bd_name);
-
-if($connx){
-	echo'Conexão realizada com sucesso';
-}else{
-	echo'erro';
-}
+    //Conexão
+    $connx = mysqli_connect($host, $user, $password, $db_name);
+    
+    //Teste conexão
+    if($connx){
+        echo"Conectou";
+    }else{
+        echo"ERRO";
+    }
 
 ?>
