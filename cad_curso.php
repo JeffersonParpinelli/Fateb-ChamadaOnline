@@ -1,3 +1,15 @@
+<?php
+//inclui conexao com banco
+include 'conexao.php';
+
+//pegar dados da tabela
+$buscar_cadastros = "SELECT * FROM curso";
+//fazer busca dados da tabela através da query
+$query_cadastros = mysqli_query($connx, $buscar_cadastros);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,21 +17,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fateb | Cadastro de Curso</title>
-
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <script>
-        function limparCampo(){
-  document.getElementById("txtDescricao").value = "";
-  document.getElementById('txtDescricao').focus();
-  document.getElementById("txtCodCurso").value = "";
-  document.getElementById('txtCodCurso').focus();
-}    	
+        function limparCampo() {
+            document.getElementById("txtDescricao").value = "";
+            document.getElementById('txtDescricao').focus();
+            document.getElementById("txtCodCurso").value = "";
+            document.getElementById('txtCodCurso').focus();
+        }
     </script>
 </head>
 
@@ -39,7 +49,6 @@
                     <a href="#" class="nav-link">Contact</a>
                 </li> -->
             </ul>
-
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
@@ -64,7 +73,6 @@
                         </form>
                     </div>
                 </li> -->
-
                 <!-- Messages Dropdown Menu -->
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -73,8 +81,8 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <a href="#" class="dropdown-item"> -->
-                            <!-- Message Start -->
-                            <!-- <div class="media">
+                <!-- Message Start -->
+                <!-- <div class="media">
                                 <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
@@ -86,12 +94,12 @@
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                                 </div>
                             </div> -->
-                            <!-- Message End -->
-                        <!-- </a>
+                <!-- Message End -->
+                <!-- </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item"> -->
-                            <!-- Message Start -->
-                            <!-- <div class="media">
+                <!-- Message Start -->
+                <!-- <div class="media">
                                 <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
@@ -103,12 +111,12 @@
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                                 </div>
                             </div> -->
-                            <!-- Message End -->
-                        <!-- </a>
+                <!-- Message End -->
+                <!-- </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item"> -->
-                            <!-- Message Start -->
-                            <!-- <div class="media">
+                <!-- Message Start -->
+                <!-- <div class="media">
                                 <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"
                                     class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
@@ -121,8 +129,8 @@
                                     <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                                 </div>
                             </div> -->
-                            <!-- Message End -->
-                        <!-- </a>
+                <!-- Message End -->
+                <!-- </a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                     </div> -->
@@ -167,16 +175,13 @@
             </ul>
         </nav>
         <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="../../index.html" class="brand-link">
-                <img src="../../dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="../../dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
             </a>
-
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
@@ -191,8 +196,7 @@
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -200,14 +204,11 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="fa fa-edit"></i>
@@ -225,7 +226,6 @@
                                         <p>Curso</p>
                                     </a>
                                 </li>
-
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
@@ -234,7 +234,6 @@
                                         <p>Turma</p>
                                     </a>
                                 </li>
-
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
                                     <a href="./index  .html" class="nav-link">
@@ -243,7 +242,6 @@
                                         <p>Aluno</p>
                                     </a>
                                 </li>
-
                                 <!--Link para VINCULAR ALUNO A TURMA-->
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
@@ -252,7 +250,6 @@
                                         <p>Vincular Aluno</p>
                                     </a>
                                 </li>
-
                                 <!--Link para DISCIPLINA-->
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
@@ -261,7 +258,6 @@
                                         <p>Disciplina</p>
                                     </a>
                                 </li>
-
                                 <!--Link para DETALHES DISCIPLINA-->
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
@@ -270,7 +266,6 @@
                                         <p>Detalhes Disciplina</p>
                                     </a>
                                 </li>
-
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
@@ -279,7 +274,6 @@
                                         <p>Professor</p>
                                     </a>
                                 </li>
-
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link">
@@ -291,7 +285,6 @@
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
-
                         <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -307,7 +300,6 @@
             </div>
             <!-- /.sidebar -->
         </aside>
-
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -331,18 +323,14 @@
                 <div class="container-fluid">
                     <div class="col-md-12">
                         <div class="page-title" align="right">
-                            <div id="pnlPesquisa"
-                                onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
+                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control"
-                                                placeholder="Pesquisar">
+                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar"
-                                                    id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
                                             </span>
-
                                         </div>
                                     </div>
                                 </div>
@@ -361,39 +349,25 @@
                                         <div class="row">
                                             <div class="col-md-2 col-xs-3">
                                                 <label for="fullname">Código</label>
-                                                <input name="txtCodCurso" type="text" id="txtCodCurso"
-                                                    class="form-control">
+                                                <input name="txtCodCurso" type="text" id="txtCodCurso" class="form-control">
                                             </div>
                                             <div class="col-md-8 col-xs-12">
                                                 <label for="fullname">Descrição</label>
-                                                <input name="txtDescricao" type="text" maxlength="200" id="txtDescricao"
-                                                    onblur="this.value=this.value.toUpperCase();" class="form-control"
-                                                    required="">
+                                                <input name="txtDescricao" type="text" maxlength="200" id="txtDescricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                             </div>
-
                                             <div class="col-md-2 col-xs-6">
                                                 <label for="fullname">Ativo</label>
                                                 <select name="ddlAtivo" id="ddlAtivo" class="form-control">
-<option value="True">Ativo</option>
-<option value="False">Inativo</option>
-
-</select>
+                                                    <option value="True">Ativo</option>
+                                                    <option value="False">Inativo</option>
+                                                </select>
                                             </div>
-
-
-
-
-
-
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12" style="margin-top: 160px" align="right">
-                                                <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar"
-                                                    class="btn btn-primary pull-right">
-                                                <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
-                                                    class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir"
-                                                    class="btn btn-primary pull-right">
+                                                <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar" class="btn btn-primary pull-right">
+                                                <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
                                             </div>
                                         </div>
                                     </div>
@@ -402,8 +376,8 @@
                                 <div class="card-footer">
                                     <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
                                     the plugin. -->
-                                  </div>
-                                  <!-- /.card-footer -->
+                                </div>
+                                <!-- /.card-footer -->
                             </div>
                         </div>
                         <!-- /.teste -->
@@ -421,7 +395,6 @@
             <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
             reserved.
         </footer>
-
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -429,7 +402,6 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -443,11 +415,18 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
-    
-    <script>
-        $(function () {
-            /* jQueryKnob */
+    <script type="text/javascript">
+        function limparCampo() {
+            document.getElementById("txtDescricao").value = "";
+            document.getElementById('txtDescricao').focus();
+            document.getElementById("txtCodCurso").value = "";
+            document.getElementById('txtCodCurso').focus();
+        }
+    </script>
 
+    <script>
+        $(function() {
+            /* jQueryKnob */
             $('.knob').knob({
                 /*change : function (value) {
                  //console.log("change : " + value);
@@ -458,68 +437,71 @@
                  cancel : function () {
                  console.log("cancel : " + this.value);
                  },*/
-                draw: function () {
-
+                draw: function() {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
-
-                        var a = this.angle(this.cv)  // Angle
+                        var a = this.angle(this.cv) // Angle
                             ,
-                            sa = this.startAngle          // Previous start angle
+                            sa = this.startAngle // Previous start angle
                             ,
-                            sat = this.startAngle         // Start angle
+                            sat = this.startAngle // Start angle
                             ,
-                            ea                            // Previous end angle
+                            ea // Previous end angle
                             ,
-                            eat = sat + a                 // End angle
+                            eat = sat + a // End angle
                             ,
                             r = true
-
                         this.g.lineWidth = this.lineWidth
-
-                        this.o.cursor
-                            && (sat = eat - 0.3)
-                            && (eat = eat + 0.3)
-
+                        this.o.cursor &&
+                            (sat = eat - 0.3) &&
+                            (eat = eat + 0.3)
                         if (this.o.displayPrevious) {
                             ea = this.startAngle + this.angle(this.value)
-                            this.o.cursor
-                                && (sa = ea - 0.3)
-                                && (ea = ea + 0.3)
+                            this.o.cursor &&
+                                (sa = ea - 0.3) &&
+                                (ea = ea + 0.3)
                             this.g.beginPath()
                             this.g.strokeStyle = this.previousColor
                             this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false)
                             this.g.stroke()
                         }
-
                         this.g.beginPath()
                         this.g.strokeStyle = r ? this.o.fgColor : this.fgColor
                         this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false)
                         this.g.stroke()
-
                         this.g.lineWidth = 2
                         this.g.beginPath()
                         this.g.strokeStyle = this.o.fgColor
                         this.g.arc(this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false)
                         this.g.stroke()
-
                         return false
                     }
                 }
             })
             /* END JQUERY KNOB */
-
             //INITIALIZE SPARKLINE CHARTS
-            var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 240, height: 70, lineColor: '#92c1dc', endColor: '#92c1dc' })
-            var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 240, height: 70, lineColor: '#f56954', endColor: '#f56954' })
-            var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 240, height: 70, lineColor: '#3af221', endColor: '#3af221' })
-
+            var sparkline1 = new Sparkline($('#sparkline-1')[0], {
+                width: 240,
+                height: 70,
+                lineColor: '#92c1dc',
+                endColor: '#92c1dc'
+            })
+            var sparkline2 = new Sparkline($('#sparkline-2')[0], {
+                width: 240,
+                height: 70,
+                lineColor: '#f56954',
+                endColor: '#f56954'
+            })
+            var sparkline3 = new Sparkline($('#sparkline-3')[0], {
+                width: 240,
+                height: 70,
+                lineColor: '#3af221',
+                endColor: '#3af221'
+            })
             sparkline1.draw([1000, 1200, 920, 927, 931, 1027, 819, 930, 1021])
             sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
             sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
-
         })
-
     </script>
 </body>
 
