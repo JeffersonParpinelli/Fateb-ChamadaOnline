@@ -9,9 +9,8 @@ $situacao = $_POST['situacao'];
 
 //$recebendo_cadastros é onde puxo todos os dados
 $recebendo_cadastros = "INSERT INTO 
-tb_cliente
-VALUES ('',
-        '$codigo',
+curso
+VALUES ('$codigo',
         '$descricao',
         '$situacao')";
 
@@ -19,6 +18,6 @@ VALUES ('',
         //conexao do banco e dados do cadastros
         $query_cadastros = mysqli_query($connx, $recebendo_cadastros);
 
-        //Faz voltar a página listagem.php
-        header('location:listagem.php');
+        //Faz voltar a página cad_curso.php
+        header('location:cad_curso.php');
 ?>

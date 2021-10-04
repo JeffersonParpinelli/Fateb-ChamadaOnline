@@ -344,20 +344,21 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     </div>
                                 </div> -->
                                 <!-- /.card-header -->
+                                <form  action="cadastro.php" method="POST">
                                 <div class="card-body">
                                     <div class="x_content" style="display: block;">
                                         <div class="row">
                                             <div class="col-md-2 col-xs-3">
                                                 <label for="fullname">Código</label>
-                                                <input name="txtCodCurso" type="text" id="txtCodCurso" class="form-control">
+                                                <input name="codigo" type="text" id="txtCodCurso" class="form-control">
                                             </div>
                                             <div class="col-md-8 col-xs-12">
                                                 <label for="fullname">Descrição</label>
-                                                <input name="txtDescricao" type="text" maxlength="200" id="txtDescricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                <input name="descricao" type="text" maxlength="200" id="txtDescricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                             </div>
                                             <div class="col-md-2 col-xs-6">
                                                 <label for="fullname">Ativo</label>
-                                                <select name="ddlAtivo" id="ddlAtivo" class="form-control">
+                                                <select name="situacao" id="ddlAtivo" class="form-control">
                                                     <option value="True">Ativo</option>
                                                     <option value="False">Inativo</option>
                                                 </select>
@@ -372,6 +373,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         </div>
                                     </div>
                                 </div>
+                                </form>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
