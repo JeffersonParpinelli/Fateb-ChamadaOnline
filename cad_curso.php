@@ -344,35 +344,35 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     </div>
                                 </div> -->
                                 <!-- /.card-header -->
-                                <form  action="cadastro.php" method="POST">
-                                <div class="card-body">
-                                    <div class="x_content" style="display: block;">
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-3">
-                                                <label for="fullname">Código</label>
-                                                <input name="codigo" type="text" id="txtCodCurso" class="form-control">
+                                <form action="cadastro.php" method="POST">
+                                    <div class="card-body">
+                                        <div class="x_content" style="display: block;">
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="codigo">Código</label>
+                                                    <input name="codigo" type="text" id="codigo" class="form-control">
+                                                </div>
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="descricao">Descrição</label>
+                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="situacao">Ativo</label>
+                                                    <select name="situacao" id="situacao" class="form-control">
+                                                        <option value="0">Ativo</option>
+                                                        <option value="1">Inativo</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="col-md-8 col-xs-12">
-                                                <label for="fullname">Descrição</label>
-                                                <input name="descricao" type="text" maxlength="200" id="txtDescricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                            </div>
-                                            <div class="col-md-2 col-xs-6">
-                                                <label for="fullname">Ativo</label>
-                                                <select name="situacao" id="ddlAtivo" class="form-control">
-                                                    <option value="True">Ativo</option>
-                                                    <option value="False">Inativo</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12" style="margin-top: 160px" align="right">
-                                                <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar" class="btn btn-primary pull-right">
-                                                <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
+                                            <div class="row">
+                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                    <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar" class="btn btn-primary pull-right">
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 </form>
                                 <!-- /.card-body -->
                                 <div class="card-footer">

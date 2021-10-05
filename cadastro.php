@@ -20,4 +20,3 @@ VALUES ('$codigo',
 
         //Faz voltar a página cad_curso.php
         header('location:cad_curso.php');
-?>
