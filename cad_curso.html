@@ -9,7 +9,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +17,26 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fateb | Cadastro de Curso</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <script>
         function limparCampo() {
             document.getElementById("txtDescricao").value = "";
@@ -359,8 +373,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Ativo</label>
                                                     <select name="situacao" id="situacao" class="form-control">
-                                                        <option value="0">Ativo</option>
-                                                        <option value="1">Inativo</option>
+                                                        <option value="ativo">Ativo</option>
+                                                        <option value="inativo">Inativo</option>
                                                     </select>
                                                 </div>
                                             </div>
