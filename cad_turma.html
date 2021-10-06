@@ -15,7 +15,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Curso</title>
+    <title>Fateb | Cadastro de Turma</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -242,7 +242,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./cad_turma.html" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -366,10 +366,37 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="codigo">Código</label>
                                                     <input name="codigo" type="text" id="codigo" class="form-control">
                                                 </div>
+
                                                 <div class="col-md-8 col-xs-12">
                                                     <label for="descricao">Descrição</label>
                                                     <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
+                                                
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="etapa">Etapa</label>
+                                                    <input name="etapa" type="text" maxlength="200" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="descricao">Semestre/Ano</label>
+                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="descricao">Calendario</label>
+                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="descricao">Curso</label>
+                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="descricao">Disciplina</label>
+                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+                                                
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Ativo</label>
                                                     <select name="situacao" id="situacao" class="form-control">
