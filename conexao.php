@@ -3,7 +3,7 @@
     //Dados
     $host = 'localhost';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $db_name = 'chamada';
 
     //Conexão
