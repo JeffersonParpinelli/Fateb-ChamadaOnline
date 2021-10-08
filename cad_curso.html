@@ -192,8 +192,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index.html" class="brand-link">
-                <img src="../../dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <a href="../index.html" class="brand-link">
+                <img src="../dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
             </a>
             <!-- Sidebar -->
@@ -201,7 +201,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
@@ -242,7 +242,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./cad_turma.html" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -366,12 +366,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="codigo">Código</label>
                                                     <input name="codigo" type="text" id="codigo" class="form-control">
                                                 </div>
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
+
                                                 <div class="col-md-2 col-xs-6">
-                                                    <label for="situacao">Ativo</label>
+                                                    <label for="descricao">Descrição</label>
+                                                    <input name="descricao" type="text" maxlength="50" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="situacao">Situação</label>
                                                     <select name="situacao" id="situacao" class="form-control">
                                                         <option value="ativo">Ativo</option>
                                                         <option value="inativo">Inativo</option>
@@ -495,7 +497,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 }
             })
             /* END JQUERY KNOB */
-            //INITIALIZE SPARKLINE CHARTS
+            //INITIALIZE SPARKLINE 
+            S
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,

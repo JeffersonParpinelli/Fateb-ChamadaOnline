@@ -3,12 +3,13 @@
     //Dados
     $host = 'localhost';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $db_name = 'chamada';
+    $port = 3306;
 
     //Conexão
-    $connx = mysqli_connect($host, $user, $password, $db_name);
-    
+    $connx = mysqli_connect($host, $user, $password, $db_name, $port);
+
     //Teste conexão
     if($connx){
         echo"Conectou";

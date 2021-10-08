@@ -15,7 +15,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Turma</title>
+    <title>Fateb | Cadastro de Disciplina</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -57,7 +57,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index.html" class="nav-link">Home</a>
+                    <a href="../index.html" class="nav-link">Home</a>
                 </li>
                 <!-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -201,7 +201,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
@@ -250,7 +250,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
-                                    <a href="./index  .html" class="nav-link">
+                                    <a href="./index.html" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aluno</p>
@@ -366,50 +366,51 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="codigo">Código</label>
                                                     <input name="codigo" type="text" id="codigo" class="form-control">
                                                 </div>
-
+                                
                                                 <div class="col-md-8 col-xs-12">
                                                     <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <input name="descricao" type="text" maxlength="200" id="descricao"
+                                                        onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
-                                                
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="etapa">Etapa</label>
-                                                    <input name="etapa" type="text" maxlength="200" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                            </div>    
+                                                <div class="row">
+                                                    <div class="col-md-2 col-xs-12" style="padding: 10px;">
+                                                        <label for="cargaHoraria">Carga Horária</label>
+                                                        <input name="cargaHoraria" type="text" maxlength="200" id="cargaHoraria"
+                                                            onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    </div>
+                                
+                                                    <div class="col-md-4 col-xs-8" style="padding: 10px;">
+                                                        <label for="qtdeAulasSemana">Quantidade de aulas semanais</label>
+                                                            <select name="qtdeAulasSemana" id="qtdeAulasSemana" class="form-control">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                            </select>
+                                                    </div>
+                                
+                                                    <div class="col-md-2 col-xs-6" style="padding: 10px;">
+                                                        <label for="situacao">Situação</label>
+                                                        <select name="situacao" id="situacao" class="form-control">
+                                                            <option value="ativo">Ativo</option>
+                                                            <option value="inativo">Inativo</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
 
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Semestre/Ano</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Calendario</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Curso</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Disciplina</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                                
-                                                <div class="col-md-2 col-xs-6">
-                                                    <label for="situacao">Situação</label>
-                                                    <select name="situacao" id="situacao" class="form-control">
-                                                        <option value="ativo">Ativo</option>
-                                                        <option value="inativo">Inativo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar" class="btn btn-primary pull-right">
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
+                                                    <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar"
+                                                        class="btn btn-primary pull-right">
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
+                                                        class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir"
+                                                        class="btn btn-primary pull-right">
                                                 </div>
                                             </div>
                                         </div>
@@ -526,6 +527,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,
+
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'
             })
