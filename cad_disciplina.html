@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM curso";
+$buscar_cadastros = "SELECT * FROM disciplina";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -358,31 +358,31 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     </div>
                                 </div> -->
                                 <!-- /.card-header -->
-                                <form action="cadastro.php" method="POST">
+                                <form action="cadastroDisciplina.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
-                                                    <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control">
+                                                    <label for="codDisc">Código</label>
+                                                    <input name="codDisc" type="text" id="codDisc" class="form-control">
                                                 </div>
                                 
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao"
-                                                        onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                            </div>    
+                                                    <div class="col-md-8 col-xs-12">
+                                                        <label for="descDisc">Descrição</label>
+                                                        <input name="descDisc" type="text" maxlength="200"
+                                                            onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    </div>
+                                            </div>
                                                 <div class="row">
                                                     <div class="col-md-2 col-xs-12" style="padding: 10px;">
-                                                        <label for="cargaHoraria">Carga Horária</label>
-                                                        <input name="cargaHoraria" type="text" maxlength="200" id="cargaHoraria"
+                                                        <label for="cargaHorariaDisc">Carga Horária</label>
+                                                        <input name="cargaHorariaDisc" type="text" maxlength="200" id="cargaHorariaDisc"
                                                             onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                     </div>
                                 
                                                     <div class="col-md-4 col-xs-8" style="padding: 10px;">
-                                                        <label for="qtdeAulasSemana">Quantidade de aulas semanais</label>
-                                                            <select name="qtdeAulasSemana" id="qtdeAulasSemana" class="form-control">
+                                                        <label for="qtdeAulasSemanaDisc">Quantidade de aulas semanais</label>
+                                                            <select name="qtdeAulasSemanaDisc" id="qtdeAulasSemanaDisc" class="form-control">
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
                                                                 <option value="3">3</option>
@@ -395,8 +395,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </div>
                                 
                                                     <div class="col-md-2 col-xs-6" style="padding: 10px;">
-                                                        <label for="situacao">Situação</label>
-                                                        <select name="situacao" id="situacao" class="form-control">
+                                                        <label for="situacaoDisc">Situação</label>
+                                                        <select name="situacaoDisc" id="situacaoDisc" class="form-control">
                                                             <option value="ativo">Ativo</option>
                                                             <option value="inativo">Inativo</option>
                                                         </select>

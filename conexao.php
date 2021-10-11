@@ -1,5 +1,4 @@
 <?php
-
     //Dados
     $host = 'localhost';
     $user = 'root';
@@ -11,10 +10,11 @@
     $connx = mysqli_connect($host, $user, $password, $db_name, $port);
 
     //Teste conexão
+    /*
     if($connx){
         echo"Conectou";
     }else{
         echo"ERRO";
-    }
+    }*/
 
 ?>
