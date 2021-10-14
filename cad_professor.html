@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM turma";
+$buscar_cadastros = "SELECT * FROM professor";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -15,7 +15,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Turma</title>
+    <title>Fateb | Cadastro de Professor</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -193,7 +193,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="./index.html" class="brand-link">
-                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
             </a>
             <!-- Sidebar -->
@@ -210,7 +211,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -220,7 +222,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
@@ -290,7 +293,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.html" class="nav-link">
+                                    <a href="./index.html" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário</p>
@@ -321,12 +324,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Turma</h1>
+                            <h1>Cadastro de Professor</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Turma</li>
+                                <li class="breadcrumb-item active">Cadastro de Professor</li>
                             </ol>
                         </div>
                     </div>
@@ -337,13 +340,16 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="col-md-12">
                         <div class="page-title" align="right">
-                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
+                            <div id="pnlPesquisa"
+                                onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
+                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control"
+                                                placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar"
+                                                    id="btnPesquisar" class="btn btn-default">
                                             </span>
                                         </div>
                                     </div>
@@ -358,45 +364,38 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     </div>
                                 </div> -->
                                 <!-- /.card-header -->
-                                <form action="cadastro.php" method="POST">
+                                <form action="cadastroCurso.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
-                                                    <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control">
+                                                    <label for="cpf">CPF</label>
+                                                    <input name="cpf" type="text" id="txtCPF" class="form-control">
                                                 </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="rg">RG</label>
+                                                    <input name="rg" type="text" id="txtRG" class="form-control">
                                                 </div>
-                                                
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="etapa">Etapa</label>
-                                                    <input name="etapa" type="text" maxlength="200" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                <div class="col-md-5 col-xs-6">
+                                                    <label for="nome">Nome completo</label>
+                                                    <input name="nome" type="text" maxlength="100" id="txtNome"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
+                                                </div>                                               
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="titulacao">Titulação</label>
+                                                    <select name="titulacao" id="titulacao" class="form-control">
+                                                        <option value="D">Doutor</option>
+                                                        <option value="M">Mestre</option>
+                                                        <option value="E">Especialista</option>
+                                                    </select>
                                                 </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Semestre/Ano</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="senha">Senha de acesso</label>
+                                                    <input name="senha" type="text" id="txtSenha" class="form-control">
                                                 </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Calendario</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Curso</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Disciplina</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                                
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Situação</label>
                                                     <select name="situacao" id="situacao" class="form-control">
@@ -404,16 +403,86 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <option value="inativo">Inativo</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div><br>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="cep">CEP</label>
+                                                    <input name="cep" type="text" id="txtCEP" class="form-control">
+                                                </div>
+                                                <div class="col-md-5 col-xs-3">
+                                                    <label for="endereco">Endereço</label>
+                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control">
+                                                </div>
+                                                <div class="col-md-1 col-xs-3">
+                                                    <label for="numero">Nº</label>
+                                                    <input name="numero" type="text" id="txtNumero" class="form-control">
+                                                </div>
+                                                <div class="col-md-3 col-xs-3">
+                                                    <label for="bairro">Bairro</label>
+                                                    <input name="bairro" type="text" id="txtBairro" class="form-control">
+                                                </div>
+                                            </div>      
+                                          
+                                            <div class="row">                                               
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="pais">Pais</label>
+                                                    <select name="pais" id="pais" class="form-control">
+                                                </div>
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="estado">Estado</label>
+                                                    <select name="estado" id="campo_estado" class="form-control">
+                                                </div>
+
+
+
+                                             
+                                                <label id="campo_estado">
+                                                    Estado
+                                                    <select id="estado"></select>
+                                                </label>
+                                                <label id="campo_cidade">
+                                                    Cidade
+                                                    <select id="cidade"></select>
+                                                </label>
+                                            </div>              
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar" class="btn btn-primary pull-right">
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                                        data-target="#modal-success">
+                                                        Salvar
+                                                    </button>
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
+                                                        class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <input type="submit" name="btnExcluir" value="Excluir"
+                                                        id="btnExcluir" class="btn btn-primary pull-right">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal fade" id="modal-success">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-success">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Cadastro Curso</h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja salvar o curso?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-outline-light"
+                                                        data-dismiss="modal">Fechar</button>
+                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
                                 </form>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
@@ -435,7 +504,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
+            rights
             reserved.
         </footer>
         <!-- Control Sidebar -->
@@ -457,6 +527,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
+    <!-- InputMask -->
+    <script src="./plugins/moment/moment.min.js"></script>
+    <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
     <script type="text/javascript">
         function limparCampo() {
@@ -468,7 +541,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     </script>
 
     <script>
-        $(function() {
+        $(function () {
             /* jQueryKnob */
             $('.knob').knob({
                 /*change : function (value) {
@@ -480,7 +553,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                  cancel : function () {
                  console.log("cancel : " + this.value);
                  },*/
-                draw: function() {
+                draw: function () {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
                         var a = this.angle(this.cv) // Angle
@@ -522,7 +595,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 }
             })
             /* END JQUERY KNOB */
-            //INITIALIZE SPARKLINE CHARTS
+            //INITIALIZE SPARKLINE 
+            S
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,
@@ -546,6 +620,111 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
         })
     </script>
-</body>
+    <script>
+        $(document).ready(function () {
+            function montaCidade(estado, pais) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.londrinaweb.com.br/PUC/Cidades/' + estado + '/' + pais + '/0/10000',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    async: false
+                }).done(function (response) {
+                    cidades = '';
 
+                    $.each(response, function (c, cidade) {
+
+                        cidades += '<option value="' + cidade + '">' + cidade + '</option>';
+
+                    });
+
+                    // PREENCHE AS CIDADES DE ACORDO COM O ESTADO
+                    $('#cidade').html(cidades);
+
+                });
+            }
+
+            function montaUF(pais) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.londrinaweb.com.br/PUC/Estados/' + pais + '/0/10000',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    async: false
+                }).done(function (response) {
+                    estados = '';
+                    $.each(response, function (e, estado) {
+
+                        estados += '<option value="' + estado.UF + '">' + estado.Estado + '</option>';
+
+                    });
+
+                    // PREENCHE OS ESTADOS BRASILEIROS
+                    $('#estado').html(estados);
+
+                    // CHAMA A FUNÇÃO QUE PREENCHE AS CIDADES DE ACORDO COM O ESTADO
+                    montaCidade($('#estado').val(), pais);
+
+                    // VERIFICA A MUDANÇA NO VALOR DO CAMPO ESTADO E ATUALIZA AS CIDADES
+                    $('#estado').change(function () {
+                        montaCidade($(this).val(), pais);
+                    });
+
+                });
+            }
+
+            function montaPais() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.londrinaweb.com.br/PUC/Paisesv2/0/1000',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    async: false
+                }).done(function (response) {
+
+                    paises = '';
+
+                    $.each(response, function (p, pais) {
+
+                        if (pais.Pais == 'Brasil') {
+                            paises += '<option value="' + pais.Sigla + '" selected>' + pais.Pais + '</option>';
+                        } else {
+                            paises += '<option value="' + pais.Sigla + '">' + pais.Pais + '</option>';
+                        }
+
+                    });
+
+                    // PREENCHE O SELECT DE PAÍSES
+                    $('#pais').html(paises);
+
+                    // PREENCHE O SELECT DE ACORDO COM O VALOR DO PAÍS
+                    montaUF($('#pais').val());
+
+                    // VERIFICA A MUDANÇA DO VALOR DO SELECT DE PAÍS
+                    $('#pais').change(function () {
+                        if ($('#pais').val() == 'BR') {
+                            // SE O VALOR FOR BR E CONFIRMA OS SELECTS
+                            $('#estado').remove();
+                            $('#cidade').remove();
+                            $('#campo_estado').append('<select id="estado"></select>');
+                            $('#campo_cidade').append('<select id="cidade"></select>');
+
+                            // CHAMA A FUNÇÃO QUE MONTA OS ESTADOS
+                            montaUF('BR');
+                        } else {
+                            // SE NÃO FOR, TROCA OS SELECTS POR INPUTS DE TEXTO
+                            $('#estado').remove();
+                            $('#cidade').remove();
+                            $('#campo_estado').append('<input type="text" id="estado">');
+                            $('#campo_cidade').append('<input type="text" id="cidade">');
+                        }
+                    })
+
+                });
+            }
+
+            montaPais();
+        })
+    </script>
+</body>
 </html>
