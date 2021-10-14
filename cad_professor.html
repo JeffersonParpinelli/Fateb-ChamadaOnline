@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM curso";
+$buscar_cadastros = "SELECT * FROM professor";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -15,7 +15,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Curso</title>
+    <title>Fateb | Cadastro de Professor</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -324,12 +324,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Curso</h1>
+                            <h1>Cadastro de Professor</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Curso</li>
+                                <li class="breadcrumb-item active">Cadastro de Professor</li>
                             </ol>
                         </div>
                     </div>
@@ -369,17 +369,33 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
-                                                    <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control">
+                                                    <label for="cpf">CPF</label>
+                                                    <input name="cpf" type="text" id="txtCPF" class="form-control">
                                                 </div>
-
-                                                <div class="col-md-2 col-xs-6">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="50" id="descricao"
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="rg">RG</label>
+                                                    <input name="rg" type="text" id="txtRG" class="form-control">
+                                                </div>
+                                                <div class="col-md-5 col-xs-6">
+                                                    <label for="nome">Nome completo</label>
+                                                    <input name="nome" type="text" maxlength="100" id="txtNome"
                                                         onblur="this.value=this.value.toUpperCase();"
                                                         class="form-control" required="">
+                                                </div>                                               
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="titulacao">Titulação</label>
+                                                    <select name="titulacao" id="titulacao" class="form-control">
+                                                        <option value="D">Doutor</option>
+                                                        <option value="M">Mestre</option>
+                                                        <option value="E">Especialista</option>
+                                                    </select>
                                                 </div>
-
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="senha">Senha de acesso</label>
+                                                    <input name="senha" type="text" id="txtSenha" class="form-control">
+                                                </div>
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Situação</label>
                                                     <select name="situacao" id="situacao" class="form-control">
@@ -387,7 +403,48 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <option value="inativo">Inativo</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div><br>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="cep">CEP</label>
+                                                    <input name="cep" type="text" id="txtCEP" class="form-control">
+                                                </div>
+                                                <div class="col-md-5 col-xs-3">
+                                                    <label for="endereco">Endereço</label>
+                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control">
+                                                </div>
+                                                <div class="col-md-1 col-xs-3">
+                                                    <label for="numero">Nº</label>
+                                                    <input name="numero" type="text" id="txtNumero" class="form-control">
+                                                </div>
+                                                <div class="col-md-3 col-xs-3">
+                                                    <label for="bairro">Bairro</label>
+                                                    <input name="bairro" type="text" id="txtBairro" class="form-control">
+                                                </div>
+                                            </div>      
+                                          
+                                            <div class="row">                                               
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="pais">Pais</label>
+                                                    <select name="pais" id="pais" class="form-control">
+                                                </div>
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="estado">Estado</label>
+                                                    <select name="estado" id="campo_estado" class="form-control">
+                                                </div>
+
+
+
+                                             
+                                                <label id="campo_estado">
+                                                    Estado
+                                                    <select id="estado"></select>
+                                                </label>
+                                                <label id="campo_cidade">
+                                                    Cidade
+                                                    <select id="cidade"></select>
+                                                </label>
+                                            </div>              
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <button type="button" class="btn btn-success" data-toggle="modal"
@@ -470,6 +527,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
+    <!-- InputMask -->
+    <script src="./plugins/moment/moment.min.js"></script>
+    <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
     <script type="text/javascript">
         function limparCampo() {
@@ -560,6 +620,111 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
         })
     </script>
-</body>
+    <script>
+        $(document).ready(function () {
+            function montaCidade(estado, pais) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.londrinaweb.com.br/PUC/Cidades/' + estado + '/' + pais + '/0/10000',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    async: false
+                }).done(function (response) {
+                    cidades = '';
 
+                    $.each(response, function (c, cidade) {
+
+                        cidades += '<option value="' + cidade + '">' + cidade + '</option>';
+
+                    });
+
+                    // PREENCHE AS CIDADES DE ACORDO COM O ESTADO
+                    $('#cidade').html(cidades);
+
+                });
+            }
+
+            function montaUF(pais) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.londrinaweb.com.br/PUC/Estados/' + pais + '/0/10000',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    async: false
+                }).done(function (response) {
+                    estados = '';
+                    $.each(response, function (e, estado) {
+
+                        estados += '<option value="' + estado.UF + '">' + estado.Estado + '</option>';
+
+                    });
+
+                    // PREENCHE OS ESTADOS BRASILEIROS
+                    $('#estado').html(estados);
+
+                    // CHAMA A FUNÇÃO QUE PREENCHE AS CIDADES DE ACORDO COM O ESTADO
+                    montaCidade($('#estado').val(), pais);
+
+                    // VERIFICA A MUDANÇA NO VALOR DO CAMPO ESTADO E ATUALIZA AS CIDADES
+                    $('#estado').change(function () {
+                        montaCidade($(this).val(), pais);
+                    });
+
+                });
+            }
+
+            function montaPais() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.londrinaweb.com.br/PUC/Paisesv2/0/1000',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    async: false
+                }).done(function (response) {
+
+                    paises = '';
+
+                    $.each(response, function (p, pais) {
+
+                        if (pais.Pais == 'Brasil') {
+                            paises += '<option value="' + pais.Sigla + '" selected>' + pais.Pais + '</option>';
+                        } else {
+                            paises += '<option value="' + pais.Sigla + '">' + pais.Pais + '</option>';
+                        }
+
+                    });
+
+                    // PREENCHE O SELECT DE PAÍSES
+                    $('#pais').html(paises);
+
+                    // PREENCHE O SELECT DE ACORDO COM O VALOR DO PAÍS
+                    montaUF($('#pais').val());
+
+                    // VERIFICA A MUDANÇA DO VALOR DO SELECT DE PAÍS
+                    $('#pais').change(function () {
+                        if ($('#pais').val() == 'BR') {
+                            // SE O VALOR FOR BR E CONFIRMA OS SELECTS
+                            $('#estado').remove();
+                            $('#cidade').remove();
+                            $('#campo_estado').append('<select id="estado"></select>');
+                            $('#campo_cidade').append('<select id="cidade"></select>');
+
+                            // CHAMA A FUNÇÃO QUE MONTA OS ESTADOS
+                            montaUF('BR');
+                        } else {
+                            // SE NÃO FOR, TROCA OS SELECTS POR INPUTS DE TEXTO
+                            $('#estado').remove();
+                            $('#cidade').remove();
+                            $('#campo_estado').append('<input type="text" id="estado">');
+                            $('#campo_cidade').append('<input type="text" id="cidade">');
+                        }
+                    })
+
+                });
+            }
+
+            montaPais();
+        })
+    </script>
+</body>
 </html>
