@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM turma";
+$buscar_cadastros = "SELECT * FROM curso";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -193,7 +193,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="./index.html" class="brand-link">
-                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
             </a>
             <!-- Sidebar -->
@@ -210,7 +211,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -220,7 +222,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
@@ -337,13 +340,16 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="col-md-12">
                         <div class="page-title" align="right">
-                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
+                            <div id="pnlPesquisa"
+                                onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
+                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control"
+                                                placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar"
+                                                    id="btnPesquisar" class="btn btn-default">
                                             </span>
                                         </div>
                                     </div>
@@ -362,41 +368,56 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
-                                                <div class="col-md-2 col-xs-3">
+                                                <div class="col-md-1 col-xs-3">
                                                     <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control">
+                                                    <input name="codigo" type="text" id="codigo" class="form-control"
+                                                        maxlength="4">
                                                 </div>
 
                                                 <div class="col-md-8 col-xs-12">
                                                     <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <input name="descricao" type="text" maxlength="100" id="descricao"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
                                                 </div>
-                                                
-                                                <div class="col-md-8 col-xs-12">
+
+                                                <div class="col-md-1 col-xs-12">
                                                     <label for="etapa">Etapa</label>
-                                                    <input name="etapa" type="text" maxlength="200" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <input name="etapa" type="text" maxlength="2" id="etapa"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-8 col-xs-12" style="padding: 10px;">
+                                                    <label for="semestreAno">Semestre/Ano</label>
+                                                    <input name="semestreAno" type="text" maxlength="5" id="semestreAno"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Semestre/Ano</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="calendario">Calendario</label>
+                                                    <input name="calendario" type="text" maxlength="200" id="calendario"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Calendario</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="curso">Curso</label>
+                                                    <input name="curso" type="text" maxlength="4" id="curso"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Curso</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="disciplina">Disciplina</label>
+                                                    <input name="disciplina" type="text" maxlength="200" id="disciplina"
+                                                        onblur="this.value=this.value.toUpperCase();"
+                                                        class="form-control" required="">
                                                 </div>
 
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Disciplina</label>
-                                                    <input name="descricao" type="text" maxlength="200" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                                
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Situação</label>
                                                     <select name="situacao" id="situacao" class="form-control">
@@ -407,9 +428,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar" class="btn btn-primary pull-right">
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
+                                                    <input type="submit" name="btnSalvar" value="Salvar" id="btnSalvar"
+                                                        class="btn btn-primary pull-right">
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
+                                                        class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <input type="submit" name="btnExcluir" value="Excluir"
+                                                        id="btnExcluir" class="btn btn-primary pull-right">
                                                 </div>
                                             </div>
                                         </div>
@@ -435,7 +459,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
+            rights
             reserved.
         </footer>
         <!-- Control Sidebar -->
@@ -468,7 +493,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     </script>
 
     <script>
-        $(function() {
+        $(function () {
             /* jQueryKnob */
             $('.knob').knob({
                 /*change : function (value) {
@@ -480,7 +505,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                  cancel : function () {
                  console.log("cancel : " + this.value);
                  },*/
-                draw: function() {
+                draw: function () {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
                         var a = this.angle(this.cv) // Angle
