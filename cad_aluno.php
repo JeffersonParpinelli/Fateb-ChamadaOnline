@@ -3,10 +3,9 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM curso";
+$buscar_cadastros = "SELECT * FROM aluno";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
-
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +14,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Curso</title>
+    <title>Fateb | Cadastro de Aluno</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,14 +36,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-    <script>
+    <!-- <script>
         function limparCampo() {
             document.getElementById("txtDescricao").value = "";
             document.getElementById('txtDescricao').focus();
             document.getElementById("txtCodCurso").value = "";
             document.getElementById('txtCodCurso').focus();
         }
-    </script>
+    </script> -->
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -57,7 +56,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="./index.html" class="nav-link">Home</a>
+                    <a href="./index.php" class="nav-link">Home</a>
                 </li>
                 <!-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -192,7 +191,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="./index.html" class="brand-link">
+            <a href="./index.php" class="brand-link">
                 <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
@@ -237,7 +236,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <ul class="nav nav-treeview">
                                 <!--Link para cadastro CURSO-->
                                 <li class="nav-item">
-                                    <a href="./cad_curso.html" class="nav-link">
+                                    <a href="./cad_curso.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Curso</p>
@@ -245,7 +244,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./cad_turma.html" class="nav-link">
+                                    <a href="./cad_turma.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -253,7 +252,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
-                                    <a href="./index  .html" class="nav-link">
+                                    <a href="./cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aluno</p>
@@ -261,7 +260,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para VINCULAR ALUNO A TURMA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./index.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Vincular Aluno</p>
@@ -269,7 +268,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./cad_disciplina.html" class="nav-link">
+                                    <a href="./cad_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Disciplina</p>
@@ -277,7 +276,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para DETALHES DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./index.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Detalhes Disciplina</p>
@@ -285,7 +284,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
-                                    <a href="./cad_professor.html" class="nav-link">
+                                    <a href="./cad_professor.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Professor</p>
@@ -293,7 +292,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.html" class="nav-link">
+                                    <a href="./index.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário</p>
@@ -324,12 +323,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Curso</h1>
+                            <h1>Cadastro de Aluno</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Curso</li>
+                                <li class="breadcrumb-item"><a href="./index.php">Home</a></li>
+                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
                             </ol>
                         </div>
                     </div>
@@ -358,36 +357,61 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <!-- <div class="card-header">
-                                    <div class="card-title">
-                                        <h4>Cadastro de Curso</h4>
-                                    </div>
-                                </div> -->
-                                <!-- /.card-header -->
-                                <form action="cadastroCurso.php" method="POST">
+                                <form action="cadastroProfessor.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control">
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-6">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="50" id="descricao"
+                                                    <input name="codigo" type="text" id="txtCodigo" class="form-control">
+                                                </div>                                                
+                                                <div class="col-md-5 col-xs-6">
+                                                    <label for="nome">Nome completo</label>
+                                                    <input name="nome" type="text" maxlength="100" id="txtNome"
                                                         onblur="this.value=this.value.toUpperCase();"
                                                         class="form-control" required="">
-                                                </div>
+                                                </div>                                               
+                                            </div></br>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-6">
+                                                    <label for="curso">Curso</label>
+                                                    <select class="form-control" name="descricao">
+                                                        <option></option>
+                                                        <?php
+                                                        include("conexao.php");
 
+                                                        $sql="SELECT descricao FROM curso";
+                                                        $resultado=$connx->query($sql);
+                                            
+                                                        while($dados = $resultado->fetch_assoc()){
+                                                            echo "<option value=".$dados['descricao'].">" . $dados['descricao'] . "</option>";
+                                                        }
+                                            
+                                                        ?>
+                                                      </select>
+                                                   
+                                                </div>
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="ra">RA</label>
+                                                    <input name="ra" type="text" id="txtRA" class="form-control">
+                                                </div>
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="semestre">Semestre/Ano</label>
+                                                    <select name="semestre" id="semestre" class="form-control">
+                                                        <!-- <option value="C">Curso</option>
+                                                        <option value="C">Curso</option>
+                                                        <option value="C">Curso</option> -->
+                                                    </select>
+                                                </div>
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Situação</label>
                                                     <select name="situacao" id="situacao" class="form-control">
                                                         <option value="ativo">Ativo</option>
-                                                        <option value="inativo">Inativo</option>
+                                                        <option value="trancado">Trancado</option>
+                                                        <option value="concluido">Concluído</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div>                                
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <button type="button" class="btn btn-success" data-toggle="modal"
@@ -406,14 +430,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="modal-dialog">
                                             <div class="modal-content bg-success">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Curso</h4>
+                                                    <h4 class="modal-title">Cadastro Aluno</h4>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Deseja salvar o curso?</p>
+                                                    <p>Deseja salvar o aluno?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-outline-light"
@@ -470,16 +494,10 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
+    <!-- InputMask -->
+    <script src="./plugins/moment/moment.min.js"></script>
+    <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
-    <script type="text/javascript">
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
-        }
-    </script>
-
     <script>
         $(function () {
             /* jQueryKnob */
@@ -561,5 +579,4 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         })
     </script>
 </body>
-
 </html>

@@ -24,5 +24,5 @@ VALUES ('$codigo',
         $query_cadastros = mysqli_query($connx, $recebendo_cadastros);
 
         //Faz voltar a página cad_curso.php
-        header('location:cad_disciplina.html');
+        header('location:cad_disciplina.php');
 ?>
