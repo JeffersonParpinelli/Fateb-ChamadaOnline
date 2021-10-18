@@ -6,7 +6,6 @@ include 'conexao.php';
 $buscar_cadastros = "SELECT * FROM professor";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
-
 ?>
 
 <!DOCTYPE html>
@@ -37,14 +36,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-    <script>
+    <!-- <script>
         function limparCampo() {
             document.getElementById("txtDescricao").value = "";
             document.getElementById('txtDescricao').focus();
             document.getElementById("txtCodCurso").value = "";
             document.getElementById('txtCodCurso').focus();
         }
-    </script>
+    </script> -->
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -358,13 +357,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <!-- <div class="card-header">
-                                    <div class="card-title">
-                                        <h4>Cadastro de Curso</h4>
-                                    </div>
-                                </div> -->
-                                <!-- /.card-header -->
-                                <form action="cadastroCurso.php" method="POST">
+                                <form action="cadastroProfessor.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
@@ -415,15 +408,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                                 <div class="col-md-1 col-xs-3">
                                                     <label for="numero">Nº</label>
-                                                    <input name="numero" type="text" id="txtNumero" class="form-control">
+                                                    <input name="numero" type="number" id="txtNumero" class="form-control">
                                                 </div>
                                                 <div class="col-md-3 col-xs-3">
                                                     <label for="bairro">Bairro</label>
                                                     <input name="bairro" type="text" id="txtBairro" class="form-control">
                                                 </div>
                                             </div>      
-
-
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="pais">País</label>
@@ -440,79 +431,18 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <select name="cidade" id="cidade" class="form-control">
                                                     </select>
                                                 </div>                                               
+                                            </div></br>    
+
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="telefone">Telefone/Celular</label>
+                                                    <input name="telefone" type="text" id="txtTelefone" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 col-xs-3">
+                                                    <label for="email">E-mail</label>
+                                                    <input name="email" type="email" id="txtEmail" class="form-control">
+                                                </div>
                                             </div>      
-
-<<<<<<< HEAD
-                                                <label id="campo_estado">
-                                                    Estado
-                                                    <select id="estado"></select>
-                                                </label>
-                                                <label id="campo_cidade">
-                                                    Cidade
-                                                    <select id="cidade"></select>
-                                                </label>
-                                            </div>              
-=======
-
-                                            <!-- <div class="row">
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="cep">CEP</label>
-                                                    <input name="cep" type="text" id="txtCEP" class="form-control">
-                                                </div>
-                                                <div class="col-md-5 col-xs-3">
-                                                    <label for="endereco">Endereço</label>
-                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control">
-                                                </div>
-                                                <div class="col-md-1 col-xs-3">
-                                                    <label for="numero">Nº</label>
-                                                    <input name="numero" type="text" id="txtNumero" class="form-control">
-                                                </div>
-                                                <div class="col-md-3 col-xs-3">
-                                                    <label for="bairro">Bairro</label>
-                                                    <input name="bairro" type="text" id="txtBairro" class="form-control">
-                                                </div>
-                                            </div>       -->
-
-
-                                            <!-- <div class="row">
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="cep">CEP</label>
-                                                    <input name="cep" type="text" id="txtCEP" class="form-control">
-                                                </div>
-                                                <div class="col-md-5 col-xs-3">
-                                                    <label for="endereco">Endereço</label>
-                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control">
-                                                </div>
-                                                <div class="col-md-1 col-xs-3">
-                                                    <label for="numero">Nº</label>
-                                                    <input name="numero" type="text" id="txtNumero" class="form-control">
-                                                </div>
-                                                <div class="col-md-3 col-xs-3">
-                                                    <label for="bairro">Bairro</label>
-                                                    <input name="bairro" type="text" id="txtBairro" class="form-control">
-                                                </div>
-                                            </div>       -->
-
-
-                                            <!-- <div class="row">
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="cep">CEP</label>
-                                                    <input name="cep" type="text" id="txtCEP" class="form-control">
-                                                </div>
-                                                <div class="col-md-5 col-xs-3">
-                                                    <label for="endereco">Endereço</label>
-                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control">
-                                                </div>
-                                                <div class="col-md-1 col-xs-3">
-                                                    <label for="numero">Nº</label>
-                                                    <input name="numero" type="text" id="txtNumero" class="form-control">
-                                                </div>
-                                                <div class="col-md-3 col-xs-3">
-                                                    <label for="bairro">Bairro</label>
-                                                    <input name="bairro" type="text" id="txtBairro" class="form-control">
-                                                </div>
-                                            </div>       -->
-                                          
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <button type="button" class="btn btn-success" data-toggle="modal"
@@ -599,15 +529,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/moment/moment.min.js"></script>
     <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
-    <script type="text/javascript">
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
-        }
-    </script>
-
     <script>
         $(function () {
             /* jQueryKnob */
