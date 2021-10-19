@@ -44,6 +44,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             document.getElementById('txtCodCurso').focus();
         }
     </script> -->
+    <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
+    <script>
+        function upperCaseF(a) {
+            setTimeout(function() {
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -373,7 +381,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="nome">Nome completo</label>
                                                     <input name="nome" type="text" maxlength="100" id="txtNome"
                                                         onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
+                                                        class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>                                               
                                             </div>
                                             <div class="row">
@@ -404,7 +412,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                                 <div class="col-md-5 col-xs-3">
                                                     <label for="endereco">Endereço</label>
-                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control">
+                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control" onkeydown="upperCaseF(this)">
                                                 </div>
                                                 <div class="col-md-1 col-xs-3">
                                                     <label for="numero">Nº</label>
@@ -412,7 +420,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                                 <div class="col-md-3 col-xs-3">
                                                     <label for="bairro">Bairro</label>
-                                                    <input name="bairro" type="text" id="txtBairro" class="form-control">
+                                                    <input name="bairro" type="text" id="txtBairro" class="form-control" onkeydown="upperCaseF(this)">
                                                 </div>
                                             </div>      
                                             <div class="row">
