@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM curso, disciplina";
+$buscar_cadastros = "SELECT * FROM turma";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -408,29 +408,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="curso">Curso</label>                                                
                                                 </div>
                                                 <select class="form-control" name="descricao">
-                                                        <option></option>
+                                                        <option>Selecione o curso...</option>
                                                         <?php
                                                         include("conexao.php");
 
                                                         $sql="SELECT descricao FROM curso";
-                                                        $resultado=$connx->query($sql);
-                                            
-                                                        while($dados = $resultado->fetch_assoc()){
-                                                            echo "<option value=".$dados['descricao'].">" . $dados['descricao'] . "</option>";
-                                                        }
-                                            
-                                                        ?>
-                                                      </select>
-
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="disciplina">Disciplina</label>
-                                                </div>
-                                                <select class="form-control" name="descricao">
-                                                        <option></option>
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql="SELECT descricao FROM disciplina";
                                                         $resultado=$connx->query($sql);
                                             
                                                         while($dados = $resultado->fetch_assoc()){

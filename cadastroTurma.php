@@ -9,12 +9,12 @@ $etapa = $_POST['etapa'];
 $semestreAno = $_POST['semestreAno'];
 $situacao = $_POST['situacao'];
 $curso = $_POST['codCurso'];
-$calendario = $_POST['codCalendario'];$
+$calendario = $_POST['codCalendario'];
 
 
 //$recebendo_cadastros é onde puxo todos os dados
 $recebendo_cadastros = "INSERT INTO 
-curso
+turma
 VALUES ('$codigo',
         '$descricao',
         '$etapa',
