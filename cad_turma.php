@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM curso";
+$buscar_cadastros = "SELECT * FROM curso, disciplina";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -405,18 +405,40 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                                 <div class="col-md-8 col-xs-12">
-                                                    <label for="curso">Curso</label>
-                                                    <input name="curso" type="text" maxlength="4" id="curso"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
+                                                    <label for="curso">Curso</label>                                                
                                                 </div>
+                                                <select class="form-control" name="descricao">
+                                                        <option></option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql="SELECT descricao FROM curso";
+                                                        $resultado=$connx->query($sql);
+                                            
+                                                        while($dados = $resultado->fetch_assoc()){
+                                                            echo "<option value=".$dados['descricao'].">" . $dados['descricao'] . "</option>";
+                                                        }
+                                            
+                                                        ?>
+                                                      </select>
 
                                                 <div class="col-md-8 col-xs-12">
                                                     <label for="disciplina">Disciplina</label>
-                                                    <input name="disciplina" type="text" maxlength="200" id="disciplina"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
                                                 </div>
+                                                <select class="form-control" name="descricao">
+                                                        <option></option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql="SELECT descricao FROM disciplina";
+                                                        $resultado=$connx->query($sql);
+                                            
+                                                        while($dados = $resultado->fetch_assoc()){
+                                                            echo "<option value=".$dados['descricao'].">" . $dados['descricao'] . "</option>";
+                                                        }
+                                            
+                                                        ?>
+                                                      </select>
 
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Situação</label>
