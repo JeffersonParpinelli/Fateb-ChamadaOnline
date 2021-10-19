@@ -16,8 +16,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fateb | Cadastro de Aluno</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -44,6 +43,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             document.getElementById('txtCodCurso').focus();
         }
     </script> -->
+    <script>
+        // Função para deixar letra maiúscula colocar no input --> (onkeydown="upperCaseF(this)")
+        function upperCaseF(a) {
+            setTimeout(function() {
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -192,8 +199,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="./index.php" class="brand-link">
-                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
             </a>
             <!-- Sidebar -->
@@ -210,8 +216,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -221,8 +226,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
@@ -339,16 +343,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="col-md-12">
                         <div class="page-title" align="right">
-                            <div id="pnlPesquisa"
-                                onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
+                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control"
-                                                placeholder="Pesquisar">
+                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar"
-                                                    id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
                                             </span>
                                         </div>
                                     </div>
@@ -357,39 +358,37 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="cadastroProfessor.php" method="POST">
+                                <form action="cadastroAluno.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="codigo">Código</label>
                                                     <input name="codigo" type="text" id="txtCodigo" class="form-control">
-                                                </div>                                                
+                                                </div>
                                                 <div class="col-md-5 col-xs-6">
                                                     <label for="nome">Nome completo</label>
-                                                    <input name="nome" type="text" maxlength="100" id="txtNome"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
-                                                </div>                                               
+                                                    <input name="nome" type="text" maxlength="100" id="txtNome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
+                                                </div>
                                             </div></br>
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-6">
                                                     <label for="curso">Curso</label>
                                                     <select class="form-control" name="descricao">
-                                                        <option></option>
+                                                        <option>ESCOLHA O CURSO</option>
                                                         <?php
                                                         include("conexao.php");
 
-                                                        $sql="SELECT descricao FROM curso";
-                                                        $resultado=$connx->query($sql);
-                                            
-                                                        while($dados = $resultado->fetch_assoc()){
-                                                            echo "<option value=".$dados['descricao'].">" . $dados['descricao'] . "</option>";
+                                                        $sql = "SELECT descricao FROM curso";
+                                                        $resultado = $connx->query($sql);
+
+                                                        while ($dados = $resultado->fetch_assoc()) {
+                                                            echo "<option value=" . $dados['descricao'] . ">" . $dados['descricao'] . "</option>";
                                                         }
-                                            
+
                                                         ?>
-                                                      </select>
-                                                   
+                                                    </select>
+
                                                 </div>
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="ra">RA</label>
@@ -398,8 +397,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="semestre">Semestre/Ano</label>
                                                     <select name="semestre" id="semestre" class="form-control">
+                                                        <option value="Teste">12021</option>
                                                         <!-- <option value="C">Curso</option>
-                                                        <option value="C">Curso</option>
                                                         <option value="C">Curso</option> -->
                                                     </select>
                                                 </div>
@@ -411,17 +410,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <option value="concluido">Concluído</option>
                                                     </select>
                                                 </div>
-                                            </div>                                
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                                        data-target="#modal-success">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
                                                         Salvar
                                                     </button>
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar"
-                                                        class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir"
-                                                        id="btnExcluir" class="btn btn-primary pull-right">
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-primary pull-right">
                                                 </div>
                                             </div>
                                         </div>
@@ -431,8 +427,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="modal-content bg-success">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title">Cadastro Aluno</h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -440,8 +435,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <p>Deseja salvar o aluno?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-outline-light"
-                                                        data-dismiss="modal">Fechar</button>
+                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
                                                     <button type="subtmit" class="btn btn-outline-light">Salvar</button>
                                                 </div>
                                             </div>
@@ -499,7 +493,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
     <script>
-        $(function () {
+        $(function() {
             /* jQueryKnob */
             $('.knob').knob({
                 /*change : function (value) {
@@ -511,7 +505,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                  cancel : function () {
                  console.log("cancel : " + this.value);
                  },*/
-                draw: function () {
+                draw: function() {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
                         var a = this.angle(this.cv) // Angle
@@ -579,4 +573,5 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         })
     </script>
 </body>
+
 </html>
