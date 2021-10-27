@@ -371,11 +371,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="cpf">CPF</label>
-                                                    <input name="cpf" type="text" id="txtCPF" class="form-control">
+                                                    <input name="cpf" type="text" id="txtCPF" class="form-control" maxlength="11">
                                                 </div>
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="rg">RG</label>
-                                                    <input name="rg" type="text" id="txtRG" class="form-control">
+                                                    <input name="rg" type="text" id="txtRG" class="form-control" maxlength="9">
                                                 </div>
                                                 <div class="col-md-5 col-xs-6">
                                                     <label for="nome">Nome completo</label>
