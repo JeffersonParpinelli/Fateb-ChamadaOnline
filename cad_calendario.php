@@ -1,22 +1,13 @@
-<!--<?php
-//inclui conexao com banco
-include 'conexao.php';
-
-//pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM disciplina";
-//fazer busca dados da tabela através da query
-$query_cadastros = mysqli_query($connx, $buscar_cadastros);
-
-?>
--->
 <?php
-#chama o arquivo de configuração com o banco
-include 'conexao.php';
+    //inclui conexao com banco
+    include 'conexao.php';
 
-#seleciona os dados da tabela produto
-$query = mysql_query("SELECT * FROM disciplina");
+    //pegar dados da tabela
+    $buscar_cadastros = "SELECT * FROM disciplina";
+    //fazer busca dados da tabela através da query
+    $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,10 +15,9 @@ $query = mysql_query("SELECT * FROM disciplina");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Turma</title>
+    <title>Fateb | Cadastro de Calendario</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -202,8 +192,7 @@ $query = mysql_query("SELECT * FROM disciplina");
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="./index.html" class="brand-link">
-                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Fateb</span>
             </a>
             <!-- Sidebar -->
@@ -220,8 +209,7 @@ $query = mysql_query("SELECT * FROM disciplina");
                 <!-- SidebarSearch Form / BARRA LATERAL PESQUISA -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -231,8 +219,7 @@ $query = mysql_query("SELECT * FROM disciplina");
                 </div>
                 <!-- SIDEBAR MENU / BARRA LATERAL -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
@@ -302,10 +289,18 @@ $query = mysql_query("SELECT * FROM disciplina");
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.html" class="nav-link">
+                                    <a href="./cad_calendario.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário</p>
+                                        <p>Calendário Letivo</p>
+                                    </a>
+                                </li>
+                                <!--Link para CALENDARIO EVENTOS-->
+                                <li class="nav-item">
+                                    <a href="./cad_calendarioEventos.php" class="nav-link">
+                                        <!--Página que será chamada href-->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Calendário Eventos</p>
                                     </a>
                                 </li>
                             </ul>
@@ -349,16 +344,13 @@ $query = mysql_query("SELECT * FROM disciplina");
                 <div class="container-fluid">
                     <div class="col-md-12">
                         <div class="page-title" align="right">
-                            <div id="pnlPesquisa"
-                                onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
+                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control"
-                                                placeholder="Pesquisar">
+                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar"
-                                                    id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
                                             </span>
                                         </div>
                                     </div>
@@ -367,30 +359,20 @@ $query = mysql_query("SELECT * FROM disciplina");
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <!-- <div class="card-header">
-                                                                            <div class="card-title">
-                                                                                <h4>Cadastro de Curso</h4>
-                                                                            </div>
-                                                                        </div> -->
-                                <!-- /.card-header -->
                                 <form action="cadastroCalendario.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="codCalendario">Código</label>
-                                                    <input name="codCalendario" type="text" id="codCalendario"
-                                                        maxlength="4" class="form-control">
+                                                    <input name="codCalendario" type="text" id="codCalendario" maxlength="4" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-12">
                                                     <label for="semestreAnoCalendario">Semestre/Ano</label>
-                                                    <input name="semestreAnoCalendario" type="text" maxlength="5"
-                                                        id="semestreAnoCalendario"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
+                                                    <input name="semestreAnoCalendario" type="text" maxlength="5" id="semestreAnoCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
-
+                                                <!--
                                                 <div class="col-md-2 col-xs-12">
                                                     <label for="dataEvento">Data</label>
                                                     <input name="dataEvento" type="date" maxlength="5" id="dataEvento"
@@ -398,7 +380,7 @@ $query = mysql_query("SELECT * FROM disciplina");
                                                         class="form-control" required="">
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-12">
+                                                <div class="col-md-2,5 col-xs-12">
                                                     <label for="tipoEvento">Tipo</label>
                                                     <select required="" class="form-control">
                                                         <option value="feriado">Feriado</option>
@@ -437,66 +419,24 @@ $query = mysql_query("SELECT * FROM disciplina");
                                                         onblur="this.value=this.value.toUpperCase();"
                                                         class="form-control" required="">
                                                 </div>
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="codDisciplina">Disciplina</label>
-                                                    <select name="codDisciplina" id="codDisciplina"
-                                                        class="form-control">
-                                                        <option value="<?php echo $codigo?"></option>
-                                                    </select>
+                                                <div class="col-md-4 col-xs-8" style="padding: 10px;">
+                                                    <label for="codDisciplina">Disciplina</label>                                                
+                                                <select class="form-control" name="descricao">
+                                                        <option>Selecione a disciplina...</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT descricao FROM disciplina";
+                                                        $resultado = $connx->query($sql);
+
+                                                        while ($dados = $resultado->fetch_assoc()) {
+                                                            echo "<option value=" . $dados['descricao'] . ">" . $dados['descricao'] . "</option>";
+                                                        }
+
+                                                        ?>
+                                                </select>
                                                 </div>
                                             </div>
-
-                                            <!--
-                                            <div class="row">
-                                                <?php
-                                                //fetch array vai ficar buscando os dados array de cadastros
-                                                while ($receber_cadastros = mysqli_fetch_array($query_cadastros)) {
-                                                $codigo = $receber_cadastros['codigo']; //'codigo' é igual o nome que esta na tabela
-                                                $descricao = $receber_cadastros['descricao'];
-                                                ?>
-
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $codigo ?>
-                                                    </td>
-                                                        <td> 
-                                                            <input type="text" name="descricao" value="<?php echo $descricao ?>">
-                                                        </td>
-                                                        <td>
-                                                            <input name="codigo" value="<?php echo $codigo ?>"> type="hidden"
-                                                        </td>
-                                                    <td>
-                                                        <!--hidden esconde dados do input
-                                                        <input name="codigo" value="<?php echo $codigo ?>"><!-- type="hidden"
-                                                    </td>
-                                                </tr>
-                                                
-                                                <?php };?>
-                                            </div>
-                                            -->
-                                            <form name="disciplina" method="POST" action="">
-                                                <label for="">Selecione um produto</label>
-                                                <select>
-                                                    <option>Selecione...</option>
-
-                                                    <?php while($disc = mysql_fetch_array($query)) { ?>
-                                                    <option value="<?php echo $disc['codigo'] ?>">
-                                                        <?php echo$disc['descricao'] ?>
-                                                    </option>
-                                                    <?php } ?>
-
-                                                </select>
-                                            </form>
-
-                                            <!--
-                                            <form name="disciplina" method="POST" action=""> 
-                                                <label>Selecione um produto</label> 
-                                                <select> 
-                                                    <option>Selecione...</option>                                                 
-                                                    <?php while ($receber_cadastros = mysql_fetch_array($query_cadastros)){?> 
-                                                        <option value="<?php echo $receber_cadastros['codigo']?>"><?php echo $receber_cadastros['descricao']?></option> 
-                                                        <?php } ?> </select> 
-                                            </form>
                                             -->
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
@@ -504,8 +444,6 @@ $query = mysql_query("SELECT * FROM disciplina");
                                                         data-target="#modal-success">
                                                         Salvar
                                                     </button>
-                                                    <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
-                                                                                                    class="btn btn-primary pull-right">-->
                                                     <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar"
                                                         class="btn btn-primary pull-right" onclick="limparCampo()">
                                                     <input type="submit" name="btnExcluir" value="Excluir"
@@ -535,7 +473,8 @@ $query = mysql_query("SELECT * FROM disciplina");
                                                             class="btn btn-outline-light">Salvar</button>
                                                     </div>
                                                 </div>
-                                                <!-- /.modal-content -->
+                                            -->
+                                                <!--/.modal-content -->
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
@@ -596,7 +535,7 @@ $query = mysql_query("SELECT * FROM disciplina");
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             /* jQueryKnob */
             $('.knob').knob({
                 /*change : function (value) {
@@ -608,7 +547,7 @@ $query = mysql_query("SELECT * FROM disciplina");
                  cancel : function () {
                  console.log("cancel : " + this.value);
                  },*/
-                draw: function () {
+                draw: function() {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
                         var a = this.angle(this.cv) // Angle
