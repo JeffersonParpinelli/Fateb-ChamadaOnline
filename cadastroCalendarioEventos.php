@@ -6,6 +6,7 @@ include 'conexao.php';
 //$ o que esta em Cifrão$ é o nome que esta no banco, entre '' é o name do input
 
 $data = $_POST['dataEvento'];
+$data = implode('-',array_reverse(explode('/',$data)));
 $tipo = $_POST['tipoEvento'];
 $descMotivo = $_POST['descMotivoEvento'];
 $qtdeAulas = $_POST['qtdeAulasEvento'];
@@ -30,5 +31,5 @@ VALUES ('',
         $query_cadastros = mysqli_query($connx, $recebendo_cadastros);
 
         //Faz voltar a página cad_curso.php
-        header('location:cad_calendarioEventos.html');
+        header('location:cad_calendarioEventos.php');
 ?>

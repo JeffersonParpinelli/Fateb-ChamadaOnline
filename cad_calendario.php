@@ -3,7 +3,7 @@
     include 'conexao.php';
 
     //pegar dados da tabela
-    $buscar_cadastros = "SELECT * FROM disciplina";
+    $buscar_cadastros = "SELECT * FROM calendario";
     //fazer busca dados da tabela através da query
     $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
