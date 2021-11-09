@@ -376,7 +376,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         $resultado = $connx->query($sql);
 
                                                         while ($dados = $resultado->fetch_assoc()) {
-                                                            echo "<option value=" . $dados['semestreAno'] . ">" . $dados['semestreAno'] . "</option>";
+                                                            echo "<option value=" . $dados['codigo'] . ">" . $dados['codigo'] . "</option>";
                                                         }
                                                         ?>
                                                     </select>
@@ -384,7 +384,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                 <div class="col-md-2.5 col-xs-12" style="padding: 0px 10px 0px 0px;">
                                                     <label for="dataEvento">Data</label>
-                                                    <input name="dataEvento" type="date" id="dataEvento" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" mask="y/m/d">
+                                                    <input name="dataEvento" type="DATE" id="dataEvento" onblur="this.value=this.value.toUpperCase();" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-2,5 col-xs-12">
@@ -420,18 +420,19 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="codTurmaEvento">Turma</label>
                                                     <input name="codTurmaEvento" type="text" id="codTurmaEvento" onblur="this.value=this.value.toUpperCase();" class="form-control">
                                                 </div>
+
                                                 <div class="col-md-4 col-xs-8" style="padding: 10px;">
                                                     <label for="codDiscEvento">Disciplina</label>
-                                                    <select class="form-control" name="codDiscEvento">
+                                                    <select class="form-control" name="codDiscEvento" id="codDiscEvento">
                                                         <option>Selecione a disciplina...</option>
                                                         <?php
                                                         include("conexao.php");
 
-                                                        $sql = "SELECT descricao FROM disciplina";
+                                                        $sql = "SELECT * FROM disciplina";
                                                         $resultado = $connx->query($sql);
 
                                                         while ($dados = $resultado->fetch_assoc()) {
-                                                            echo "<option value=" . $dados['descricao'] . ">" . $dados['descricao'] . "</option>";
+                                                            echo "<option value=" . $dados['codigo'] . ">" . $dados['codigo'] . "</option>";
                                                         }
 
                                                         ?>

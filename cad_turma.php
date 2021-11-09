@@ -299,6 +299,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <p>Calendário</p>
                                     </a>
                                 </li>
+                                <!--Link para CALENDARIO EVENTOS-->
+                                <li class="nav-item">
+                                    <a href="./cad_calendarioEventos.php" class="nav-link">
+                                        <!--Página que será chamada href-->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Calendário Eventos</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
