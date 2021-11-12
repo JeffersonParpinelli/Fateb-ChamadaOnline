@@ -237,7 +237,7 @@ $id_curso = $dados['codigo'];
                             <div class="row">
                                 <div class="col-md-2 col-xs-3">
                                     <label for="ID">Código</label>
-                                    <input name="codigo" type="text" id="codigo" class="form-control" value="<?php echo $id_curso ?>">
+                                    <input name="codigo" type="text" id="codigo" class="form-control" value="<?php echo $id_curso ?>" disabled>
                                 </div>
 
                                 <div class="col-md-4 col-xs-6">
@@ -292,16 +292,7 @@ $id_curso = $dados['codigo'];
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
-    <!-- Page specific script -->
-    <script type="text/javascript">
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
-        }
-    </script>
-
+    <!-- Page specific script -->    
     <script>
         $(function() {
             /* jQueryKnob */

@@ -379,15 +379,15 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="cpf">CPF</label>
-                                                    <input name="cpf" type="text" id="txtCPF" class="form-control" maxlength="11">
+                                                    <input name="cpf" type="text" id="cpf" class="form-control" maxlength="14">
                                                 </div>
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="rg">RG</label>
-                                                    <input name="rg" type="text" id="txtRG" class="form-control" maxlength="9">
+                                                    <input name="rg" type="text" id="rg" class="form-control" maxlength="12">
                                                 </div>
                                                 <div class="col-md-5 col-xs-6">
                                                     <label for="nome">Nome completo</label>
-                                                    <input name="nome" type="text" maxlength="100" id="txtNome"
+                                                    <input name="nome" type="text" maxlength="100" id="nome"
                                                         onblur="this.value=this.value.toUpperCase();"
                                                         class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>                                               
@@ -403,7 +403,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="senha">Senha de acesso</label>
-                                                    <input name="senha" type="text" id="txtSenha" class="form-control">
+                                                    <input name="senha" type="text" id="senha" class="form-control">
                                                 </div>
                                                 <div class="col-md-2 col-xs-6">
                                                     <label for="situacao">Situação</label>
@@ -416,19 +416,19 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="cep">CEP</label>
-                                                    <input name="cep" type="text" id="txtCEP" class="form-control">
+                                                    <input name="cep" type="text" id="cep" class="form-control">
                                                 </div>
                                                 <div class="col-md-5 col-xs-3">
                                                     <label for="endereco">Endereço</label>
-                                                    <input name="endereco" type="text" id="txtEndereco" class="form-control" onkeydown="upperCaseF(this)">
+                                                    <input name="endereco" type="text" id="endereco" class="form-control" onkeydown="upperCaseF(this)">
                                                 </div>
                                                 <div class="col-md-1 col-xs-3">
                                                     <label for="numero">Nº</label>
-                                                    <input name="numero" type="number" id="txtNumero" class="form-control">
+                                                    <input name="numero" type="number" id="numero" class="form-control">
                                                 </div>
                                                 <div class="col-md-3 col-xs-3">
                                                     <label for="bairro">Bairro</label>
-                                                    <input name="bairro" type="text" id="txtBairro" class="form-control" onkeydown="upperCaseF(this)">
+                                                    <input name="bairro" type="text" id="bairro" class="form-control" onkeydown="upperCaseF(this)">
                                                 </div>
                                             </div>      
                                             <div class="row">
@@ -452,11 +452,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="telefone">Telefone/Celular</label>
-                                                    <input name="telefone" type="text" id="txtTelefone" class="form-control">
+                                                    <input name="telefone" type="text" id="telefone" class="form-control">
                                                 </div>
                                                 <div class="col-md-6 col-xs-3">
                                                     <label for="email">E-mail</label>
-                                                    <input name="email" type="email" id="txtEmail" class="form-control">
+                                                    <input name="email" type="email" id="email" class="form-control">
                                                 </div>
                                             </div>      
                                             <div class="row">
@@ -499,10 +499,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <!-- /.modal -->
                                 </form>
                                 <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                                    the plugin. -->
-                                </div>
                                 <!-- /.card-footer -->
                             </div>
                         </div>

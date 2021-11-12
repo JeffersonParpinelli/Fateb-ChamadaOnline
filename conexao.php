@@ -11,10 +11,10 @@
 
     //Teste conexão
     
-    if($connx){
-        echo"Conectou";
-    }else{
-        echo"ERRO";
-    }
+    // if($connx){
+    //     echo"Conectou";
+    // }else{
+    //     echo"ERRO";
+    // }
 
 ?>
