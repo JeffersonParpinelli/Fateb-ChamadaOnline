@@ -10,7 +10,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
@@ -364,8 +364,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     </div>
                                 </div>
                             </div>
-
-
+                            <!-- /.modal -->
                             <form method="POST" action="listarCurso.php">
                                 <div class="modal fade show" id="modal-listarCurso">
                                     <div class="modal-dialog modal-lg">
@@ -397,9 +396,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     </div>
                                     <!-- /.modal-dialog -->
                                 </div>
-                                <!-- /.modal -->
                             </form>
-
+                            <!-- /.modal -->
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
@@ -437,7 +435,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         Salvar
                                                     </button>
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <a href="excluirCurso.php?id=<?php echo $id_curso?>" type="button" class="btn btn-primary pull-right">Excluir</a>                                               
+                                                    <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-primary pull-right">Excluir</a>
                                                 </div>
                                             </div>
                                         </div>

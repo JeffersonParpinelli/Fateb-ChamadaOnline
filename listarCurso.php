@@ -17,7 +17,9 @@ while ($dados = mysqli_fetch_assoc($result)) {
         "Situação: " . $sit_curso . "<Br>";
 
 ?>
-    <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-primary pull-right">Excluir</a><br><br>
+    <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-primary pull-right">Excluir</a>
+    <a href="form_alterarCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-primary pull-right">Alterar</a><br><br>
 <?php
 }
 ?>
+
