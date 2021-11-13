@@ -237,7 +237,7 @@ $id_curso = $dados['codigo'];
                             <div class="row">
                                 <div class="col-md-2 col-xs-3">
                                     <label for="ID">Código</label>
-                                    <input name="codigo" type="text" id="codigo" class="form-control" value="<?php echo $id_curso ?>">
+                                    <input name="codigo" readonly type="text" id="codigo" class="form-control" value="<?php echo $id_curso ?>">
                                 </div>
 
                                 <div class="col-md-4 col-xs-6">

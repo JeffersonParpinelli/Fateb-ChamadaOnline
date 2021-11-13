@@ -236,7 +236,7 @@ $id_aluno = $dados['codigo'];
                             <div class="row">
                                 <div class="col-md-2 col-xs-3">
                                     <label for="ID">Código</label>
-                                    <input name="codigo" type="text" id="codigo" class="form-control" value="<?php echo $id_aluno ?>">
+                                    <input name="codigo" readonly type="text" id="codigo" class="form-control" value="<?php echo $id_aluno ?>">
                                 </div>
                                 <div class="col-md-4 col-xs-6">
                                     <label for="nome">Nome</label>
