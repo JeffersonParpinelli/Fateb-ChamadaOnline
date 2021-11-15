@@ -1,13 +1,13 @@
 <?php
-    //inclui conexao com banco
-    include 'conexao.php';
+//inclui conexao com banco
+include 'conexao.php';
 
-    //pegar dados da tabela
-    $buscar_cadastros = "SELECT * FROM calendario";
-    //fazer busca dados da tabela através da query
-    $query_cadastros = mysqli_query($connx, $buscar_cadastros);
+//pegar dados da tabela
+$buscar_cadastros = "SELECT * FROM disciplina";
+//fazer busca dados da tabela através da query
+$query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,27 +15,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Calendario</title>
+    <title>Fateb | Cadastro de Disciplina</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="./plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="./plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <script>
         function limparCampo() {
             document.getElementById("txtDescricao").value = "";
@@ -206,7 +206,7 @@
                         <a href="#" class="d-block">Usuário</a>
                     </div>
                 </div>
-                <!-- SidebarSearch Form / BARRA LATERAL PESQUISA -->
+                <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- SIDEBAR MENU / BARRA LATERAL -->
+                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
@@ -233,7 +233,7 @@
                             <ul class="nav nav-treeview">
                                 <!--Link para cadastro CURSO-->
                                 <li class="nav-item">
-                                    <a href="./cad_curso.php" class="nav-link">
+                                    <a href="./form_cad_curso.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Curso</p>
@@ -241,7 +241,7 @@
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./cad_turma.php" class="nav-link">
+                                    <a href="./form_cad_turma.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -249,7 +249,7 @@
                                 </li>
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
-                                    <a href="./cad_aluno.php" class="nav-link">
+                                    <a href="./form_cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aluno</p>
@@ -265,7 +265,7 @@
                                 </li>
                                 <!--Link para DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./cad_disciplina.php" class="nav-link">
+                                    <a href="./form_cad_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Disciplina</p>
@@ -281,7 +281,7 @@
                                 </li>
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./form_cad_professor.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Professor</p>
@@ -289,15 +289,15 @@
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.php" class="nav-link">
+                                    <a href="./form_cad_calendario.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário Letivo</p>
+                                        <p>Calendário</p>
                                     </a>
                                 </li>
                                 <!--Link para CALENDARIO EVENTOS-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendarioEventos.php" class="nav-link">
+                                    <a href="./form_cad_calendarioEventos.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário Eventos</p>
@@ -328,12 +328,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Calendário</h1>
+                            <h1>Cadastro de Disciplina</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Calendário</li>
+                                <li class="breadcrumb-item active">Cadastro de Disciplina</li>
                             </ol>
                         </div>
                     </div>
@@ -350,149 +350,148 @@
                                         <div class="input-group">
                                             <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarDisciplina">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="x_panel">
-                            <div class="card card-default">
-                                <form action="cadastroCalendario.php" method="POST">
-                                    <div class="card-body">
-                                        <div class="x_content" style="display: block;">
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="codCalendario">Código</label>
-                                                    <input name="codCalendario" type="text" id="codCalendario" maxlength="4" class="form-control">
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-12">
-                                                    <label for="semestreAnoCalendario">Semestre/Ano</label>
-                                                    <input name="semestreAnoCalendario" type="text" maxlength="5" id="semestreAnoCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                                <!--
-                                                <div class="col-md-2 col-xs-12">
-                                                    <label for="dataEvento">Data</label>
-                                                    <input name="dataEvento" type="date" maxlength="5" id="dataEvento"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-2,5 col-xs-12">
-                                                    <label for="tipoEvento">Tipo</label>
-                                                    <select required="" class="form-control">
-                                                        <option value="feriado">Feriado</option>
-                                                        <option value="recesso">Recesso</option>
-                                                        <option value="reposicaoAula">Reposição de aula</option>
-                                                        <option value="aulaExtra">Aula extra</option>
-                                                    </select>
+                            <!-- /.modal -->
+                            <form method="POST" action="listar_Disciplina.php">
+                                <div class="modal fade show" id="modal-listarDisciplina">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Disciplinas</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_Disciplina.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
                                                 </div>
                                             </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
+                            <div class="x_panel">
+                                <div class="card card-default">
+                                    <!-- <div class="card-header">
+                                    <div class="card-title">
+                                        <h4>Cadastro de Curso</h4>
+                                    </div>
+                                </div> -->
+                                    <!-- /.card-header -->
+                                    <form action="cadastrar_Disciplina.php" method="POST" align="left">
+                                        <div class="card-body">
+                                            <div class="x_content" style="display: block;">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-xs-3">
+                                                        <label for="codDisc">Código</label>
+                                                        <input name="codDisc" type="text" id="codDisc" class="form-control" required="">
+                                                    </div>
 
-                                            <div class="row" style="padding-top: 10px;">
-                                                <div class="col-md-10 col-xs-12">
-                                                    <label for="descMotivoEvento">Descrição/Motivo</label>
-                                                    <input name="descMotivoEvento" type="text" maxlength="100"
-                                                        id="descMotivoEvento"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
+                                                    <div class="col-md-8 col-xs-12">
+                                                        <label for="descDisc">Descrição</label>
+                                                        <input name="descDisc" type="text" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" >
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-2 col-xs-12" style="padding: 10px;">
+                                                        <label for="cargaHorariaDisc">Carga Horária</label>
+                                                        <input name="cargaHorariaDisc" type="text" maxlength="200" id="cargaHorariaDisc" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    </div>
+
+                                                    <div class="col-md-4 col-xs-8" style="padding: 10px;">
+                                                        <label for="qtdeAulasSemanaDisc">Quantidade de aulas semanais</label>
+                                                        <select name="qtdeAulasSemanaDisc" id="qtdeAulasSemanaDisc" class="form-control">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-2 col-xs-6" style="padding: 10px; display: none">
+                                                        <!--Display none esconde elemento-->
+                                                        <label for="situacaoDisc">Situação</label>
+                                                        <select name="situacaoDisc" id="situacaoDisc" class="form-control">
+                                                            <option value="ativo">Ativo</option>
+                                                            <option value="inativo">Inativo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                            Salvar
+                                                        </button>
+                                                        <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
+                                                        class="btn btn-primary pull-right">-->
+                                                        <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                        <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="qtdeAulasEvento">Quantidade de aulas</label>
-                                                    <select name="qtdeAulasEvento" id="qtdeAulasEvento"
-                                                        class="form-control">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-12" style="padding: 10px;">
-                                                    <label for="codTurmaEvento">Turma</label>
-                                                    <input name="codTurmaEvento" type="text" id="codTurmaEvento"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
-                                                </div>
-                                                <div class="col-md-4 col-xs-8" style="padding: 10px;">
-                                                    <label for="codDisciplina">Disciplina</label>                                                
-                                                <select class="form-control" name="descricao">
-                                                        <option>Selecione a disciplina...</option>
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT descricao FROM disciplina";
-                                                        $resultado = $connx->query($sql);
-
-                                                        while ($dados = $resultado->fetch_assoc()) {
-                                                            echo "<option value=" . $dados['descricao'] . ">" . $dados['descricao'] . "</option>";
-                                                        }
-
-                                                        ?>
-                                                </select>
-                                                </div>
-                                            </div>
-                                            -->
-                                            <div class="row">
-                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal"
-                                                        data-target="#modal-success">
-                                                        Salvar
-                                                    </button>
-                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar"
-                                                        class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir"
-                                                        id="btnExcluir" class="btn btn-primary pull-right">
-                                                </div>
-                                            </div>
-
                                         </div>
 
                                         <div class="modal fade" id="modal-success">
                                             <div class="modal-dialog">
                                                 <div class="modal-content bg-success">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Cadastro Calendário</h4>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                        <h4 class="modal-title">Cadastro Disciplina</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Deseja salvar o calendário?</p>
+                                                        <p>Deseja salvar o disciplina?</p>
                                                     </div>
                                                     <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-outline-light"
-                                                            data-dismiss="modal">Fechar</button>
-                                                        <button type="subtmit"
-                                                            class="btn btn-outline-light">Salvar</button>
+                                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                        <button type="subtmit" class="btn btn-outline-light">Salvar</button>
                                                     </div>
                                                 </div>
-                                            -->
-                                                <!--/.modal-content -->
+                                                <!-- /.modal-content -->
                                             </div>
                                             <!-- /.modal-dialog -->
                                         </div>
                                         <!-- /.modal -->
-                                    </div>
-                                </form>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                                    </form>
+
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
                                     the plugin. -->
+                                    </div>
+                                    <!-- /.card-footer -->
                                 </div>
-                                <!-- /.card-footer -->
                             </div>
+                            <!-- /.teste -->
                         </div>
-                        <!-- /.teste -->
                     </div>
-                </div>
-                <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
@@ -501,8 +500,7 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
-            rights
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
             reserved.
         </footer>
         <!-- Control Sidebar -->
@@ -593,6 +591,7 @@
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,
+
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'
             })

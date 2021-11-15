@@ -1,19 +1,11 @@
 <?php
-
-$cod_curso = $_GET['id'];
-
-//Abre conexao com banco
+//inclui conexao com banco
 include 'conexao.php';
 
-$sql = "SELECT * FROM curso WHERE codigo = $cod_curso ";
-
-$result = mysqli_query($connx, $sql);
-
-$dados = mysqli_fetch_assoc($result);
-
-$nome_curso = $dados['descricao'];
-$sit_curso = $dados['situacao'];
-$id_curso = $dados['codigo'];
+//pegar dados da tabela
+$buscar_cadastros = "SELECT * FROM curso";
+//fazer busca dados da tabela através da query
+$query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
 ?>
 
@@ -44,7 +36,7 @@ $id_curso = $dados['codigo'];
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-
+    
     <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
     <script>
         function upperCaseF(a) {
@@ -123,7 +115,7 @@ $id_curso = $dados['codigo'];
                             <ul class="nav nav-treeview">
                                 <!--Link para cadastro CURSO-->
                                 <li class="nav-item">
-                                    <a href="./cad_curso.php" class="nav-link">
+                                    <a href="./form_cad_curso.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Curso</p>
@@ -131,7 +123,7 @@ $id_curso = $dados['codigo'];
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./cad_turma.php" class="nav-link">
+                                    <a href="./form_cad_turma.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -139,7 +131,7 @@ $id_curso = $dados['codigo'];
                                 </li>
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
-                                    <a href="./cad_aluno.php" class="nav-link">
+                                    <a href="./form_cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aluno</p>
@@ -155,7 +147,7 @@ $id_curso = $dados['codigo'];
                                 </li>
                                 <!--Link para DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./cad_disciplina.php" class="nav-link">
+                                    <a href="./form_cad_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Disciplina</p>
@@ -171,7 +163,7 @@ $id_curso = $dados['codigo'];
                                 </li>
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
-                                    <a href="./cad_professor.php" class="nav-link">
+                                    <a href="./form_cad_professor.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Professor</p>
@@ -179,7 +171,7 @@ $id_curso = $dados['codigo'];
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.php" class="nav-link">
+                                    <a href="./form_cad_calendario.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário</p>
@@ -187,7 +179,7 @@ $id_curso = $dados['codigo'];
                                 </li>
                                 <!--Link para CALENDARIO EVENTOS-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendarioEventos.php" class="nav-link">
+                                    <a href="./form_cad_calendarioEventos.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário Eventos</p>
@@ -231,36 +223,123 @@ $id_curso = $dados['codigo'];
             </section>
             <!-- Main content -->
             <section class="content">
-                <form action="alterarCurso.php" method="POST">
-                    <div class="card-body">
-                        <div class="x_content" style="display: block;">
-                            <div class="row">
-                                <div class="col-md-2 col-xs-3">
-                                    <label for="ID">Código</label>
-                                    <input name="codigo" readonly type="text" id="codigo" class="form-control" value="<?php echo $id_curso ?>">
-                                </div>
-
-                                <div class="col-md-4 col-xs-6">
-                                    <label for="nome">Descrição</label>
-                                    <input name="descricao" type="text" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)" value="<?php echo $nome_curso ?>">
-                                </div>
-
-                                <div class="col-md-2 col-xs-6">
-                                    <label for="situacao">Situação: </label>
-                                    <select name="situacao" id="situacao" class="form-control" value="<?php echo $sit_curso ?>">
-                                        <option value="ativo">Ativo</option>
-                                        <option value="inativo">Inativo</option>
-                                    </select>
+                <div class="container-fluid">
+                    <div class="col-md-12">
+                        <div class="page-title" align="right">
+                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
+                                <div class="title_right">
+                                    <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
+                                        <div class="input-group">
+                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
+                                            <span class="input-group-btn">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCurso">
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                    <input type="submit" value="Salvar" class="btn btn-primary pull-right">
+                            <!-- /.modal -->
+                            <form method="POST" action="listar_Curso.php">
+                                <div class="modal fade show" id="modal-listarCurso">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Cursos</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_Curso.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
                                 </div>
+                            </form>
+                            <!-- /.modal -->
+                        </div>
+                        <div class="x_panel">
+                            <div class="card card-default">
+                                <!-- /.card-header -->
+                                <form action="cadastrar_Curso.php" method="POST">
+                                    <div class="card-body">
+                                        <div class="x_content" style="display: block;">
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="codigo">Código</label>
+                                                    <input name="codigo" type="text" id="codigo" class="form-control">
+                                                </div>
+
+                                                <div class="col-md-4 col-xs-6">
+                                                    <label for="descricao">Descrição</label>
+                                                    <input name="descricao" type="text" maxlength="50" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="situacao">Situação</label>
+                                                    <select name="situacao" id="situacao" class="form-control">
+                                                        <option value="ativo">Ativo</option>
+                                                        <option value="inativo">Inativo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                        Salvar
+                                                    </button>
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="modal-success">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-success">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Cadastro Curso</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja salvar o curso?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                </form>
+                                <!-- /.card-body -->
+                                <!-- /.card-footer -->
                             </div>
                         </div>
+                        <!-- /.teste -->
                     </div>
-                </form>
+                </div>
+                <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
@@ -269,9 +348,7 @@ $id_curso = $dados['codigo'];
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
-            rights
-            reserved.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -292,7 +369,8 @@ $id_curso = $dados['codigo'];
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
-    <!-- Page specific script -->    
+    <!-- Page specific script -->
+
     <script>
         $(function() {
             /* jQueryKnob */

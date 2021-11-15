@@ -1,18 +1,21 @@
 <?php
 
-$cod_aluno = $_GET['id'];
+$cod_disciplina = $_GET['id'];
 
 //Abre conexao com banco
 include 'conexao.php';
 
-$sql = "SELECT * FROM aluno WHERE codigo = $cod_aluno ";
+$sql = "SELECT * FROM disciplina WHERE codigo = $cod_disciplina";
 
 $result = mysqli_query($connx, $sql);
 
 $dados = mysqli_fetch_assoc($result);
 
-$nome_aluno = $dados['nome'];
-$id_aluno = $dados['codigo'];
+$id_disciplina = $dados['codigo'];
+$descricao_disciplina = $dados['descricao'];
+$cargaHoraria_disciplina = $dados['cargaHoraria'];
+$qtdeAulasSemanais_disciplina = $dados['qtdeAulasSemanais'];
+$sit_disciplina = $dados['situacao'];
 
 ?>
 
@@ -22,7 +25,7 @@ $id_aluno = $dados['codigo'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de aluno</title>
+    <title>Fateb | Cadastro de Disciplina</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -120,9 +123,9 @@ $id_aluno = $dados['codigo'];
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <!--Link para cadastro curso-->
+                                <!--Link para cadastro CURSO-->
                                 <li class="nav-item">
-                                    <a href="./cad_curso.php" class="nav-link">
+                                    <a href="./form_cad_curso.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Curso</p>
@@ -130,7 +133,7 @@ $id_aluno = $dados['codigo'];
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./cad_turma.php" class="nav-link">
+                                    <a href="./form_cad_turma.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -138,7 +141,7 @@ $id_aluno = $dados['codigo'];
                                 </li>
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
-                                    <a href="./cad_aluno.php" class="nav-link">
+                                    <a href="./form_cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aluno</p>
@@ -154,7 +157,7 @@ $id_aluno = $dados['codigo'];
                                 </li>
                                 <!--Link para DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./cad_disciplina.php" class="nav-link">
+                                    <a href="./form_cad_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Disciplina</p>
@@ -170,7 +173,7 @@ $id_aluno = $dados['codigo'];
                                 </li>
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
-                                    <a href="./cad_professor.php" class="nav-link">
+                                    <a href="./form_cad_professor.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Professor</p>
@@ -178,7 +181,7 @@ $id_aluno = $dados['codigo'];
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.php" class="nav-link">
+                                    <a href="./form_cad_calendario.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário</p>
@@ -186,7 +189,7 @@ $id_aluno = $dados['codigo'];
                                 </li>
                                 <!--Link para CALENDARIO EVENTOS-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendarioEventos.php" class="nav-link">
+                                    <a href="./form_cad_calendarioEventos.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário Eventos</p>
@@ -217,12 +220,12 @@ $id_aluno = $dados['codigo'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de aluno</h1>
+                            <h1>Cadastro de Disciplina</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
+                                <li class="breadcrumb-item active">Cadastro de Disciplina</li>
                             </ol>
                         </div>
                     </div>
@@ -230,22 +233,55 @@ $id_aluno = $dados['codigo'];
             </section>
             <!-- Main content -->
             <section class="content">
-                <form action="alterarAluno.php" method="POST">
+                <form action="alterar_Disciplina.php" method="POST">
                     <div class="card-body">
                         <div class="x_content" style="display: block;">
                             <div class="row">
-                                <div class="col-md-2 col-xs-3">
-                                    <label for="ID">Código</label>
-                                    <input name="codigo" readonly type="text" id="codigo" class="form-control" value="<?php echo $id_aluno ?>">
+                                <div class="col-md-1 col-xs-1">
+                                    <label for="codigo">Código</label>
+                                    <input name="codigo" readonly type="text" id="codigo" class="form-control" value="<?php echo $id_disciplina ?>">
                                 </div>
+
                                 <div class="col-md-4 col-xs-6">
-                                    <label for="nome">Nome</label>
-                                    <input name="nome" type="text" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)" value="<?php echo $nome_aluno ?>">
+                                    <label for="descricao">Descrição</label>
+                                    <input name="descricao" type="text" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $descricao_disciplina ?>">
+                                </div>
+
+                                <div class="col-md-2 col-xs-2">
+                                    <label for="cargaHoraria">Carga Horária</label>
+                                    <input name="cargaHoraria" type="text" id="cargaHoraria" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $cargaHoraria_disciplina ?>">
+                                </div>
+
+                                <div class="col-md-2 col-xs-2">
+                                    <label for="qtdeAulasSemanais">Qtde Aulas semana</label>
+                                    <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
+                                        <option selected><?php echo $qtdeAulasSemanais_disciplina ?> - Anterior</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-2 col-xs-6">
+                                    <label for="situacao">Situação: </label>
+                                    <select name="situacao" id="situacao" class="form-control" value="<?php echo $sit_disciplina ?>">
+                                        <option><?php echo $sit_disciplina ?></option>
+                                            <option value="inativo">inativo</option>
+                                            <option value="ativo">Ativo</option>
+                                    </select>
                                 </div>
                             </div>
+
                             <div class="row">
-                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                    <input type="submit" value="Salvar" class="btn btn-primary pull-right">
+                                <div class="col-md-12" style="margin-top: 140px" text-align="right">
+                                    <input type="submit" value="Salvar" class="btn btn-success">
+                                    <a href="form_cad_disciplina.php" type="button" class="btn btn-primary pull-right">VOLTAR</a>
+                                    <a href="excluir_Disciplina.php?id=<?php echo $id_disciplina ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>
                         </div>
@@ -283,7 +319,6 @@ $id_aluno = $dados['codigo'];
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
     <!-- Page specific script -->
-    
     <script>
         $(function() {
             /* jQueryKnob */
@@ -303,12 +338,12 @@ $id_aluno = $dados['codigo'];
                             ,
                             r = true
                         this.g.lineWidth = this.lineWidth
-                        this.o.alunor &&
+                        this.o.cursor &&
                             (sat = eat - 0.3) &&
                             (eat = eat + 0.3)
                         if (this.o.displayPrevious) {
                             ea = this.startAngle + this.angle(this.value)
-                            this.o.alunor &&
+                            this.o.cursor &&
                                 (sa = ea - 0.3) &&
                                 (ea = ea + 0.3)
                             this.g.beginPath()

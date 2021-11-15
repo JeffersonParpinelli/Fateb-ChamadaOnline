@@ -18,5 +18,5 @@ $result = mysqli_query($connx, $sql);
 // }
 
 //Faz voltar a página cad_curso.php
-header('location:cad_curso.php');
+header('location:form_cad_curso.php');
 

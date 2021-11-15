@@ -3,22 +3,20 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM disciplina";
+$buscar_cadastros = "SELECT * FROM aluno,curso";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Disciplina</title>
+    <title>Fateb | Cadastro de Aluno</title>
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -38,13 +36,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <script>
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
+        // Função para deixar letra maiúscula colocar no input --> (onkeydown="upperCaseF(this)")
+        function upperCaseF(a) {
+            setTimeout(function() {
+                a.value = a.value.toUpperCase();
+            }, 1);
         }
-
     </script>
 </head>
 
@@ -60,133 +57,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="./index.html" class="nav-link">Home</a>
                 </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li> -->
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li> -->
-                <!-- Messages Dropdown Menu -->
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item"> -->
-                <!-- Message Start -->
-                <!-- <div class="media">
-                                <img src="./dist/img/user1-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div> -->
-                <!-- Message End -->
-                <!-- </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item"> -->
-                <!-- Message Start -->
-                <!-- <div class="media">
-                                <img src="./dist/img/user8-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div> -->
-                <!-- Message End -->
-                <!-- </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item"> -->
-                <!-- Message Start -->
-                <!-- <div class="media">
-                                <img src="./dist/img/user3-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i
-                                                class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div> -->
-                <!-- Message End -->
-                <!-- </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div> -->
-                <!-- </li> -->
-                <!-- Notifications Dropdown Menu -->
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> -->
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -202,7 +80,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="./dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
@@ -235,7 +113,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <ul class="nav nav-treeview">
                                 <!--Link para cadastro CURSO-->
                                 <li class="nav-item">
-                                    <a href="./cad_curso.php" class="nav-link">
+                                    <a href="./form_cad_curso.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Curso</p>
@@ -243,7 +121,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro TURMA-->
                                 <li class="nav-item">
-                                    <a href="./cad_turma.php" class="nav-link">
+                                    <a href="./form_cad_turma.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Turma</p>
@@ -251,7 +129,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para cadastro ALUNO-->
                                 <li class="nav-item">
-                                    <a href="./cad_aluno.php" class="nav-link">
+                                    <a href="./form_cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Aluno</p>
@@ -267,7 +145,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./cad_disciplina.php" class="nav-link">
+                                    <a href="./form_cad_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Disciplina</p>
@@ -283,7 +161,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
-                                    <a href="./cad_professor.php" class="nav-link">
+                                    <a href="./form_cad_professor.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Professor</p>
@@ -291,7 +169,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para CALENDARIO LETIVO-->
                                 <li class="nav-item">
-                                    <a href="./cad_calendario.php" class="nav-link">
+                                    <a href="./form_cad_calendario.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Calendário</p>
@@ -330,12 +208,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Disciplina</h1>
+                            <h1>Cadastro de Aluno</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Disciplina</li>
+                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
                             </ol>
                         </div>
                     </div>
@@ -352,111 +230,140 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarAluno">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /.modal -->
+                            <form method="POST" action="listarAluno.php">
+                                <div class="modal fade show" id="modal-listarAluno">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Alunos</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_Aluno.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
+                            <!-- /.modal -->
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <!-- <div class="card-header">
-                                    <div class="card-title">
-                                        <h4>Cadastro de Curso</h4>
-                                    </div>
-                                </div> -->
-                                <!-- /.card-header -->
-                                <form action="cadastroDisciplina.php" method="POST">
+                                <form action="cadastrar_Aluno.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
+
                                                 <div class="col-md-2 col-xs-3">
-                                                    <label for="codDisc">Código</label>
-                                                    <input name="codDisc" type="text" id="codDisc" class="form-control" required="">
-                                                </div>
-                                
-                                                    <div class="col-md-8 col-xs-12">
-                                                        <label for="descDisc">Descrição</label>
-                                                        <input name="descDisc" type="text" maxlength="200"
-                                                            onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                    </div>
-                                            </div>
-                                                <div class="row">
-                                                    <div class="col-md-2 col-xs-12" style="padding: 10px;">
-                                                        <label for="cargaHorariaDisc">Carga Horária</label>
-                                                        <input name="cargaHorariaDisc" type="text" maxlength="200" id="cargaHorariaDisc"
-                                                            onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                    </div>
-                                
-                                                    <div class="col-md-4 col-xs-8" style="padding: 10px;">
-                                                        <label for="qtdeAulasSemanaDisc">Quantidade de aulas semanais</label>
-                                                            <select name="qtdeAulasSemanaDisc" id="qtdeAulasSemanaDisc" class="form-control">
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                            </select>
-                                                    </div>
-                                
-                                                    <div class="col-md-2 col-xs-6" style="padding: 10px;">
-                                                        <label for="situacaoDisc">Situação</label>
-                                                        <select name="situacaoDisc" id="situacaoDisc" class="form-control">
-                                                            <option value="ativo">Ativo</option>
-                                                            <option value="inativo">Inativo</option>
-                                                        </select>
-                                                    </div>
+                                                    <label for="ra">RA</label>
+                                                    <input name="ra" type="text" id="ra" maxlength="7" class="form-control">
                                                 </div>
 
+                                                <div class="col-md-5 col-xs-6">
+                                                    <label for="nome">Nome completo</label>
+                                                    <input name="nome" type="text" maxlength="100" id="txtNome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
+                                                </div>
+
+                                            </div></br>
+                                            <div class="row">
+                                                <div class="col-md-4 col-xs-6">
+                                                    <label for="curso">Curso</label>
+                                                    <select class="form-control" name="curso">
+                                                        <option>ESCOLHA O CURSO</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM curso";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="semestreAno">Semestre/Ano</label>
+                                                    <input name="semestreAno" type="text" id="semestreAno" class="form-control" maxlength="5">
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-6">
+                                                    <label for="situacao">Situação</label>
+                                                    <select name="situacao" id="situacao" class="form-control">
+                                                        <option value="ativo">Ativo</option>
+                                                        <option value="trancado">Trancado</option>
+                                                        <option value="concluido">Concluído</option>
+                                                    </select>
+                                                </div>
+
+                                            </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
                                                         Salvar
-                                                      </button>
-                                                    <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
-                                                        class="btn btn-primary pull-right">-->
-                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar"
-                                                        class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir"
-                                                        class="btn btn-primary pull-right">
+                                                    </button>
+                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <a href="excluir_Aluno.php?id=<?php echo $id_aluno ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                      <div class="modal fade" id="modal-success">
+                                    <div class="modal fade" id="modal-success">
                                         <div class="modal-dialog">
-                                          <div class="modal-content bg-success">
-                                            <div class="modal-header">
-                                              <h4 class="modal-title">Cadastro Disciplina</h4>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
+                                            <div class="modal-content bg-success">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Cadastro Aluno</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja salvar o aluno?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                              <p>Deseja salvar o disciplina?</p>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                              <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                            </div>
-                                          </div>
-                                          <!-- /.modal-content -->
+                                            <!-- /.modal-content -->
                                         </div>
                                         <!-- /.modal-dialog -->
-                                      </div>
-                                      <!-- /.modal -->    
+                                    </div>
+                                    <!-- /.modal -->
                                 </form>
-
                                 <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                                    the plugin. -->
-                                </div>
                                 <!-- /.card-footer -->
                             </div>
                         </div>
@@ -472,8 +379,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
-            reserved.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -494,29 +400,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
+    <!-- InputMask -->
+    <script src="./plugins/moment/moment.min.js"></script>
+    <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
-    <script type="text/javascript">
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
-        }
-    </script>
-
     <script>
         $(function() {
             /* jQueryKnob */
             $('.knob').knob({
-                /*change : function (value) {
-                 //console.log("change : " + value);
-                 },
-                 release : function (value) {
-                 console.log("release : " + value);
-                 },
-                 cancel : function () {
-                 console.log("cancel : " + this.value);
-                 },*/
                 draw: function() {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
@@ -559,11 +450,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 }
             })
             /* END JQUERY KNOB */
-            //INITIALIZE SPARKLINE CHARTS
+            //INITIALIZE SPARKLINE 
+            S
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,
-
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'
             })

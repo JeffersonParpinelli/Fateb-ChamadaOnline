@@ -5,7 +5,7 @@ include 'conexao.php';
 //recebimento dos dados das váriaveis
 //$ o que esta em Cifrão$ é o nome que esta no banco, entre '' é o name do input
 $dataEvento = $_POST['dataEvento'];
-$data =   date('Y-m-d', strtotime($_POST['dataEvento']));
+$data =   date_format($dataEvento,'Y-m-d');
 $tipo = $_POST['tipoEvento'];
 $descMotivo = $_POST['descMotivoEvento'];
 $qtdeAulas = $_POST['qtdeAulasEvento'];

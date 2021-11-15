@@ -3,9 +3,9 @@
 //Abre conexao com banco
 include 'conexao.php';
 
-$id_aluno = $_GET["id"];
+$id_curso = $_GET["id"];
 
-$sql = "DELETE FROM aluno WHERE codigo = $id_aluno";
+$sql = "DELETE FROM curso WHERE codigo = $id_curso";
 
 $result = mysqli_query($connx, $sql);
 
@@ -15,5 +15,5 @@ $result = mysqli_query($connx, $sql);
 //     echo "Erro ao Excluir";
 // }
 
-//Faz voltar a página cad_aluno.php
-header('location:cad_aluno.php');
+//Faz voltar a página cad_curso.php
+header('location:form_cad_curso.php');

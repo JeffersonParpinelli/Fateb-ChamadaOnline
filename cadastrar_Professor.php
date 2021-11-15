@@ -43,5 +43,5 @@ VALUES ('$cpf',
         $query_cadastros = mysqli_query($connx, $recebendo_cadastros);
 
         //Faz voltar a página cad_curso.php
-        header('location:cad_professor.php');
+        header('location:form_cad_professor.php');
 ?>
