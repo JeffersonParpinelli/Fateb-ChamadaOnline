@@ -255,24 +255,134 @@ $sit_disciplina = $dados['situacao'];
                                 <div class="col-md-2 col-xs-2">
                                     <label for="qtdeAulasSemanais">Qtde Aulas semana</label>
                                     <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
-                                        <option selected><?php echo $qtdeAulasSemanais_disciplina ?> - Anterior</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
+                                        
+                                        <?php
+                                        switch($qtdeAulasSemanais_disciplina){
+                                            case "1":?>
+                                            <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            
+                                                <?php
+                                            break;
+
+                                            case "2":?>
+                                                <option value="1">1</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <?php
+                                            break;
+
+                                            case "3":?>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <?php
+                                            break;
+
+                                            case "4":?>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                    
+                                                <?php
+                                            break;
+
+                                            case "5":?>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <?php
+                                            break;
+
+                                            case "6":?>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <?php
+                                            break; 
+
+                                            case "7":?>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="8">8</option>
+                                                <?php 
+                                            break;   
+                                                
+                                            case "8":?>
+                                               <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <?php 
+                                            break;
+
+                                        }
+                                        ?>
+
                                     </select>
                                 </div>
 
-                                <div class="col-md-2 col-xs-6">
+                                <div class="col-md- col-xs-6">
                                     <label for="situacao">Situação: </label>
                                     <select name="situacao" id="situacao" class="form-control" value="<?php echo $sit_disciplina ?>">
-                                        <option><?php echo $sit_disciplina ?></option>
+                                        <?php
+                                        if ($sit_disciplina == "ativo") {
+                                        ?>
+                                            <option value="<?php echo $sit_disciplina ?>" selected> <?php echo $sit_disciplina ?> </option>
                                             <option value="inativo">inativo</option>
-                                            <option value="ativo">Ativo</option>
+                                        <?php
+                                        } else if ($sit_disciplina == "inativo") {
+                                        ?>
+                                            <option value="ativo">ativo</option>
+                                            <option value="<?php echo $sit_disciplina ?>" selected> <?php echo $sit_disciplina ?> </option>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <option value="ativo">ativo</option>
+                                            <option value="inativo">inativo</option>
+                                        <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>

@@ -1,24 +1,26 @@
 <?php
 
-$cod_aluno = $_GET['id'];
+$cod_turma = $_GET['id'];
 
 //Abre conexao com banco
 include 'conexao.php';
 
-$sql = "SELECT * FROM aluno AS A INNER JOIN curso AS C ON C.codigo = A.codCurso
-WHERE ra = $cod_aluno";
+$sql = "SELECT * FROM turma AS T INNER JOIN curso AS C ON C.codigo = T.codCurso
+WHERE T.codigoTurma = $cod_turma";
 
 $result = mysqli_query($connx, $sql);
 
 $dados = mysqli_fetch_assoc($result);
 
-$ra = $dados['ra'];
-$nome_aluno = $dados['nome'];
-$semestreAno = $dados['semestreAnoIngresso'];
-$situacao = $dados['situacao'];
-$curso_aluno = $dados['codCurso'];
-$curso = $dados['descricao'];
+$id_turma = $dados['codigoTurma'];
+$descricao_turma = $dados['descricaoTurma'];
+$etapa_turma = $dados['etapa'];
+$semestreAno_turma = $dados['semestreAno'];
+$situacao_turma = $dados['situacaoTurma'];
+$codCurso_turma = $dados['codCurso'];
+$codCalendario_turma = $dados['codCalendario'];
 
+$curso = $dados['descricao'];
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ $curso = $dados['descricao'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de aluno</title>
+    <title>Fateb | Cadastro de Turma</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -125,7 +127,7 @@ $curso = $dados['descricao'];
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <!--Link para cadastro curso-->
+                                <!--Link para cadastro CURSO-->
                                 <li class="nav-item">
                                     <a href="./form_cad_curso.php" class="nav-link">
                                         <!--Página que será chamada href-->
@@ -222,12 +224,12 @@ $curso = $dados['descricao'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de aluno</h1>
+                            <h1>Cadastro de Turma</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
+                                <li class="breadcrumb-item active">Cadastro de Turma </li>
                             </ol>
                         </div>
                     </div>
@@ -235,69 +237,128 @@ $curso = $dados['descricao'];
             </section>
             <!-- Main content -->
             <section class="content">
-                <form action="alterar_Aluno.php" method="POST">
+                <form action="alterar_Turma.php" method="POST">
                     <div class="card-body">
                         <div class="x_content" style="display: block;">
                             <div class="row">
-                                <div class="col-md-2 col-xs-3">
-                                    <label for="ra">RA::</label>
-                                    <input name="ra" readonly type="text" id="ra" class="form-control" value="<?php echo $ra ?>">
+                                <div class="col-md-1 col-xs-1">
+                                    <label for="codigo">Código</label>
+                                    <input name="codigo" readonly type="text" id="codigo" class="form-control" value="<?php echo $id_turma ?>">
                                 </div>
 
                                 <div class="col-md-4 col-xs-6">
-                                    <label for="nome">Nome:</label>
-                                    <input name="nome" type="text" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $nome_aluno ?>">
+                                    <label for="descricao">Descrição</label>
+                                    <input name="descricao" type="text" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $descricao_turma ?>">
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-5 col-xs-6">
-                                        <label for="curso">Curso</label>
-                                        <select class="form-control" name="curso">
-                                            <option value="<?php echo $curso_aluno?>"><?php echo $curso?></option>
+                                <div class="col-md-1 col-xs-6">
+                                    <label for="etapa">Etapa:</label>
+                                    <input name="etapa" type="text" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $etapa_turma ?>">
+                                </div>
 
-                                            <?php
-                                            include "conexao.php";
+                                <div class="col-md-2 col-xs-2">
+                                    <label for="semestreAno">Semestre/Ano:</label>
+                                    <input name="semestreAno" type="text" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $semestreAno_turma ?>">
+                                </div>
+                            </div>
 
-                                            $sql = "SELECT * FROM curso";
-                                            $resultado = mysqli_query($connx, $sql);
+                            <div class="row" style="padding-top: 10px;">
+                                <div class="col-md-2 col-xs-6">
+                                    <label for="curso">Curso</label>
+                                    <select class="form-control" name="curso">
 
-                                            while ($dados = mysqli_fetch_assoc($resultado)) {
-                                            ?>
-                                                <option value="<?php echo $dados['codigo'] ?>">
+                                        <?php
+                                        include "conexao.php";
+
+                                        $sql = "SELECT * FROM curso";
+                                        $resultado = mysqli_query($connx, $sql);
+
+                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                            if ($codCurso_turma == $dados['codigo']) {
+                                        ?>
+                                                <option value="<?php echo $dados['codigo'] ?>" selected>
                                                     <?php echo $dados['descricao'] ?>
                                                 </option>";
 
                                             <?php
-                                            }
+                                            } else {
                                             ?>
+                                                <option value="<?php echo $dados['codigo'] ?>">
+                                                    <?php echo $dados['descricao'] ?>
+                                                </option>";
+                                        <?php
+                                            }
+                                        }
+                                        ?>
 
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-3 col-xs-6">
-                                        <label for="semestreAno">SemestreAno:</label>
-                                        <input name="semestreAno" type="text" id="semestreAno" maxlength="5" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $semestreAno ?>">
-                                    </div>
-
-                                    <div class="col-md-3 col-xs-6">
-                                        <label for="situacao">Situação: </label>
-                                        <select name="situacao" id="situacao" class="form-control" value="<?php echo $situacao ?>">
-                                            <option value="ativo">Ativo</option>
-                                            <option value="trancado">Trancado</option>
-                                            <option value="concluido">Concluido</option>
-                                        </select>
-                                    </div>
-
+                                    </select>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                        <input type="submit" value="Salvar" class="btn btn-success">
-                                        <a href="form_cad_aluno.php"><input type="submit" value="VOLTAR" class="btn btn-primary pull-right"></a>
-                                        <a href="excluir_Aluno.php?id=<?php echo $ra ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
-                                    </div>
+
+                                <div class="col-md-2 col-xs-8">
+                                    <label for="calendario">Calendario</label>
+                                    <select class="form-control" name="calendario" id="calendario">
+                                        <option>Selecione o calendario...</option>
+                                        <?php
+                                        include("conexao.php");
+
+                                        $sql = "SELECT * FROM calendario";
+                                        $resultado = mysqli_query($connx, $sql);
+
+                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                            if ($codCalendario_turma == $dados['codigo']) {
+                                        ?>
+                                                <option value="<?php echo $dados['codigo'] ?>" selected>
+                                                    <?php echo $dados['semestreAno'] ?>
+                                                </option>";
+
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <option value="<?php echo $dados['codigo'] ?>">
+                                                    <?php echo $dados['semestreAno'] ?>
+                                                </option>";
+                                        <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-md- col-xs-6">
+                                    <label for="situacao">Situação: </label>
+                                    <select name="situacao" id="situacao" class="form-control">
+                                        <?php
+                                        if ($situacao_turma == "ativo") {
+                                        ?>
+                                            <option value="<?php echo $situacao_turma ?>" selected> <?php echo $situacao_turma ?> </option>
+                                            <option value="inativo">inativo</option>
+                                        <?php
+                                        } else if ($situacao_turma == "inativo") {
+                                        ?>
+                                            <option value="ativo">ativo</option>
+                                            <option value="<?php echo $situacao_turma ?>" selected> <?php echo $situacao_turma ?> </option>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <option value="ativo">ativo</option>
+                                            <option value="inativo">inativo</option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12" style="margin-top: 140px" text-align="right">
+                                    <input type="submit" value="Salvar" class="btn btn-success">
+                                    <a href="form_cad_turma.php" type="button" class="btn btn-primary pull-right">VOLTAR</a>
+                                    <a href="excluir_Turma.php?id=<?php echo $id_turma ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </form>
             </section>
             <!-- /.content -->
@@ -331,7 +392,6 @@ $curso = $dados['descricao'];
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
     <!-- Page specific script -->
-
     <script>
         $(function() {
             /* jQueryKnob */
@@ -351,12 +411,12 @@ $curso = $dados['descricao'];
                             ,
                             r = true
                         this.g.lineWidth = this.lineWidth
-                        this.o.alunor &&
+                        this.o.cursor &&
                             (sat = eat - 0.3) &&
                             (eat = eat + 0.3)
                         if (this.o.displayPrevious) {
                             ea = this.startAngle + this.angle(this.value)
-                            this.o.alunor &&
+                            this.o.cursor &&
                                 (sa = ea - 0.3) &&
                                 (ea = ea + 0.3)
                             this.g.beginPath()

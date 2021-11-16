@@ -4,6 +4,7 @@ include 'conexao.php';
 
 //pegar dados da tabela
 $buscar_cadastros = "SELECT * FROM turma";
+
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
@@ -350,13 +351,46 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
+                                            <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- /.modal -->
+                        <form method="POST" action="listar_Turma.php">
+                                <div class="modal fade show" id="modal-listarTurma">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Turmas</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_Turma.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
                         <div class="x_panel">
                             <div class="card card-default">
                                 <!-- <div class="card-header">
@@ -392,8 +426,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="codCalendario">Calendario</label>
-                                                    <select class="form-control" name="codCalendario" id="codCalendario">
+                                                    <label for="calendario">Calendario</label>
+                                                    <select class="form-control" name="calendario" id="calendario">
                                                         <option>Selecione o calendario...</option>
                                                         <?php
                                                         include("conexao.php");
@@ -413,25 +447,32 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </select>
                                                 </div>
 
+                                                
                                                 <div class="col-md-3 col-xs-8" style="padding: 10px;">
                                                     <label for="curso">Curso</label>
-                                                    <select class="form-control" name="descricao">
-                                                        <option>Selecione o curso...</option>
+                                                    <select class="form-control" name="curso" id="curso">
+                                                        <option>ESCOLHA O CURSO</option>
                                                         <?php
                                                         include("conexao.php");
 
-                                                        $sql = "SELECT descricao FROM curso";
-                                                        $resultado = $connx->query($sql);
+                                                        $sql = "SELECT * FROM curso";
+                                                        $resultado = mysqli_query($connx, $sql);
 
-                                                        while ($dados = $resultado->fetch_assoc()) {
-                                                            echo "<option value=" . $dados['descricao'] . ">" . $dados['descricao'] . "</option>";
-                                                        }
-
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
+
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
                                                     </select>
                                                 </div>
 
-                                                    <div class="col-md-2 col-xs-6" style="padding: 10px;">
+                                                    <div class="col-md-2 col-xs-6" style="padding: 10px; display: none">
                                                         <label for="situacao">Situação</label>
                                                         <select name="situacao" id="situacao" class="form-control">
                                                             <option value="ativo">Ativo</option>

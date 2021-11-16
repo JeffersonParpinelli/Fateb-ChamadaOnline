@@ -372,72 +372,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="semestreAnoCalendario">Semestre/Ano</label>
                                                     <input name="semestreAnoCalendario" type="text" maxlength="5" id="semestreAnoCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
-                                                <!--
-                                                <div class="col-md-2 col-xs-12">
-                                                    <label for="dataEvento">Data</label>
-                                                    <input name="dataEvento" type="date" maxlength="5" id="dataEvento"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-2,5 col-xs-12">
-                                                    <label for="tipoEvento">Tipo</label>
-                                                    <select required="" class="form-control">
-                                                        <option value="feriado">Feriado</option>
-                                                        <option value="recesso">Recesso</option>
-                                                        <option value="reposicaoAula">Reposição de aula</option>
-                                                        <option value="aulaExtra">Aula extra</option>
-                                                    </select>
-                                                </div>
                                             </div>
-
-                                            <div class="row" style="padding-top: 10px;">
-                                                <div class="col-md-10 col-xs-12">
-                                                    <label for="descMotivoEvento">Descrição/Motivo</label>
-                                                    <input name="descMotivoEvento" type="text" maxlength="100"
-                                                        id="descMotivoEvento"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="qtdeAulasEvento">Quantidade de aulas</label>
-                                                    <select name="qtdeAulasEvento" id="qtdeAulasEvento"
-                                                        class="form-control">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-12" style="padding: 10px;">
-                                                    <label for="codTurmaEvento">Turma</label>
-                                                    <input name="codTurmaEvento" type="text" id="codTurmaEvento"
-                                                        onblur="this.value=this.value.toUpperCase();"
-                                                        class="form-control" required="">
-                                                </div>
-                                                <div class="col-md-4 col-xs-8" style="padding: 10px;">
-                                                    <label for="codDisciplina">Disciplina</label>                                                
-                                                <select class="form-control" name="descricao">
-                                                        <option>Selecione a disciplina...</option>
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT descricao FROM disciplina";
-                                                        $resultado = $connx->query($sql);
-
-                                                        while ($dados = $resultado->fetch_assoc()) {
-                                                            echo "<option value=" . $dados['descricao'] . ">" . $dados['descricao'] . "</option>";
-                                                        }
-
-                                                        ?>
-                                                </select>
-                                                </div>
-                                            </div>
-                                            -->
                                                 <div class="row">
                                                     <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">

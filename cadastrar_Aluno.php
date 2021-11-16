@@ -10,7 +10,7 @@ $situacao = $_POST['situacao'];
 $curso = $_POST['curso'];
 
 //$recebendo_cadastros é onde puxo todos os dados
-$recebendo_cadastros = "INSERT INTO aluno (ra,nome,semestreAnoIngresso,situacao,codCurso)
+$recebendo_cadastros = "INSERT INTO aluno
 VALUES ('$ra',
         '$nome',
         '$semestreAno',

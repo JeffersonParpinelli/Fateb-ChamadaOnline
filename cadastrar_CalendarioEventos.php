@@ -31,5 +31,5 @@ VALUES ('',
 
         //Faz voltar a página cad_curso.php
         //header('location:cad_calendarioEventos.php');
-        echo'DATA:'+$data;
+        header('location:form_cad_calendarioEventos');
 ?>
