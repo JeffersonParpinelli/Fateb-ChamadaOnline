@@ -36,6 +36,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     
     <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
     <script>
@@ -45,6 +46,20 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             }, 1);
         }
     </script>
+    <script type='text/javascript'>
+			$(document).ready(function(){
+				$("input[name='codigo']").blur(function(){
+					var $descricao = $("input[name='descricao']");
+					var $situacao = $("input[name='situacao']");
+					$.getJSON('functionCurso.php',{ 
+						codigo: $( this ).val() 
+					},function( json ){
+						$descricao.val( json.descricao );
+						$situacao.val( json.situacao );
+					});
+				});
+			});
+		</script>
 </head>
 
 <body class="hold-transition sidebar-mini">

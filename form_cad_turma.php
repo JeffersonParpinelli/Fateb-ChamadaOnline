@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM turma";
+$buscar_cadastros = "SELECT * FROM turma, calendario, curso";
 
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
@@ -11,7 +11,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="utf-8">
@@ -37,14 +37,29 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-    <script>
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
-        }
-    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type='text/javascript'>
+			$(document).ready(function(){
+				$("input[name='codigo']").blur(function(){
+					var $descricao = $("input[name='descricao']");
+					var $etapa = $("input[name='etapa']");
+                    var $semestreAno = $("input[name='semestreAno']");
+                    var $calendario = $("input[name='calendario']");
+                    var $curso = $("input[name='curso']");
+                    var $situacao = $("input[name='situacao']");
+					$.getJSON('functionTurma.php',{ 
+						codigo: $( this ).val() 
+					},function( json ){
+						$descricao.val( json.descricao );
+						$etapa.val( json.etapa );
+                        $semestreAno.val( json.semestreAno );
+                        $calendario.val( json.calendario );
+                        $curso.val( json.curso );
+                        $situacao.val( json.situacao );
+					});
+				});
+			});
+		</script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -59,133 +74,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="./index.html" class="nav-link">Home</a>
                 </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li> -->
             </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li> -->
-                <!-- Messages Dropdown Menu -->
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a href="#" class="dropdown-item"> -->
-                <!-- Message Start -->
-                <!-- <div class="media">
-                                <img src="./dist/img/user1-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 mr-3 img-circle">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Brad Diesel
-                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">Call me whenever you can...</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div> -->
-                <!-- Message End -->
-                <!-- </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item"> -->
-                <!-- Message Start -->
-                <!-- <div class="media">
-                                <img src="./dist/img/user8-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        John Pierce
-                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">I got your message bro</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div> -->
-                <!-- Message End -->
-                <!-- </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item"> -->
-                <!-- Message Start -->
-                <!-- <div class="media">
-                                <img src="./dist/img/user3-128x128.jpg" alt="User Avatar"
-                                    class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i
-                                                class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div> -->
-                <!-- Message End -->
-                <!-- </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                    </div> -->
-                <!-- </li> -->
-                <!-- Notifications Dropdown Menu -->
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> -->
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -351,7 +247,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                            <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
                                             </span>
                                         </div>
                                     </div>
@@ -360,45 +256,39 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </div>
                         <!-- /.modal -->
                         <form method="POST" action="listar_Turma.php">
-                                <div class="modal fade show" id="modal-listarTurma">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Turmas</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <table class="table table-striped">
-                                                        <tr>
-                                                            <td> <?php
-                                                                    include("listar_Turma.php");
-                                                                    ?>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                            <div class="modal fade show" id="modal-listarTurma">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Turmas</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <td> <?php
+                                                                include("listar_Turma.php");
+                                                                ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
-                                        <!-- /.modal-content -->
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                            <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                        </div>
                                     </div>
-                                    <!-- /.modal-dialog -->
+                                    <!-- /.modal-content -->
                                 </div>
-                            </form>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <!-- <div class="card-header">
-                                    <div class="card-title">
-                                        <h4>Cadastro de Curso</h4>
-                                    </div>
-                                </div> -->
-                                <!-- /.card-header -->
                                 <form action="cadastrar_Turma.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
@@ -447,7 +337,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </select>
                                                 </div>
 
-                                                
+
                                                 <div class="col-md-3 col-xs-8" style="padding: 10px;">
                                                     <label for="curso">Curso</label>
                                                     <select class="form-control" name="curso" id="curso">
@@ -472,13 +362,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </select>
                                                 </div>
 
-                                                    <div class="col-md-2 col-xs-6" style="padding: 10px; display: none">
-                                                        <label for="situacao">Situação</label>
-                                                        <select name="situacao" id="situacao" class="form-control">
-                                                            <option value="ativo">Ativo</option>
-                                                            <option value="inativo">Inativo</option>
-                                                        </select>
-                                                    </div>
+                                                <div class="col-md-2 col-xs-6" style="padding: 10px">
+                                                    <label for="situacao">Situação</label>
+                                                    <select name="situacao" id="situacao" class="form-control">
+                                                        <option value="ativo">Ativo</option>
+                                                        <option value="inativo">Inativo</option>
+                                                    </select>
+                                                </div>
 
                                             </div>
 
@@ -497,13 +387,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="modal-dialog">
                                             <div class="modal-content bg-success">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Curso</h4>
+                                                    <h4 class="modal-title">Cadastro Turma</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Deseja salvar o curso?</p>
+                                                    <p>Deseja salvar a turma?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
@@ -560,28 +450,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
     <!-- Page specific script -->
-    <script type="text/javascript">
-        function limparCampo() {
-            document.getElementById("txtDescricao").value = "";
-            document.getElementById('txtDescricao').focus();
-            document.getElementById("txtCodCurso").value = "";
-            document.getElementById('txtCodCurso').focus();
-        }
-    </script>
 
     <script>
         $(function() {
             /* jQueryKnob */
             $('.knob').knob({
-                /*change : function (value) {
-                 //console.log("change : " + value);
-                 },
-                 release : function (value) {
-                 console.log("release : " + value);
-                 },
-                 cancel : function () {
-                 console.log("cancel : " + this.value);
-                 },*/
                 draw: function() {
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
