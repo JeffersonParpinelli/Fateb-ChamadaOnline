@@ -281,7 +281,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para PROFESSOR-->
                                 <li class="nav-item">
-                                    <a href="./form_cad_professor.html" class="nav-link">
+                                    <a href="./form_cad_professor.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Professor</p>
@@ -350,12 +350,46 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
+                                            <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendario">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /.modal -->
+                            <form method="POST" action="listarCalendario.php">
+                                <div class="modal fade show" id="modal-listarCalendario">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Alunos</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_Calendario.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
+                            <!-- /.modal -->
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
