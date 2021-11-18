@@ -15,7 +15,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Calendario</title>
+    <title>Fateb | Cadastro de Calendario Letivo</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -36,6 +36,32 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.min.css">
+    <!-- API preenchimento automático -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+    <!-- Função preenchimento automático -->
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $("input[name='codCalendario']").blur(function() {
+                var $semestreAno = $("input[name='semestreAno']");
+                $.getJSON('functionCalendario.php', {
+                    codCalendario: $(this).val()
+                }, function(json) {
+                    $semestreAno.val(json.semestreAno);
+                });
+            });
+        });
+    </script>
+
+    <!-- Função limpar campos -->
+    <script type="text/javascript">
+        function limparCampo() {
+            document.getElementById("codCalendario").value = "";
+            document.getElementById('codCalendario').focus();
+            document.getElementById("semestreAno").value = "";
+            document.getElementById('semestreAno').focus();
+        }
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -223,7 +249,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                            <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendario">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendario">
                                             </span>
                                         </div>
                                     </div>
@@ -235,7 +261,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Alunos</h4>
+                                                <h4 class="modal-title">Calendários</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -271,51 +297,50 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
-                                                    <label for="codCalendario">Código</label>
+                                                    <label for="ID">Código</label>
                                                     <input name="codCalendario" type="text" id="codCalendario" maxlength="4" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-12">
-                                                    <label for="semestreAnoCalendario">Semestre/Ano</label>
-                                                    <input name="semestreAnoCalendario" type="text" maxlength="5" id="semestreAnoCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="semestreAno">Semestre/Ano</label>
+                                                    <input name="semestreAno" type="text" maxlength="5" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
                                             </div>
-                                                <div class="row">
-                                                    <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                            Salvar
-                                                        </button>
-                                                        <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                        <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                        Salvar
+                                                    </button>
+                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <a href="excluir_Calendario.php?id=<?php echo $id_calendario ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>
-
                                             </div>
 
-                                            <div class="modal fade" id="modal-success">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content bg-success">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Cadastro Calendário</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Deseja salvar o calendário?</p>
-                                                        </div>
-                                                        <div class="modal-footer justify-content-between">
-                                                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                            <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                                        </div>
-                                                    </div>
-                                                    -->
-                                                    <!--/.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
-                                            <!-- /.modal -->
                                         </div>
+
+                                        <div class="modal fade" id="modal-success">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-success">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Cadastro Calendário Letivo</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Deseja salvar o calendário letivo?</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                        <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                    </div>
+                                                </div>
+                                                <!--/.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.modal -->
+                                    </div>
                                 </form>
                                 <!-- /.card-body -->
                                 <div class="card-footer">

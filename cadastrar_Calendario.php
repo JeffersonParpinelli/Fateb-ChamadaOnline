@@ -5,7 +5,7 @@ include 'conexao.php';
 //recebimento dos dados das váriaveis
 //$ o que esta em Cifrão$ é o nome que esta no banco, entre '' é o name do input
 $codigo = $_POST['codCalendario'];
-$semestreAno = $_POST['semestreAnoCalendario'];
+$semestreAno = $_POST['semestreAno'];
 
 //$recebendo_cadastros é onde puxo todos os dados
 $recebendo_cadastros = "INSERT INTO 

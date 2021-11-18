@@ -13,11 +13,11 @@ while ($dados = mysqli_fetch_assoc($result)) {
 
 
     echo "Cod: " . $id_calendario . "<Br>" .
-        "Nome: " . $semestreAno_calendario . "<Br>";
+        "Semestre/Ano: " . $semestreAno_calendario . "<Br>";
 
 ?>
-    <a href="excluir_Calendario.php?id=<?php echo $id_aluno ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
-    <a href="form_alterar_Calendario.php?id=<?php echo $id_aluno ?>" type="button" class="btn btn-primary pull-right">Alterar</a><br><br>
+    <a href="excluir_Calendario.php?id=<?php echo $id_calendario ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
+    <a href="form_alterar_Calendario.php?id=<?php echo $id_calendario ?>" type="button" class="btn btn-primary pull-right">Alterar</a><br><br>
 <?php
 }
 ?>
