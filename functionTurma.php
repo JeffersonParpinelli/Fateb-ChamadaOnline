@@ -9,11 +9,11 @@ function retorna($codigo, $connx){
 		$valores['descricao'] = $row_turma['descricaoTurma'];
 		$valores['etapa'] = $row_turma['etapa'];
         $valores['semestreAno'] = $row_turma['semestreAno'];
-        $valores['calendario'] = $row_turma['calendario'];
-        $valores['curso'] = $row_turma['curso'];
-        $valores['situacao'] = $row_turma['situacao'];
+        // $valores['calendario'] = $row_turma['calendario'];
+        // $valores['curso'] = $row_turma['curso'];
+        // $valores['situacao'] = $row_turma['situacao'];
 	}else{
-		$valores['descricao'] = 'Turma não encontrado';
+		$valores['descricao'] = 'TURMA NÃO ENCONTRADA';
 	}
 	return json_encode($valores);
 }

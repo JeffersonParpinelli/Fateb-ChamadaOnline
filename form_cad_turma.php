@@ -44,18 +44,18 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 					var $descricao = $("input[name='descricao']");
 					var $etapa = $("input[name='etapa']");
                     var $semestreAno = $("input[name='semestreAno']");
-                    var $calendario = $("input[name='calendario']");
-                    var $curso = $("input[name='curso']");
-                    var $situacao = $("input[name='situacao']");
+                    // var $calendario = $("select[name='calendario']");
+                    // var $curso = $("select[name='curso']");
+                    // var $situacao = $("select[name='situacao']");
 					$.getJSON('functionTurma.php',{ 
 						codigo: $( this ).val() 
 					},function( json ){
 						$descricao.val( json.descricao );
 						$etapa.val( json.etapa );
                         $semestreAno.val( json.semestreAno );
-                        $calendario.val( json.calendario );
-                        $curso.val( json.curso );
-                        $situacao.val( json.situacao );
+                        // $calendario.val( json.calendario );
+                        // $curso.val( json.curso );
+                        // $situacao.val( json.situacao );
 					});
 				});
 			});
@@ -243,9 +243,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         <div class="page-title" align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
-                                    <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
+                                    <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
+                                            <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
                                                 <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
                                             </span>

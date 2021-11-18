@@ -226,9 +226,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         <div class="page-title" align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
-                                    <div class="col-md-4 col-sm-8 col-xs-12 form-group pull-right top_search">
+                                    <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar">
+                                            <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
                                                 <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarAluno">
                                             </span>
