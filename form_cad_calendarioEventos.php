@@ -2,10 +2,21 @@
 //inclui conexao com banco
 include 'conexao.php';
 
+$cod_calendario = $_GET['id'];
+
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM eventos";
+$sql = "SELECT * FROM eventos";
+
 //fazer busca dados da tabela através da query
-$query_cadastros = mysqli_query($connx, $buscar_cadastros);
+
+$sql = "SELECT * FROM calendario WHERE codigo = $cod_calendario ";
+
+$result = mysqli_query($connx, $sql);
+
+$dados = mysqli_fetch_assoc($result);
+
+$id_calendario = $dados['codigo'];
+$semestreAno_calendario = $dados['semestreAno'];
 
 ?>
 
@@ -15,7 +26,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Calendario</title>
+    <title>Fateb | Cadastro de Eventos do Calendário</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -36,6 +47,16 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.min.css">
+
+    <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
+    <script>
+        function upperCaseF(a) {
+            setTimeout(function() {
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+    </script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -201,12 +222,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Calendário</h1>
+                            <h1>Cadastro de Eventos do Calendário</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Calendário</li>
+                                <li class="breadcrumb-item active">Cadastro de Eventos do Calendário</li>
                             </ol>
                         </div>
                     </div>
@@ -237,55 +258,44 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
 
+                                                <div class="col-md-1 col-xs-3">
+                                                    <label for="codigo">Código</label>
+                                                    <input name="codigo" type="text" id="codigo" maxlength="4" class="form-control">
+                                                </div>
+
                                                 <div class="col-md-2 col-xs-8">
-                                                    <label for="codCalendario">Calendario</label>
-                                                    <select class="form-control" name="codCalendario" id="codCalendario">
-                                                        <option>Selecione o calendario...</option>
-                                                        <?php
-                                                        include("conexao.php");
+                                                    <label for="codCalendario">Calendário</label>
+                                                    <input name="codCalendario" readonly type="text" maxlength="5" id="codCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" value="<?php echo $id_calendario ?> " >
 
-                                                        $sql = "SELECT * FROM calendario";
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['semestreAno'] ?>
-                                                            </option>";
-
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
                                                 </div>
 
                                                 <div class="col-md-2.5 col-xs-12" style="padding: 0px 10px 0px 0px;">
-                                                    <label for="dataEvento">Data</label>
-                                                    <input name="dataEvento" type="DATE" id="dataEvento" onblur="this.value=this.value.toUpperCase();" class="form-control">
+                                                    <label for="data">Data</label>
+                                                    <input name="data" type="DATE" id="data" onblur="this.value=this.value.toUpperCase();" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-2,5 col-xs-12">
-                                                    <label for="tipoEvento">Tipo</label>
-                                                    <select required="" class="form-control" name="tipoEvento" id="tipoEvento">
-                                                        <option value="feriado">Feriado</option>
-                                                        <option value="recesso">Recesso</option>
-                                                        <option value="reposicaoAula">Reposição de aula</option>
-                                                        <option value="aulaExtra">Aula extra</option>
+                                                    <label for="tipo">Tipo</label>
+                                                    <select required="" class="form-control" name="tipo" id="tipo">
+                                                        <option value="feriado">FERIADO</option>
+                                                        <option value="recesso">RECESSO</option>
+                                                        <option value="reposicaoAula">REPOSIÇÃO DE AULA</option>
+                                                        <option value="aulaExtra">AULA EXTRA</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="row" style="padding-top: 10px;">
                                                 <div class="col-md-10 col-xs-12">
-                                                    <label for="descMotivoEvento">Descrição/Motivo</label>
-                                                    <input name="descMotivoEvento" type="text" maxlength="100" id="descMotivoEvento" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="descMotivo">Descrição/Motivo</label>
+                                                    <input name="descMotivo" type="text" maxlength="100" id="descMotivo" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="qtdeAulasEvento">Quantidade de aulas</label>
-                                                    <select name="qtdeAulasEvento" id="qtdeAulasEvento" class="form-control">
+                                                    <label for="qtdeAulas">Quantidade de aulas</label>
+                                                    <select name="qtdeAulas" id="qtdeAulas" class="form-control">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -293,39 +303,52 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-12" style="padding: 10px;">
+                                                <div class="col-md-3 col-xs-12" style="padding: 10px;">
                                                     <label for="turma">Turma</label>
-                                                    <input name="turma" type="text" id="turma" onblur="this.value=this.value.toUpperCase();" class="form-control">
+                                                    <select class="form-control" name="turma">
+                                                        <option>ESCOLHA A TURMA</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM turma";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['codigoTurma'] ?>">
+                                                                <?php echo $dados['descricaoTurma'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </select>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6 col-xs-6" style="padding: 10px;">
-                                                        <label for="disciplina">Disciplina</label>
-                                                        <select class="form-control" name="disciplina" id="disciplina">
-                                                            <option>Escolha a disciplina...</option>
-                                                            <?php
-                                                            include("conexao.php");
+                                                <div class="col-md-4 col-xs-6" style="padding: 10px;">
+                                                    <label for="codDisc">Disciplina</label>
+                                                    <select class="form-control" name="codDisc" id="codDisc">
+                                                        <option>ESCOLHA A DISCIPLINA</option>
+                                                        <?php
+                                                        include("conexao.php");
 
-                                                            $sql = "SELECT * FROM disciplina";
-                                                            $resultado = mysqli_query($connx, $sql);
+                                                        $sql = "SELECT * FROM disciplina";
+                                                        $resultado = mysqli_query($connx, $sql);
 
-                                                            while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                            ?>
-                                                                <option value="<?php echo $dados['codigo'] ?>">
-                                                                    <?php echo $dados['descricao'] ?>
-                                                                </option>";
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
 
-                                                            <?php
-                                                            }
-                                                            ?>
-
-                                                        </select>
-                                                    </div>
-
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
-                                                
                                             </div>
-                                            
+
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
@@ -341,13 +364,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="modal-dialog">
                                                 <div class="modal-content bg-success">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Cadastro Calendário</h4>
+                                                        <h4 class="modal-title">Cadastro de Eventos</h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Deseja salvar o calendário?</p>
+                                                        <p>Deseja salvar o evento?</p>
                                                     </div>
                                                     <div class="modal-footer justify-content-between">
                                                         <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>

@@ -48,9 +48,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                     codCalendario: $(this).val()
                 }, function(json) {
                     $semestreAno.val(json.semestreAno);
+                   
                 });
             });
         });
+
+        function openEvents(){
+            location.href ="form_cad_calendarioEventos.php?id=" + document.getElementById("codCalendario").value;
+        }
     </script>
 
     <!-- Função limpar campos -->
@@ -227,12 +232,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Calendário</h1>
+                            <h1>Cadastro de Calendário Letivo</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Calendário</li>
+                                <li class="breadcrumb-item active">Cadastro de Calendário Letivo</li>
                             </ol>
                         </div>
                     </div>
@@ -305,6 +310,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="semestreAno">Semestre/Ano</label>
                                                     <input name="semestreAno" type="text" maxlength="5" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
+
+                                                <div class="col-md-2 col-xs-12">
+                                                    <label for="Eventos">Eventos</label><br>
+                                                    <a ref="javascript:void(0);" onclick="openEvents()"><img  src="dist/img/btnCalendarioEvento.png" height="60" width="60" type="button"></a>
+                                                </div>
+
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
