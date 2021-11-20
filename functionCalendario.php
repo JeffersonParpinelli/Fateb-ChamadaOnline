@@ -8,7 +8,7 @@ function retorna($codigo, $connx){
 		$row_calendario = mysqli_fetch_assoc($resultado_calendario);
 		$valores['semestreAno'] = $row_calendario['semestreAno'];
 	}else{
-		$valores['semestreAno'] = 'CALENDÁRIO NÃO ENCONTRADO';
+		$valores['semestreAno'] = 'NÃO EXISTE - CADASTRE AQUI';
 	}
 	return json_encode($valores);
 }

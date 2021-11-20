@@ -1,11 +1,20 @@
 <?php
-//inclui conexao com banco
+
+$cpf_professor = $_GET['id'];
+
+//Abre conexao com banco
 include 'conexao.php';
 
-//pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM professor";
-//fazer busca dados da tabela através da query
-$query_cadastros = mysqli_query($connx, $buscar_cadastros);
+$sql = "SELECT * FROM professor WHERE cpf = $cpf_professor ";
+
+$result = mysqli_query($connx, $sql);
+
+$dados = mysqli_fetch_assoc($result);
+
+$id_professor = $dados['cpf'];
+$nome_professor = $dados['nome'];
+$senha_professor = $dados['senha'];
+$sit_professor = $dados['situacao'];
 
 ?>
 
@@ -36,8 +45,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-    <!-- API preenchimento automático -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
     <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
     <script>
@@ -46,25 +53,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 a.value = a.value.toUpperCase();
             }, 1);
         }
-        
-    </script>
-
-    <!-- Função preenchimento automático -->
-    <script type='text/javascript'>
-        $(document).ready(function() {
-            $("input[name='cpf']").blur(function() {
-                var $nome = $("input[name='nome']");
-                var $senha = $("input[name='senha']");
-                var $situacao = $("input[name='situacao']");
-                $.getJSON('functionProfessor.php', {
-                    cpf: $(this).val()
-                }, function(json) {
-                    $nome.val(json.nome);
-                    $senha.val(json.senha);
-                    $situacao.val(json.situacao);
-                });
-            });
-        });
     </script>
 </head>
 
@@ -244,128 +232,44 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             </section>
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
-                    <div class="col-md-12">
-                        <div class="page-title" align="right">
-                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
-                                <div class="title_right">
-                                    <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
-                                        <div class="input-group">
-                                            <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
-                                            <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarProfessor">
-                                            </span>
-                                        </div>
-                                    </div>
+                <form action="alterar_Professor.php" method="POST">
+                    <div class="card-body">
+                        <div class="x_content" style="display: block;">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-3">
+                                    <label for="cpf">CPF</label>
+                                    <input name="cpf" readonly type="text" id="cpf" class="form-control" value="<?php echo $id_professor ?>">
+                                </div>
+
+                                <div class="col-md-5 col-xs-6">
+                                    <label for="nome">Nome Completo</label>
+                                    <input name="nome" type="text" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $nome_professor ?>">
+                                </div>
+
+                                <div class="col-md-3 col-xs-6">
+                                    <label for="senha">SENHA</label>
+                                    <input name="senha" type="password" id="senha" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $senha_professor ?>">
+                                </div>
+
+                                <div class="col-md-1 col-xs-6">
+                                    <label for="situacao">Situação: </label>
+                                    <select name="situacao" id="situacao" class="form-control" value="<?php echo $sit_professor ?>">
+                                        <option value="ativo">Ativo</option>
+                                        <option value="inativo">Inativo</option>
+                                    </select>
                                 </div>
                             </div>
-                            <!-- /.modal -->
-                            <form method="POST" action="listar_Professor.php">
-                                <div class="modal fade show" id="modal-listarProfessor">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Professor</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <table class="table table-striped">
-                                                        <tr>
-                                                            <td> <?php
-                                                                    include("listar_Professor.php");
-                                                                    ?>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
+
+                            <div class="row">
+                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                    <input type="submit" value="Salvar" class="btn btn-success">
+                                    <a href="cad_Professor.php"><input type="submit" value="VOLTAR" class="btn btn-primary pull-right"></a>
+                                    <a href="excluir_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
-                            </form>
-                            <!-- /.modal -->
-                        </div>
-                        <div class="x_panel">
-                            <div class="card card-default">
-                                <!-- /.card-header -->
-                                <form action="cadastrar_Professor.php" method="POST">
-                                    <div class="card-body">
-                                        <div class="x_content" style="display: block;">
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="cpf">CPF</label>
-                                                    <input name="cpf" type="text" id="cpf"  maxlength="11" class="form-control">
-                                                </div>
-
-                                                <div class="col-md-4 col-xs-6">
-                                                    <label for="nome">Nome Completo</label>
-                                                    <input name="nome" type="text" id="nome" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
-                                                </div>
-
-                                                <div class="col-md-4 col-xs-6">
-                                                    <label for="senha">SENHA</label>
-                                                    <input name="senha" type="password" id="senha" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-6">
-                                                    <label for="situacao">Situação</label>
-                                                    <select name="situacao" id="situacao" class="form-control">
-                                                        <option value="ativo">Ativo</option>
-                                                        <option value="inativo">Inativo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <input type="button" class="btn btn-success" value="SALVAR" data-toggle="modal" data-target="#modal-success"></input>
-                                                    <a href="alterar_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-primary pull-right">ALTERAR</a>
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <a href="excluir_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="modal-success">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-success">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Professor</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Deseja salvar o Professor?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
-                                </form>
-                                <!-- /.card-body -->
-                                <!-- /.card-footer -->
                             </div>
                         </div>
-                        <!-- /.teste -->
                     </div>
-                </div>
-                <!-- /.container-fluid -->
+                </form>
             </section>
             <!-- /.content -->
         </div>
@@ -374,7 +278,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
+            rights
+            reserved.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -396,7 +302,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
     <!-- Page specific script -->
-
     <script>
         $(function() {
             /* jQueryKnob */
