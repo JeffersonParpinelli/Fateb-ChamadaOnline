@@ -36,6 +36,31 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+    <!-- Função preenchimento automático -->
+ <script type='text/javascript'>
+        $(document).ready(function() {
+            $("input[name='codigo']").blur(function() {
+                var $descricao = $("input[name='descricao']");
+                var $etapa = $("input[name='etapa']");
+                var $semestreAno = $("input[name='semestreAno']");
+                var $calendario = $("select[name='calendario']");
+                var $curso = $("select[name='curso']");
+                var $situacao = $("select[name='situacao']");
+                $.getJSON('functionTurma.php', {
+                    codigo: $(this).val()
+                }, function(json) {
+                    $descricao.val(json.descricao);
+                    $etapa.val(json.etapa);
+                    $semestreAno.val(json.semestreAno);
+                    $calendario.val( json.calendario );
+                    $curso.val( json.curso );
+                    $situacao.val( json.situacao );
+                });
+            });
+        });
+    </script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -130,7 +155,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para VINCULAR ALUNO A TURMA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./form_cad_matricula_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Vincular Aluno</p>

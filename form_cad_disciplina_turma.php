@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM turma, calendario, curso";
+$buscar_cadastros = "SELECT * FROM turma";
 
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
@@ -16,7 +16,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Turma</title>
+    <title>Fateb | Cadastro de DISCIPLINA/TURMA</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -40,18 +40,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <!-- API preenchimento automático -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
-    <!-- Função para deixar letra maiúscula colocar no input-->
-    <script>
-        
-        function upperCaseF(a) {
-            setTimeout(function() {
-                a.value = a.value.toUpperCase();
-            }, 1);
-        }
-    </script>
-    
-    <!-- Função preenchimento automático -->
-    <script type='text/javascript'>
+ <!-- Função preenchimento automático -->
+ <script type='text/javascript'>
         $(document).ready(function() {
             $("input[name='codigo']").blur(function() {
                 var $descricao = $("input[name='descricao']");
@@ -238,12 +228,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Turma</h1>
+                            <h1>Cadastro de DISCIPLINA/TURMA</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Turma</li>
+                                <li class="breadcrumb-item active">Cadastro de DISCIPLINA/TURMA</li>
                             </ol>
                         </div>
                     </div>
@@ -313,7 +303,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                 <div class="col-md-8 col-xs-12">
                                                     <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="100" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
+                                                    <input name="descricao" type="text" maxlength="100" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-1 col-xs-12">
@@ -354,18 +344,19 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="curso">Curso</label>
                                                     <select class="form-control" name="curso" id="curso">
                                                         <option>ESCOLHA O CURSO</option>
+                                                        
                                                         <?php
-                                                        include("conexao.php");
+                                                            include("conexao.php");
 
-                                                        $sql = "SELECT * FROM curso";
-                                                        $resultado = mysqli_query($connx, $sql);
+                                                            $sql = "SELECT * FROM curso";
+                                                            $resultado = mysqli_query($connx, $sql);
 
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                            while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
 
                                                             <option value="<?php echo $dados['codigo'] ?>">
                                                                 <?php echo $dados['descricao'] ?>
-                                                            </option>";
+                                                            </option>
 
                                                         <?php
                                                         }
@@ -383,13 +374,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="row" style="padding: 10px;">
+                                            <div class="row" style="padding: 10px;">
                                                 <label for="disciplina">
                                                     <h4>Selecione as Disciplina da Turma</h4>
                                                 </label>
 
 
-                                                INICIO SELECIONAR DIVERSAS DISCIPLINA
+                                                <!--INICIO SELECIONAR DIVERSAS DISCIPLINA-->
 
                                                 <table class="table" id="disciplina" style="border-width: 5px; border-color:red;">
                                                     <thead>
@@ -400,7 +391,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </thead>
                                                     <tbody>
 
-                                                        <php
+                                                        <?php
                                                         include("conexao.php");
 
                                                         $sql = "SELECT * FROM disciplina";
@@ -409,15 +400,15 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
                                                             <tr>
-                                                                <td value="<php echo $dados['codigo'] ?>">
-                                                                    <php echo $dados['descricao'] ?>
+                                                                <td value="<?php echo $dados['codigo'] ?>">
+                                                                    <?php echo $dados['descricao'] ?>
                                                                 </td>
 
                                                                 <td> <input type="checkbox" class="form-check" name="selecionado"></input>
 
                                                                 </td>
 
-                                                        <php
+                                                        <?php
                                                         }
                                                             ?>
                                                             </tr>
@@ -425,7 +416,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </table>
                                             </div>
                                             
-                                            FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
+                                            <!-- FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
 
 
                                             <div class="row">
