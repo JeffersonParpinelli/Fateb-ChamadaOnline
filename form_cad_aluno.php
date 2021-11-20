@@ -43,6 +43,27 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             }, 1);
         }
     </script>
+
+        <!-- Função preenchimento automático -->
+        <script type='text/javascript'>
+        $(document).ready(function() {
+            $("input[name='ra']").blur(function() {
+                var $nome = $("input[name='nome']");
+                var $semestreAno = $("input[name='semestreAno']");
+                var $situacao = $("select[name='situacao']");
+                var $curso = $("select[name='curso']");
+
+                $.getJSON('functionAluno.php', {
+                    ra: $(this).val()
+                }, function(json) {
+                    $nome.val(json.nome);
+                    $semestreAno.val(json.semestreAno);
+                    $situacao.val( json.situacao );
+                    $curso.val( json.curso );
+                });
+            });
+        });
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -137,7 +158,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para VINCULAR ALUNO A TURMA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./form_cad_matricula_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Vincular Aluno</p>
@@ -285,7 +306,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                 <div class="col-md-5 col-xs-6">
                                                     <label for="nome">Nome completo</label>
-                                                    <input name="nome" type="text" maxlength="100" id="txtNome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
+                                                    <input name="nome" type="text" maxlength="100" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>
 
                                             </div></br>

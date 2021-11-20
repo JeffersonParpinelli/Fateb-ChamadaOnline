@@ -157,7 +157,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 </li>
                                 <!--Link para VINCULAR ALUNO A TURMA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./form_cad_matricula_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Vincular Aluno</p>
@@ -316,11 +316,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
                                                         Salvar
                                                     </button>
+                                                    
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                     <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>
