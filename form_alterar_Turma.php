@@ -169,7 +169,7 @@ $curso = $dados['descricao'];
                                 </li>
                                 <!--Link para DETALHES DISCIPLINA-->
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link">
+                                    <a href="./form_cad_detalhes_disciplina.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Detalhes Disciplina</p>

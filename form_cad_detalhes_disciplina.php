@@ -3,7 +3,7 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM turma";
+$buscar_cadastros = "SELECT * FROM turma, disciplina, professor";
 
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
@@ -16,7 +16,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Turma</title>
+    <title>Fateb | Detalhes Disciplina</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -42,14 +42,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
     <!-- Função para deixar letra maiúscula colocar no input-->
     <script>
-        
         function upperCaseF(a) {
             setTimeout(function() {
                 a.value = a.value.toUpperCase();
             }, 1);
         }
     </script>
-    
+
     <!-- Função preenchimento automático -->
     <script type='text/javascript'>
         $(document).ready(function() {
@@ -66,9 +65,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                     $descricao.val(json.descricao);
                     $etapa.val(json.etapa);
                     $semestreAno.val(json.semestreAno);
-                    $calendario.val( json.calendario );
-                    $curso.val( json.curso );
-                    $situacao.val( json.situacao );
+                    $calendario.val(json.calendario);
+                    $curso.val(json.curso);
+                    $situacao.val(json.situacao);
                 });
             });
         });
@@ -238,12 +237,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Turma</h1>
+                            <h1>Detalhes Disciplina</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Turma</li>
+                                <li class="breadcrumb-item active">Detalhes Disciplina</li>
                             </ol>
                         </div>
                     </div>
@@ -273,7 +272,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Turmas</h4>
+                                            <h4 class="modal-title">Detalhes Disciplina</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -283,7 +282,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 <table class="table table-striped">
                                                     <tr>
                                                         <td> <?php
-                                                                include("listar_Turma.php");
+                                                                include("listar_Detalhes_Disciplina.php");
                                                                 ?>
                                                         </td>
                                                     </tr>
@@ -302,46 +301,25 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="cadastrar_Turma.php" method="POST">
+                                <form action="cadastrar_Detalhes_Disciplina.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
-                                                <div class="col-md-1 col-xs-3">
-                                                    <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control" maxlength="4">
-                                                </div>
 
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="100" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
-                                                </div>
-
-                                                <div class="col-md-1 col-xs-12">
-                                                    <label for="etapa">Etapa</label>
-                                                    <input name="etapa" type="text" maxlength="2" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="semestreAno">Semestre/Ano</label>
-                                                    <input name="semestreAno" type="text" maxlength="5" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="calendario">Calendario</label>
-                                                    <select class="form-control" name="calendario" id="calendario">
-                                                        <option>Selecione o calendario...</option>
+                                                <div class="col-md-2 col-xs-8">
+                                                    <label for="turma">Turma</label>
+                                                    <select class="form-control" name="turma" id="turma">
+                                                        <option>Selecione a turma...</option>
                                                         <?php
                                                         include("conexao.php");
 
-                                                        $sql = "SELECT * FROM calendario";
+                                                        $sql = "SELECT * FROM turma";
                                                         $resultado = mysqli_query($connx, $sql);
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['semestreAno'] ?>
+                                                            <option value="<?php echo $dados['codigoTurma'] ?>">
+                                                                <?php echo $dados['descricaoTurma'] ?>
                                                             </option>";
 
                                                         <?php
@@ -350,57 +328,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
-                                                    <label for="curso">Curso</label>
-                                                    <select class="form-control" name="curso" id="curso">
-                                                        <option>ESCOLHA O CURSO</option>
+                                                <div class="col-md-3 col-xs-8">
+                                                    <label for="disciplina">Disciplina</label>
+                                                    <select class="form-control" name="disciplina" id="disciplina">
+                                                        <option>Selecione a disciplina...</option>
                                                         <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT * FROM curso";
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
-
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['descricao'] ?>
-                                                            </option>";
-
-                                                        <?php
-                                                        }
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-6" style="padding: 10px">
-                                                    <label for="situacao">Situação</label>
-                                                    <select name="situacao" id="situacao" class="form-control">
-                                                        <option value="ativo">Ativo</option>
-                                                        <option value="inativo">Inativo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <!-- <div class="row" style="padding: 10px;">
-                                                <label for="disciplina">
-                                                    <h4>Selecione as Disciplina da Turma</h4>
-                                                </label>
-
-
-                                                INICIO SELECIONAR DIVERSAS DISCIPLINA
-
-                                                <table class="table" id="disciplina" style="border-width: 5px; border-color:red;">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Disciplina</th>
-                                                            <th scope="col">Selecionar</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <php
                                                         include("conexao.php");
 
                                                         $sql = "SELECT * FROM disciplina";
@@ -408,89 +340,141 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <tr>
-                                                                <td value="<php echo $dados['codigo'] ?>">
-                                                                    <php echo $dados['descricao'] ?>
-                                                                </td>
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
 
-                                                                <td> <input type="checkbox" class="form-check" name="selecionado"></input>
-
-                                                                </td>
-
-                                                        <php
+                                                        <?php
                                                         }
-                                                            ?>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            
-                                            FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
-
-
-                                            <div class="row">
-                                                <div class="col-md-12" style="margin-top: 90px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                        Salvar
-                                                    </button>
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                        ?>
+                                                    </select>
                                                 </div>
+
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="dataInicio">Data inicio</label>
+                                                    <input name="dataInicio" type="date" id="dataInicio" class="form-control">
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-3">
+                                                    <label for="dataFim">Data Fim</label>
+                                                    <input name="dataFim" type="date" id="dataFim" class="form-control">
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row" style="padding-top: 20px;">
+
+                                                <div class="col-md-3 col-xs-8">
+                                                    <label for="professor">Professor</label>
+                                                    <select class="form-control" name="professor" id="professor">
+                                                        <option>Selecione o professor...</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM professor";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['cpf'] ?>">
+                                                                <?php echo $dados['nome'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" style="padding-top: 20px;">
+                                                <div class="col-md-3 col-xs-8">
+                                                    <label for="diaSemana1">Dia da semana 1</label>
+                                                    <select class="form-control" name="diaSemana1" id="diaSemana1">
+                                                        <option>Escolha o dia</option>
+                                                        <option value="segunda">Segunda-feira</option>
+                                                        <option value="terca">Terça-feira</option>
+                                                        <option value="quarta">Quarta-feira</option>
+                                                        <option value="quinta">Quinta-feira</option>
+                                                        <option value="sexta">Sexta-feira</option>
+
+                                                    </select>
+
+
+                                                </div>
+                                                <div class="col-md-8 col-xs-2" style="padding-top: 40px; padding-right: 20px">
+                                                    <input type="checkbox" name="aula1" value="1">   1ª
+                                                    <input type="checkbox" name="aula2" value="2">   2ª
+                                                    <input type="checkbox" name="aula3" value="3">   3ª
+                                                    <input type="checkbox" name="aula4" value="4">   4ª
+                                                    <input type="checkbox" name="aula5" value="5">   5ª
+                                                    <input type="checkbox" name="aula6" value="6">   6ª
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12" style="margin-top: 90px" text-align="right">
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                    Salvar
+                                                </button>
+                                                <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="modal-success">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-success">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Turma</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Deseja salvar a turma?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
-                                </form>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                                    the plugin. -->
-                                </div>
-                                <!-- /.card-footer -->
                             </div>
+                            <div class="modal fade" id="modal-success">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-success">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Cadastro Turma</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Deseja salvar a turma?</p>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                            <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            </form>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.teste -->
                     </div>
+                    <!-- /.teste -->
                 </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.1.0
-            </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
-            rights
-            reserved.
-        </footer>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+        <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>Version</b> 3.1.0
+        </div>
+        <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
+        rights
+        reserved.
+    </footer>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
