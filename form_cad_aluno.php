@@ -310,6 +310,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                             </div></br>
+                                            
                                             <div class="row">
                                                 <div class="col-md-4 col-xs-6">
                                                     <label for="curso">Curso</label>

@@ -40,8 +40,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <!-- API preenchimento automático -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
- <!-- Função preenchimento automático -->
- <script type='text/javascript'>
+    <!-- Função preenchimento automático -->
+    <script type='text/javascript'>
         $(document).ready(function() {
             $("input[name='codigo']").blur(function() {
                 var $descricao = $("input[name='descricao']");
@@ -56,9 +56,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                     $descricao.val(json.descricao);
                     $etapa.val(json.etapa);
                     $semestreAno.val(json.semestreAno);
-                    $calendario.val( json.calendario );
-                    $curso.val( json.curso );
-                    $situacao.val( json.situacao );
+                    $calendario.val(json.calendario);
+                    $curso.val(json.curso);
+                    $situacao.val(json.situacao);
                 });
             });
         });
@@ -292,7 +292,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="cadastrar_Turma.php" method="POST">
+                                <form action="cadastrar_Disciplina_turma.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
@@ -344,14 +344,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <label for="curso">Curso</label>
                                                     <select class="form-control" name="curso" id="curso">
                                                         <option>ESCOLHA O CURSO</option>
-                                                        
+
                                                         <?php
-                                                            include("conexao.php");
+                                                        include("conexao.php");
 
-                                                            $sql = "SELECT * FROM curso";
-                                                            $resultado = mysqli_query($connx, $sql);
+                                                        $sql = "SELECT * FROM curso";
+                                                        $resultado = mysqli_query($connx, $sql);
 
-                                                            while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
 
                                                             <option value="<?php echo $dados['codigo'] ?>">
@@ -374,48 +374,55 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                             </div>
 
-                                            <div class="row" style="padding: 10px;">
-                                                <label for="disciplina">
-                                                    <h4>Selecione as Disciplina da Turma</h4>
-                                                </label>
+                                            <div class="row" style="padding-top: 20px;">
+                                                <div class="col-md-5">
+                                                    <label for="disciplina">
+                                                        <h4>Selecione as Disciplina da Turma</h4>
+                                                    </label>
 
 
-                                                <!--INICIO SELECIONAR DIVERSAS DISCIPLINA-->
+                                                    <!--INICIO SELECIONAR DIVERSAS DISCIPLINA-->
 
-                                                <table class="table" id="disciplina" style="border-width: 5px; border-color:red;">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Disciplina</th>
-                                                            <th scope="col">Selecionar</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT * FROM disciplina";
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
+                                                    <table class="table">
+                                                        <thead>
                                                             <tr>
-                                                                <td value="<?php echo $dados['codigo'] ?>">
-                                                                    <?php echo $dados['descricao'] ?>
-                                                                </td>
-
-                                                                <td> <input type="checkbox" class="form-check" name="selecionado"></input>
-
-                                                                </td>
-
-                                                        <?php
-                                                        }
-                                                            ?>
+                                                                <th scope="col">Disciplina</th>
+                                                                <th scope="col">Selecionar</th>
                                                             </tr>
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <?php
+                                                            include("conexao.php");
+
+                                                            $sql = "SELECT * FROM disciplina";
+                                                            $resultado = mysqli_query($connx, $sql);
+
+                                                            while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                            ?>
+                                                                <tr>
+                                                                    <td>
+                                                                        <?php echo $dados['descricao'] ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" value="<?php echo $dados['codigo'] ?>" name="disc_selecionada">
+                                                                    </td>
+
+                                                                    </td>
+
+                                                                    <td>
+
+                                                                    </td>
+
+                                                                <?php
+                                                            }
+                                                                ?>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                            
+
                                             <!-- FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
 
 

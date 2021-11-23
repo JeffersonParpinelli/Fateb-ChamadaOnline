@@ -2,10 +2,20 @@
 //inclui conexao com banco
 include 'conexao.php';
 
+$id_disciplina = $_GET['id'];
+
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM disciplina";
-//fazer busca dados da tabela através da query
-$query_cadastros = mysqli_query($connx, $buscar_cadastros);
+$sql = "SELECT * FROM disciplina WHERE codigo = $id_disciplina ";
+
+$result = mysqli_query($connx, $sql);
+
+$dados = mysqli_fetch_assoc($result);
+
+$codigo_disciplina = $dados['codigo'];
+$descricao_disciplina = $dados['descricao'];
+$cargaHoraria_disciplina = $dados['cargaHoraria'];
+$qtdeAulasSemanais_disciplina = $dados['qtdeAulasSemanais'];
+$situacao_disciplina = $dados['situacao'];
 
 ?>
 
@@ -13,9 +23,9 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <html lang="pt-BR">
 
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Curso</title>
+    <title>Fateb | Cursos da Disciplina</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -36,8 +46,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-    <!-- API preenchimento automático -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
     <!-- Função preenchimento automático -->
     <script type='text/javascript'>
@@ -57,12 +65,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 });
             });
         });
-    </script>
 
-    <script>
-        function openEvents() {
-            location.href = "form_cad_disciplina_curso.php?id=" + document.getElementById("codigo").value;
-        }
     </script>
 
 </head>
@@ -230,12 +233,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Disciplina</h1>
+                            <h1>Cursos da Disciplina</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Disciplina</li>
+                                <li class="breadcrumb-item active">Cursos da Disciplina</li>
                             </ol>
                         </div>
                     </div>
@@ -294,107 +297,95 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <div class="x_panel">
                                 <div class="card card-default">
                                     <!-- /.card-header -->
-                                    <form action="cadastrar_Disciplina.php" method="POST" align="left">
+                                    <form action="cadastrar_Disciplina_Curso.php" method="POST" align="left">
                                         <div class="card-body">
                                             <div class="x_content" style="display: block;">
                                                 <div class="row">
                                                     <div class="col-md-1 col-xs-3">
                                                         <label for="codigo">Código</label>
-                                                        <input name="codigo" type="text" id="codigo" class="form-control" required="">
+                                                        <input name="codigo" type="text" readonly id="codigo" class="form-control" value="<?php echo $codigo_disciplina?>">
                                                     </div>
 
                                                     <div class="col-md-8 col-xs-12">
                                                         <label for="descricao">Descrição</label>
-                                                        <input name="descricao" type="text" id="descricao" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                        <input name="descricao" type="text" id="descricao" readonly onblur="this.value=this.value.toUpperCase();" class="form-control" value="<?php echo $descricao_disciplina?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="row" style="padding-top: 10px;">
-                                                    <div class="col-md-2 col-xs-12">
-                                                        <label for="cargaHoraria">Carga Horária</label>
-                                                        <input name="cargaHoraria" type="text" maxlength="200" id="cargaHoraria" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                    </div>
+                                                <div class="row" style="padding-top: 20px;">
+                                                    <div class="col-md-3 col-xs-6">
+                                                        <label for="curso">Curso</label>
+                                                        <select class="form-control" name="curso" id="curso">
+                                                            <option>ESCOLHA O CURSO</option>
+                                                            <?php
+                                                            include("conexao.php");
 
-                                                    <div class="col-md-2 col-xs-8">
-                                                        <label for="qtdeAulasSemanais">Qtde de aulas semanais</label>
-                                                        <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
+                                                            $sql = "SELECT * FROM curso";
+                                                            $resultado = mysqli_query($connx, $sql);
+
+                                                            while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                            ?>
+
+                                                                <option value="<?php echo $dados['codigo'] ?>">
+                                                                    <?php echo $dados['descricao'] ?>
+                                                                </option>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+
                                                         </select>
                                                     </div>
 
-                                                    <div class="col-md-2 col-xs-6">
-                                                        <!--Display none esconde elemento-->
-                                                        <label for="situacao">Situação</label>
-                                                        <select name="situacao" id="situacao" class="form-control">
-                                                            <option value="ativo">Ativo</option>
-                                                            <option value="inativo">Inativo</option>
-                                                        </select>
-                                                    </div>
                                                 </div>
-
-
-                                                <div class="col-md-2 col-xs-12" style="padding-top: 20px;">
-                                                    <label for="cursos">INCLUIR DISCIPLINA AOS CURSOS</label><br>
-                                                    <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">CURSOS</a>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                        Salvar
-                                                    </button>
-                                                    <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
+                                                <div class="row">
+                                                    <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                            Salvar
+                                                        </button>
+                                                        <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
                                                         class="btn btn-primary pull-right">-->
-                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                        <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                        <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                </div>
 
-                                <div class="modal fade" id="modal-success">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content bg-success">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Cadastro Disciplina</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                        <div class="modal fade" id="modal-success">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-success">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Vincular Curso a Disciplina</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Deseja salvar?</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                        <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
                                             </div>
-                                            <div class="modal-body">
-                                                <p>Deseja salvar o disciplina?</p>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                            </div>
+                                            <!-- /.modal-dialog -->
                                         </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                <!-- /.modal -->
-                                </form>
+                                        <!-- /.modal -->
+                                    </form>
 
-                                <!-- /.card-body -->
-                                <div class="card-footer">
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                    </div>
+                                    <!-- /.card-footer -->
                                 </div>
-                                <!-- /.card-footer -->
                             </div>
+                            <!-- /.teste -->
                         </div>
-                        <!-- /.teste -->
                     </div>
-                </div>
-                <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>

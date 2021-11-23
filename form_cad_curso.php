@@ -38,6 +38,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <!-- API preenchimento automático -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+ 
 
     <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
     <script>
@@ -63,6 +64,23 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             });
         });
     </script>
+
+    <script>
+        $(function() {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            $('.toastrDefaultSuccess').click(function() {
+                toastr.success('Cadastro efetuado!')
+            });
+
+        });
+    </script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -319,10 +337,10 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                    <button type="button" class="btn btn-success toastrDefaultSuccess" data-toggle="modal" data-target="#modal-success">
                                                         Salvar
                                                     </button>
-                                                    
+
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                     <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>

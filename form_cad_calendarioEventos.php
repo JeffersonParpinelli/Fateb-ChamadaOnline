@@ -265,7 +265,8 @@ $semestreAno_calendario = $dados['semestreAno'];
 
                                                 <div class="col-md-2 col-xs-8">
                                                     <label for="codCalendario">Calendário</label>
-                                                    <input name="codCalendario" readonly type="text" maxlength="5" id="codCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" value="<?php echo $id_calendario ?> " >
+                                                    <input name="codCalendario" readonly type="hidden" onblur="this.value=this.value.toUpperCase();" class="form-control" value="<?php echo $id_calendario ?> " >
+                                                    <input readonly type="text" id="codCalendario" onblur="this.value=this.value.toUpperCase();" class="form-control" value="<?php echo $semestreAno_calendario ?> " >
 
                                                 </div>
 
