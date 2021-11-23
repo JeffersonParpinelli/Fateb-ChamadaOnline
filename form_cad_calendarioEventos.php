@@ -259,7 +259,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                             <div class="row">
 
                                                 <div class="col-md-1 col-xs-3">
-                                                    <label for="codigo">Código</label>
+                                                    <label for="ID">Código</label>
                                                     <input name="codigo" type="text" id="codigo" maxlength="4" class="form-control">
                                                 </div>
 

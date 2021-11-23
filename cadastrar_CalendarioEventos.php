@@ -6,9 +6,7 @@ include 'conexao.php';
 //$ o que esta em Cifrão$ é o nome que esta no banco, entre '' é o name do input
 $codigo = $_POST['codigo'];
 $codCalendario = $_POST['codCalendario'];
-// $data = $_POST['data'];
-// $data =   date_format($dataEvento,'Y-m-d');
-$data = date('Y-m-d H:i:s');
+$data = $_POST['data'];
 $tipo = $_POST['tipo'];
 $descMotivo = $_POST['descMotivo'];
 $qtdeAulas = $_POST['qtdeAulas'];

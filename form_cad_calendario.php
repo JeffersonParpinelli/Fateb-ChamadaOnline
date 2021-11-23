@@ -250,17 +250,18 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         <div class="page-title" align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
-                                    <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
+                                    <div class="col-md-3 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
                                                 <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendario">
+                                                <input type="submit" name="btnPesquisarEvento" value="Pesquisar Eventos" id="btnPesquisarEvento" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendarioEvento">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.modal -->
+                            <!-- /.modal calendário -->
                             <form method="POST" action="listarCalendario.php">
                                 <div class="modal fade show" id="modal-listarCalendario">
                                     <div class="modal-dialog modal-lg">
@@ -277,6 +278,41 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <tr>
                                                             <td> <?php
                                                                     include("listar_Calendario.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
+                            <!-- /.modal -->
+
+                              <!-- /.modal calendário de eventos -->
+                              <form method="POST" action="listarCalendarioEvento.php">
+                                <div class="modal fade show" id="modal-listarCalendarioEvento">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Eventos</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_CalendarioEvento.php");
                                                                     ?>
                                                             </td>
                                                         </tr>
