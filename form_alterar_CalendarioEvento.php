@@ -436,7 +436,7 @@ $codDisc = $dados['codDisc'];
                                         Salvar
                                     </button>
                                     <a href="form_cad_calendario.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
-                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                    <a href="excluir_CalendarioEvento.php?id=<?php echo $id_calendarioEvento?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>
                         </div>
