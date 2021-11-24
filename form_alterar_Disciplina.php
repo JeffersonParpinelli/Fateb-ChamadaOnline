@@ -92,7 +92,7 @@ $sit_disciplina = $dados['situacao'];
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
@@ -187,14 +187,7 @@ $sit_disciplina = $dados['situacao'];
                                         <p>Calendário</p>
                                     </a>
                                 </li>
-                                <!--Link para CALENDARIO EVENTOS-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_calendarioEventos.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário Eventos</p>
-                                    </a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -405,9 +398,7 @@ $sit_disciplina = $dados['situacao'];
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
-            rights
-            reserved.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">

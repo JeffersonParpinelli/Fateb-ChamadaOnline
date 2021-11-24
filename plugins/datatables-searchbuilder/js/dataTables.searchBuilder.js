@@ -3,7 +3,7 @@
 
 	/*! DateTime picker for DataTables.net v1.0.1
 	 *
-	 * ©2020 SpryMedia Ltd, all rights reserved.
+	 * ©2020 SpryMedia Ltd, Todos os direitos reservados.
 	 * License: MIT datatables.net/license/mit
 	 */
 

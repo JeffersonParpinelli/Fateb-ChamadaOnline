@@ -506,7 +506,7 @@
              * Open source under the BSD License. 
              * 
              * Copyright Â© 2001 Robert Penner
-             * All rights reserved.
+             * Todos os direitos reservados.
              * 
              * Redistribution and use in source and binary forms, with or without modification, 
              * are permitted provided that the following conditions are met:

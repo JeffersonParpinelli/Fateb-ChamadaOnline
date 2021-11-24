@@ -19845,7 +19845,7 @@ module.exports = function (C, x) {
 /* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* Copyright 2013 Google Inc. All Rights Reserved.
+/* Copyright 2013 Google Inc. Todos os direitos reservados.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -20829,7 +20829,7 @@ exports.BrotliOutput = BrotliOutput;
 /* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* Copyright 2013 Google Inc. All Rights Reserved.
+/* Copyright 2013 Google Inc. Todos os direitos reservados.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -37811,7 +37811,7 @@ module.exports = {
 }(this, function (CryptoJS) {
 
 	/** @preserve
-	(c) 2012 by Cédric Mesnil. All rights reserved.
+	(c) 2012 by Cédric Mesnil. Todos os direitos reservados.
 
 	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -63332,7 +63332,7 @@ module.exports = __webpack_require__(286).BrotliDecompressBuffer;
 /* 527 */
 /***/ (function(module, exports) {
 
-/* Copyright 2013 Google Inc. All Rights Reserved.
+/* Copyright 2013 Google Inc. Todos os direitos reservados.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -63647,7 +63647,7 @@ module.exports="W5/fcQLn5gKf2XUbAiQ1XULX+TZz6ADToDsgqk6qVfeC0e4m6OO2wcQ1J76ZBVRV
 /* 531 */
 /***/ (function(module, exports) {
 
-/* Copyright 2013 Google Inc. All Rights Reserved.
+/* Copyright 2013 Google Inc. Todos os direitos reservados.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -63903,7 +63903,7 @@ exports.lookupOffsets = new Uint16Array([
 /* 532 */
 /***/ (function(module, exports) {
 
-/* Copyright 2013 Google Inc. All Rights Reserved.
+/* Copyright 2013 Google Inc. Todos os direitos reservados.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -63969,7 +63969,7 @@ exports.kCopyRangeLut = [
 /* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* Copyright 2013 Google Inc. All Rights Reserved.
+/* Copyright 2013 Google Inc. Todos os direitos reservados.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

@@ -94,7 +94,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="./dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="./dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
@@ -189,14 +189,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                         <p>Calendário</p>
                                     </a>
                                 </li>
-                                <!--Link para CALENDARIO EVENTOS-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_calendarioEventos.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário Eventos</p>
-                                    </a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -289,7 +282,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                             <div class="row" style="padding-top: 10px;">
                                                 <div class="col-md-10 col-xs-12">
                                                     <label for="descMotivo">Descrição/Motivo</label>
-                                                    <input name="descMotivo" type="text" maxlength="100" id="descMotivo" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
+                                                    <input name="descMotivo" type="text" maxlength="100" id="descMotivo" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" required="">
                                                 </div>
                                             </div>
 
@@ -355,7 +348,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
                                                         Salvar
                                                     </button>
-                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <a href="form_cad_calendario.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
                                                     <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
                                                 </div>
                                             </div>
@@ -403,9 +396,7 @@ $semestreAno_calendario = $dados['semestreAno'];
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All
-            rights
-            reserved.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
