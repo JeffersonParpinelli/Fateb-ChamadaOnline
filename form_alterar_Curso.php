@@ -13,7 +13,7 @@ $dados = mysqli_fetch_assoc($result);
 
 $id_curso = $dados['codigo'];
 $nome_curso = $dados['descricao'];
-$sit_curso = $dados['situacao'];    
+$sit_curso = $dados['situacao'];
 
 ?>
 
@@ -185,7 +185,7 @@ $sit_curso = $dados['situacao'];
                                         <p>Calendário</p>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -211,12 +211,12 @@ $sit_curso = $dados['situacao'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Curso</h1>
+                            <h1>Alterar Curso</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Curso</li>
+                                <li class="breadcrumb-item active">Alterar Curso</li>
                             </ol>
                         </div>
                     </div>
@@ -249,7 +249,7 @@ $sit_curso = $dados['situacao'];
                             <div class="row">
                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                     <input type="submit" value="Salvar" class="btn btn-success">
-                                    <a href="cad_curso.php"><input type="submit" value="VOLTAR" class="btn btn-primary pull-right"></a>
+                                    <a href="form_cad_curso.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
                                     <a href="excluir_Curso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>
@@ -285,7 +285,7 @@ $sit_curso = $dados['situacao'];
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
-    <!-- Page specific script -->    
+    <!-- Page specific script -->
     <script>
         $(function() {
             /* jQueryKnob */

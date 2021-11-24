@@ -196,7 +196,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <a href="./form_cad_calendario.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário Letivo</p>
+                                        <p>Calendário</p>
                                     </a>
                                 </li>
                                 

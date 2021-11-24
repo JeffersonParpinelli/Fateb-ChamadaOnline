@@ -29,7 +29,7 @@ $curso = $dados['descricao'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Turma</title>
+    <title>Fateb | Alterar Turma</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -191,7 +191,7 @@ $curso = $dados['descricao'];
                                         <p>Calendário</p>
                                     </a>
                                 </li>
-                                
+
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -217,12 +217,12 @@ $curso = $dados['descricao'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Turma</h1>
+                            <h1>Alterar Turma</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Turma </li>
+                                <li class="breadcrumb-item active">Alterar Turma</li>
                             </ol>
                         </div>
                     </div>
@@ -256,7 +256,7 @@ $curso = $dados['descricao'];
                             </div>
 
                             <div class="row" style="padding-top: 10px;">
-                                <div class="col-md-2 col-xs-6">
+                                <div class="col-md-3 col-xs-6">
                                     <label for="curso">Curso</label>
                                     <select class="form-control" name="curso">
 
@@ -290,7 +290,6 @@ $curso = $dados['descricao'];
                                 <div class="col-md-2 col-xs-8">
                                     <label for="calendario">Calendario</label>
                                     <select class="form-control" name="calendario" id="calendario">
-                                        <option>Selecione o calendario...</option>
                                         <?php
                                         include("conexao.php");
 
@@ -346,7 +345,7 @@ $curso = $dados['descricao'];
                             <div class="row">
                                 <div class="col-md-12" style="margin-top: 140px" text-align="right">
                                     <input type="submit" value="Salvar" class="btn btn-success">
-                                    <a href="form_cad_turma.php" type="button" class="btn btn-primary pull-right">VOLTAR</a>
+                                    <a href="form_cad_turma.php" type="button" class="btn btn-primary pull-right">Voltar</a>
                                     <a href="excluir_Turma.php?id=<?php echo $id_turma ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>

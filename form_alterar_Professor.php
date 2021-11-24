@@ -239,12 +239,12 @@ $sit_professor = $dados['situacao'];
                                     <input name="nome" type="text" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $nome_professor ?>">
                                 </div>
 
-                                <div class="col-md-3 col-xs-6">
+                                <div class="col-md-2 col-xs-6">
                                     <label for="senha">SENHA</label>
                                     <input name="senha" type="password" id="senha" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $senha_professor ?>">
                                 </div>
 
-                                <div class="col-md-1 col-xs-6">
+                                <div class="col-md-2 col-xs-6">
                                     <label for="situacao">Situação: </label>
                                     <select name="situacao" id="situacao" class="form-control" value="<?php echo $sit_professor ?>">
                                         <option value="ativo">Ativo</option>
@@ -256,7 +256,7 @@ $sit_professor = $dados['situacao'];
                             <div class="row">
                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                     <input type="submit" value="Salvar" class="btn btn-success">
-                                    <a href="cad_Professor.php"><input type="submit" value="VOLTAR" class="btn btn-primary pull-right"></a>
+                                    <a href="form_cad_Professor.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
                                     <a href="excluir_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>

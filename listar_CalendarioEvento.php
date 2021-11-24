@@ -17,7 +17,7 @@ while ($dados = mysqli_fetch_assoc($result)) {
 
 ?>
     <a href="excluir_CalendarioEvento.php?id=<?php echo $id_calendarioEvento ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
-    <a href="form_alterar_Calendario.php?id=<?php echo $id_calendarioEvento ?>" type="button" class="btn btn-primary pull-right">Alterar</a><br><br>
+    <a href="form_alterar_CalendarioEvento.php?id=<?php echo $id_calendarioEvento ?>" type="button" class="btn btn-primary pull-right">Alterar</a><br><br>
 <?php
 }
 ?>

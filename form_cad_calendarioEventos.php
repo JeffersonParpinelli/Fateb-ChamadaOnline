@@ -230,20 +230,7 @@ $semestreAno_calendario = $dados['semestreAno'];
             <section class="content">
                 <div class="container-fluid">
                     <div class="col-md-12">
-                        <div class="page-title" align="right">
-                            <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
-                                <div class="title_right">
-                                    <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
-                                        <div class="input-group">
-                                            <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
-                                            <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="x_panel">
                             <div class="card card-default">
                                 <form action="cadastrar_CalendarioEventos.php" method="POST">
@@ -271,10 +258,10 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                 <div class="col-md-2,5 col-xs-12">
                                                     <label for="tipo">Tipo</label>
                                                     <select required="" class="form-control" name="tipo" id="tipo">
-                                                        <option value="feriado">FERIADO</option>
-                                                        <option value="recesso">RECESSO</option>
-                                                        <option value="reposicaoAula">REPOSIÇÃO DE AULA</option>
-                                                        <option value="aulaExtra">AULA EXTRA</option>
+                                                        <option value="FERIADO">FERIADO</option>
+                                                        <option value="RECESSO">RECESSO</option>
+                                                        <option value="REPOSICAO AULA">REPOSIÇÃO DE AULA</option>
+                                                        <option value="AULA EXTRA">AULA EXTRA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -349,7 +336,6 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                         Salvar
                                                     </button>
                                                     <a href="form_cad_calendario.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
                                                 </div>
                                             </div>
                                         </div>

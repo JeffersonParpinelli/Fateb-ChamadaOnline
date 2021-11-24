@@ -304,7 +304,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <input name="nome" type="text" id="nome" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>
 
-                                                <div class="col-md-4 col-xs-6">
+                                                <div class="col-md-2 col-xs-6">
                                                     <label for="senha">SENHA</label>
                                                     <input name="senha" type="password" id="senha" class="form-control" required="">
                                                 </div>
@@ -320,8 +320,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <input type="button" class="btn btn-success" value="SALVAR" data-toggle="modal" data-target="#modal-success"></input>
-                                                    <a href="alterar_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-primary pull-right">ALTERAR</a>
+                                                    <input type="button" class="btn btn-success" value="Salvar" data-toggle="modal" data-target="#modal-success"></input>
+                                                    <!-- <a href="alterar_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-primary pull-right">Alterar</a> -->
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                     <a href="excluir_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>

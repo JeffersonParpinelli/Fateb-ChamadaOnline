@@ -240,7 +240,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                             <div class="row">
                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                     <input type="submit" value="Salvar" class="btn btn-success">
-                                    <a href="form_cad_calendario.php"><input type="submit" value="VOLTAR" class="btn btn-primary pull-right"></a>
+                                    <a href="form_cad_calendario.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
                                     <a href="excluir_Calendario.php?id=<?php echo $id_calendario ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>
