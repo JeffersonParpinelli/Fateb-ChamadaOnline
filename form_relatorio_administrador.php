@@ -1,13 +1,34 @@
-<?php
-//inclui conexao com banco
-include 'conexao.php';
-
-//pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM calendario";
-//fazer busca dados da tabela através da query
-$query_cadastros = mysqli_query($connx, $buscar_cadastros);
-
-?>
+<!-- 
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Combos Dependentes</title>
+<script src="jquery-1.11.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+<select id="CmbCurso"> 
+    <option value="">Selecione a o curso</option>
+</select>
+<select id="CmbCidade"> 
+</select>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#CmbCurso').change(function(e) {
+            $('#CmbDisciplina').empty();
+            var id = $(this).val();
+            $.post('call_disciplinas.php', {ufid:id}, function(data){
+                var cmb = '<option value="">Selecione a Disciplina</option>';
+                $.each(data, function (index, value){
+                    cmb = cmb + '<option value="' + value.disciplina_codigo + '">' + value.disciplina + '</option>';;
+                });
+                $('#CmbDisciplina').html(cmb);
+            }, 'json');
+        });
+    });
+</script>
+</body>
+</html> -->
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -15,58 +36,30 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Calendario Letivo</title>
+    <title>Fateb | Relatório</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="./plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="./plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
-    <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <!-- API preenchimento automático -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
-    <!-- Função preenchimento automático -->
-    <script type='text/javascript'>
-        $(document).ready(function() {
-            $("input[name='codCalendario']").blur(function() {
-                var $semestreAno = $("input[name='semestreAno']");
-                $.getJSON('functionCalendario.php', {
-                    codCalendario: $(this).val()
-                }, function(json) {
-                    $semestreAno.val(json.semestreAno);
-                   
-                });
-            });
-        });
-
-        function openEvents(){
-            location.href ="form_cad_calendarioEventos.php?id=" + document.getElementById("codCalendario").value;
-        }
-    </script>
-
-    <!-- Função limpar campos -->
-    <script type="text/javascript">
-        function limparCampo() {
-            document.getElementById("codCalendario").value = "";
-            document.getElementById('codCalendario').focus();
-            document.getElementById("semestreAno").value = "";
-            document.getElementById('semestreAno').focus();
-        }
-    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -104,13 +97,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="./dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
                     </div>
                 </div>
-                <!-- SidebarSearch Form / BARRA LATERAL PESQUISA -->
+                <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
@@ -121,7 +114,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </div>
                     </div>
                 </div>
-                <!-- SIDEBAR MENU / BARRA LATERAL -->
+                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
@@ -207,6 +200,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <p>Relatório</p>
                                     </a>
                                 </li>
+
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -232,12 +226,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Calendário Letivo</h1>
+                            <h1>Relatório de Chamadas</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Calendário Letivo</li>
+                                <li class="breadcrumb-item active">Relatório</li>
                             </ol>
                         </div>
                     </div>
@@ -250,147 +244,249 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         <div class="page-title" align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
-                                    <div class="col-md-3 col-sm-8 col-xs-12 form-group pull-right top_search">
+                                    <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendario">
-                                                <input type="submit" name="btnPesquisarEvento" value="Pesquisar Eventos" id="btnPesquisarEvento" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendarioEvento">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.modal calendário -->
-                            <form method="POST" action="listarCalendario.php">
-                                <div class="modal fade show" id="modal-listarCalendario">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Calendários</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <table class="table table-striped">
-                                                        <tr>
-                                                            <td> <?php
-                                                                    include("listar_Calendario.php");
-                                                                    ?>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                            </form>
-                            <!-- /.modal -->
-
-                              <!-- /.modal calendário de eventos -->
-                              <form method="POST" action="listarCalendarioEvento.php">
-                                <div class="modal fade show" id="modal-listarCalendarioEvento">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Eventos</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <table class="table table-striped">
-                                                        <tr>
-                                                            <td> <?php
-                                                                    include("listar_CalendarioEvento.php");
-                                                                    ?>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
-                                            </div>
-                                        </div>
-                                        <!-- /.modal-content -->
-                                    </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                            </form>
-                            <!-- /.modal -->
                         </div>
+                        <!-- /.modal -->
+                        <form method="POST" action="listar_Turma.php">
+                            <div class="modal fade show" id="modal-listarTurma">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Relatório</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <td> <?php
+                                                                include("listar_Turma.php");
+                                                                ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                            <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="cadastrar_Calendario.php" method="POST">
+                                <form action="gerarRelatorio.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
+
                                             <div class="row">
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="ID">Código</label>
-                                                    <input name="codCalendario" type="text" id="codCalendario" maxlength="4" class="form-control">
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                    <label for="semestreAno">Data Inicial</label>
+                                                    <input name="semestreAno" type="date" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-12">
-                                                    <label for="semestreAno">Semestre/Ano</label>
-                                                    <input name="semestreAno" type="text" maxlength="5" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                    <label for="semestreAno">Data Final</label>
+                                                    <input name="semestreAno" type="date" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-12">
-                                                    <label for="Eventos">Eventos</label><br>
-                                                    <a ref="javascript:void(0);" onclick="openEvents()"><img  src="dist/img/btnCalendarioEvento.png" height="60" width="60" type="button"></a>
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
+                                                    <label for="curso">Curso</label>
+                                                    <select class="form-control" name="curso" id="curso">
+                                                        <option>Escolha o curso</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM curso";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
+                                                    <label for="curso">Disciplina</label>
+                                                    <select class="form-control" name="curso" id="curso">
+                                                        <option>Escolha a disciplina</option>
+                                                        <?php
+                                                        include("conexao.php");
+                                                        $curso_selecionado = $dados['codigo'];
+
+                                                        $sql = "SELECT * FROM disciplina";
+
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
+                                                    <label for="curso">Disciplina</label>
+                                                    <select class="form-control" name="curso" id="curso">
+                                                        <option>Escolha a disciplina</option>
+                                                        <?php
+                                                        include("conexao.php");
+                                                        $curso_selecionado = $dados['codigo'];
+
+                                                        $sql = "SELECT * FROM disciplina";
+
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                    <label for="aluno">Aluno</label>
+                                                    <select class="form-control" name="aluno" id="aluno">
+                                                        <option>Selecione o aluno</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM aluno";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['ra'] ?>">
+                                                                <?php echo $dados['nome'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
 
                                             </div>
+
+                                            <div class="row" style="padding-top: 20px;">
+                                                <table class="table" id="aluno">
+                                                    <thead>
+                                                        <tr>
+                                                        <th scope="col">Curso</th>
+                                                        <th scope="col">Disciplina</th>
+                                                            <th scope="col">Professor</th>
+                                                            <th scope="col">Aluno</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM curso, disciplina, professor, aluno WHERE curso.codigo = 1 
+                                                        AND disciplina.codigo = 1 
+                                                        AND professor.cpf = 1";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <tr>
+                                                                <td>
+                                                                    ADMINISTRAÇÃO
+                                                                </td>
+                                                                <td>
+                                                                    PROGRAMAÇÃO 10
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $dados['nome'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $dados['nome'] ?>
+                                                                </td>
+
+                                                            <?php
+                                                        }
+                                                            ?>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <!-- FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
+
                                             <div class="row">
-                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                        Salvar
+                                                <div class="col-md-12" style="margin-top: 90px" text-align="right">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-success">
+                                                        Visualizar relatório
                                                     </button>
-                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <a href="excluir_Calendario.php?id=<?php echo $id_calendario ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
+
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                        Gerar relatório
+                                                    </button>
+                                                    <input type="submit" name="btnLimpar" value="Limpar Campos" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                 </div>
                                             </div>
-
                                         </div>
-
-                                        <div class="modal fade" id="modal-success">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content bg-success">
-                                                    <div class="modal-header">
-                                                        <h4 class="modal-title">Cadastro Calendário Letivo</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Deseja salvar o calendário letivo?</p>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-between">
-                                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                        <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                                    </div>
-                                                </div>
-                                                <!--/.modal-content -->
-                                            </div>
-                                            <!-- /.modal-dialog -->
-                                        </div>
-                                        <!-- /.modal -->
                                     </div>
+                                    <div class="modal fade" id="modal-success">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-success">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Cadastro Turma</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja salvar a turma?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
                                 </form>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
+                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                                    the plugin. -->
                                 </div>
                                 <!-- /.card-footer -->
                             </div>

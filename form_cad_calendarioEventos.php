@@ -189,7 +189,14 @@ $semestreAno_calendario = $dados['semestreAno'];
                                         <p>Calendário</p>
                                     </a>
                                 </li>
-                                
+                                <!--Link para RELATÓRIO-->
+                                <li class="nav-item">
+                                    <a href="./form_relatorio_administrador.php" class="nav-link">
+                                        <!--Página que será chamada href-->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Relatório</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -255,6 +262,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                     <input name="data" type="DATE" id="data" onblur="this.value=this.value.toUpperCase();" class="form-control">
                                                 </div>
 
+                                                
                                                 <div class="col-md-2,5 col-xs-12">
                                                     <label for="tipo">Tipo</label>
                                                     <select required="" class="form-control" name="tipo" id="tipo">

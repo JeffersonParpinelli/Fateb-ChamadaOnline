@@ -204,6 +204,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <p>Calendário</p>
                                     </a>
                                 </li>
+                                <!--Link para RELATÓRIO-->
+                                <li class="nav-item">
+                                    <a href="./form_relatorio_administrador.php" class="nav-link">
+                                        <!--Página que será chamada href-->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Relatório</p>
+                                    </a>
+                                </li>
                                 
                             </ul>
                         </li>
@@ -230,7 +238,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1> Vincular Alunos a Disciplina</h1>
+                            <h1> Vincular Matricula a Disciplina</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">

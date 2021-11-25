@@ -193,7 +193,14 @@ $codDisc = $dados['codDisc'];
                                         <p>Calendário</p>
                                     </a>
                                 </li>
-
+                                <!--Link para RELATÓRIO-->
+                                <li class="nav-item">
+                                    <a href="./form_relatorio_administrador.php" class="nav-link">
+                                        <!--Página que será chamada href-->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Relatório</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <!--Fim ul de cadastros-->
@@ -436,7 +443,7 @@ $codDisc = $dados['codDisc'];
                                         Salvar
                                     </button>
                                     <a href="form_cad_calendario.php"><input type="button" value="Voltar" class="btn btn-primary pull-right"></a>
-                                    <a href="excluir_CalendarioEvento.php?id=<?php echo $id_calendarioEvento?>" type="button" class="btn btn-danger pull-right">Excluir</a>
+                                    <a href="excluir_CalendarioEvento.php?id=<?php echo $id_calendarioEvento ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                 </div>
                             </div>
                         </div>

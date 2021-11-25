@@ -3,9 +3,11 @@
 include 'conexao.php';
 
 //pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM aluno,curso";
+$buscar_cadastros = "SELECT * FROM turma";
+
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Aluno</title>
+    <title>Fateb | Relatório</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -35,8 +37,11 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    <!-- API preenchimento automático -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+    <!-- Função para deixar letra maiúscula colocar no input-->
     <script>
-        // Função para deixar letra maiúscula colocar no input --> (onkeydown="upperCaseF(this)")
         function upperCaseF(a) {
             setTimeout(function() {
                 a.value = a.value.toUpperCase();
@@ -47,19 +52,22 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <!-- Função preenchimento automático -->
     <script type='text/javascript'>
         $(document).ready(function() {
-            $("input[name='ra']").blur(function() {
-                var $nome = $("input[name='nome']");
+            $("input[name='codigo']").blur(function() {
+                var $descricao = $("input[name='descricao']");
+                var $etapa = $("input[name='etapa']");
                 var $semestreAno = $("input[name='semestreAno']");
-                var $situacao = $("select[name='situacao']");
+                var $calendario = $("select[name='calendario']");
                 var $curso = $("select[name='curso']");
-
-                $.getJSON('functionAluno.php', {
-                    ra: $(this).val()
+                var $situacao = $("select[name='situacao']");
+                $.getJSON('functionTurma.php', {
+                    codigo: $(this).val()
                 }, function(json) {
-                    $nome.val(json.nome);
+                    $descricao.val(json.descricao);
+                    $etapa.val(json.etapa);
                     $semestreAno.val(json.semestreAno);
-                    $situacao.val(json.situacao);
+                    $calendario.val(json.calendario);
                     $curso.val(json.curso);
+                    $situacao.val(json.situacao);
                 });
             });
         });
@@ -121,94 +129,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="fa fa-edit"></i>
-                                <p>
-                                    Cadastro
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                        <!--Link para REPOSIÇÃO/AULA EXTRA-->
+                        <li class="nav-item">
+                            <a href="./form_cad_calendario.php" class="nav-link">
+                                <!--Página que será chamada href-->
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Reposição - Aula Extra</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <!--Link para cadastro CURSO-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_curso.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Curso</p>
-                                    </a>
-                                </li>
-                                <!--Link para cadastro TURMA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_turma.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Turma</p>
-                                    </a>
-                                </li>
-                                <!--Link para cadastro ALUNO-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_aluno.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Aluno</p>
-                                    </a>
-                                </li>
-                                <!--Link para VINCULAR ALUNO A TURMA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_matricula_disciplina.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Vincular Aluno</p>
-                                    </a>
-                                </li>
-                                <!--Link para DISCIPLINA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_disciplina.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Disciplina</p>
-                                    </a>
-                                </li>
-                                <!--Link para DETALHES DISCIPLINA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_detalhes_disciplina.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Detalhes Disciplina</p>
-                                    </a>
-                                </li>
-                                <!--Link para PROFESSOR-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_professor.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Professor</p>
-                                    </a>
-                                </li>
-                                <!--Link para CALENDARIO LETIVO-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_calendario.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário</p>
-                                    </a>
-                                </li>
-                                <!--Link para RELATÓRIO-->
-                                <li class="nav-item">
-                                    <a href="./form_relatorio_administrador.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Relatório</p>
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
+                        <!--Link para RELATÓRIO-->
+                        <li class="nav-item">
+                            <a href="./form_relatorio_professor.php" class="nav-link">
+                                <!--Página que será chamada href-->
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Relatório</p>
+                            </a>
+                        </li>
+
                         </li>
                         <!--Fim ul de cadastros-->
+
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="./form_chamada_online.php" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Chamada Online
@@ -229,12 +171,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Aluno</h1>
+                            <h1>Cadastro de Turma</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
+                                <li class="breadcrumb-item active">Relatório</li>
                             </ol>
                         </div>
                     </div>
@@ -251,71 +193,67 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarAluno">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /.modal -->
-                            <form method="POST" action="listarAluno.php">
-                                <div class="modal fade show" id="modal-listarAluno">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Alunos</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container-fluid">
-                                                    <table class="table table-striped">
-                                                        <tr>
-                                                            <td> <?php
-                                                                    include("listar_Aluno.php");
-                                                                    ?>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                        </div>
+                        <!-- /.modal -->
+                        <form method="POST" action="listar_Turma.php">
+                            <div class="modal fade show" id="modal-listarTurma">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Relatório</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <td> <?php
+                                                                include("listar_Turma.php");
+                                                                ?>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
-                                        <!-- /.modal-content -->
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                            <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
+                                        </div>
                                     </div>
-                                    <!-- /.modal-dialog -->
+                                    <!-- /.modal-content -->
                                 </div>
-                            </form>
-                            <!-- /.modal -->
-                        </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                        </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="cadastrar_Aluno.php" method="POST">
+                                <form action="cadastrar_Turma.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
-                                            <div class="row">
-
-                                                <div class="col-md-2 col-xs-3">
-                                                    <label for="ra">RA</label>
-                                                    <input name="ra" type="text" id="ra" maxlength="7" class="form-control">
-                                                </div>
-
-                                                <div class="col-md-5 col-xs-6">
-                                                    <label for="nome">Nome completo</label>
-                                                    <input name="nome" type="text" maxlength="100" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
-                                                </div>
-
-                                            </div></br>
 
                                             <div class="row">
-                                                <div class="col-md-4 col-xs-6">
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                    <label for="semestreAno">Data Inicial</label>
+                                                    <input name="semestreAno" type="date" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                    <label for="semestreAno">Data Final</label>
+                                                    <input name="semestreAno" type="date" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
                                                     <label for="curso">Curso</label>
-                                                    <select class="form-control" name="curso">
-                                                        <option>ESCOLHA O CURSO</option>
+                                                    <select class="form-control" name="curso" id="curso">
+                                                        <option>Escolha o curso</option>
                                                         <?php
                                                         include("conexao.php");
 
@@ -332,32 +270,66 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <?php
                                                         }
                                                         ?>
-
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-6">
-                                                    <label for="semestreAno">Semestre/Ano</label>
-                                                    <input name="semestreAno" type="text" id="semestreAno" class="form-control" maxlength="5">
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
+                                                    <label for="curso">Disciplina</label>
+                                                    <select class="form-control" name="curso" id="curso">
+                                                        <option>Escolha a disciplina</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM disciplina WHERE ";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+
+                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                                <?php echo $dados['descricao'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </select>
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-6">
-                                                    <label for="situacao">Situação</label>
-                                                    <select name="situacao" id="situacao" class="form-control">
-                                                        <option value="ativo">Ativo</option>
-                                                        <option value="trancado">Trancado</option>
-                                                        <option value="concluido">Concluído</option>
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                    <label for="aluno">Aluno</label>
+                                                    <select class="form-control" name="aluno" id="aluno">
+                                                        <option>Selecione o aluno</option>
+                                                        <?php
+                                                        include("conexao.php");
+
+                                                        $sql = "SELECT * FROM aluno";
+                                                        $resultado = mysqli_query($connx, $sql);
+
+                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                        ?>
+                                                            <option value="<?php echo $dados['ra'] ?>">
+                                                                <?php echo $dados['nome'] ?>
+                                                            </option>";
+
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </select>
                                                 </div>
 
                                             </div>
+
                                             <div class="row">
-                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                        Salvar
+                                                <div class="col-md-12" style="margin-top: 90px" text-align="right">
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-success">
+                                                        Visualizar relatório
                                                     </button>
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <a href="excluir_Aluno.php?id=<?php echo $id_aluno ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
+
+                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                        Gerar relatório
+                                                    </button>
+                                                    <input type="submit" name="btnLimpar" value="Limpar Campos" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                 </div>
                                             </div>
                                         </div>
@@ -366,13 +338,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="modal-dialog">
                                             <div class="modal-content bg-success">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Aluno</h4>
+                                                    <h4 class="modal-title">Cadastro Turma</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Deseja salvar o aluno?</p>
+                                                    <p>Deseja salvar a turma?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
@@ -386,6 +358,10 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <!-- /.modal -->
                                 </form>
                                 <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                                    the plugin. -->
+                                </div>
                                 <!-- /.card-footer -->
                             </div>
                         </div>
@@ -422,10 +398,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <script src="./plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="./dist/js/demo.js"></script>
-    <!-- InputMask -->
-    <script src="./plugins/moment/moment.min.js"></script>
-    <script src="./plugins/inputmask/jquery.inputmask.min.js"></script>
     <!-- Page specific script -->
+
     <script>
         $(function() {
             /* jQueryKnob */
@@ -472,8 +446,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 }
             })
             /* END JQUERY KNOB */
-            //INITIALIZE SPARKLINE 
-            S
+            //INITIALIZE SPARKLINE CHARTS
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,

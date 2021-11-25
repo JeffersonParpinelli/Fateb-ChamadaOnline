@@ -197,6 +197,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <p>Calendário</p>
                                     </a>
                                 </li>
+                                <!--Link para RELATÓRIO-->
+                                <li class="nav-item">
+                                    <a href="./form_relatorio_administrador.php" class="nav-link">
+                                        <!--Página que será chamada href-->
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Relatório</p>
+                                    </a>
+                                </li>
                                 
                             </ul>
                         </li>
