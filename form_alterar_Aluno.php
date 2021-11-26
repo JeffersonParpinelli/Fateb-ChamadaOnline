@@ -27,7 +27,7 @@ $curso = $dados['descricao'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de aluno</title>
+    <title>Fateb | Cadastro de Matrícula</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -146,7 +146,7 @@ $curso = $dados['descricao'];
                                     <a href="./form_cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Aluno</p>
+                                        <p>Matrícula</p>
                                     </a>
                                 </li>
                                 <!--Link para VINCULAR ALUNO A TURMA-->
@@ -222,12 +222,12 @@ $curso = $dados['descricao'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de aluno</h1>
+                            <h1>Alterar Matrícula</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
+                                <li class="breadcrumb-item active">Alterar Matrícula</li>
                             </ol>
                         </div>
                     </div>
@@ -240,12 +240,12 @@ $curso = $dados['descricao'];
                         <div class="x_content" style="display: block;">
                             <div class="row">
                                 <div class="col-md-2 col-xs-3">
-                                    <label for="ra">RA:</label>
+                                    <label for="ra">RA</label>
                                     <input name="ra" readonly type="text" id="ra" class="form-control" value="<?php echo $ra ?>">
                                 </div>
 
                                 <div class="col-md-4 col-xs-6">
-                                    <label for="nome">Nome:</label>
+                                    <label for="nome">Nome</label>
                                     <input name="nome" type="text" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $nome_aluno ?>">
                                 </div>
                             </div><br>
@@ -276,12 +276,12 @@ $curso = $dados['descricao'];
                                 </div>
 
                                 <div class="col-md-2 col-xs-6">
-                                    <label for="semestreAno">SemestreAno:</label>
+                                    <label for="semestreAno">SemestreAno</label>
                                     <input name="semestreAno" type="text" id="semestreAno" maxlength="5" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $semestreAno ?>">
                                 </div>
 
                                 <div class="col-md-2 col-xs-6">
-                                    <label for="situacao">Situação: </label>
+                                    <label for="situacao">Situação </label>
                                     <select name="situacao" id="situacao" class="form-control" value="<?php echo $situacao ?>">
                                         <option value="ativo">Ativo</option>
                                         <option value="trancado">Trancado</option>

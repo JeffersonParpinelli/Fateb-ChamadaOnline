@@ -146,7 +146,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                     <a href="./form_cad_aluno.php" class="nav-link">
                                         <!--Página que será chamada href-->
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Aluno</p>
+                                        <p>Matrícula</p>
                                     </a>
                                 </li>
                                 <!--Link para VINCULAR ALUNO A TURMA-->
