@@ -208,7 +208,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </li>
                         <!--Fim ul de cadastros-->
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="form_cad_chamada.php" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Chamada Online
@@ -229,12 +229,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Aluno</h1>
+                            <h1>Cadastro de Matrícula</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Aluno</li>
+                                <li class="breadcrumb-item active">Cadastro de Matrícula</li>
                             </ol>
                         </div>
                     </div>
@@ -305,7 +305,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                                 <div class="col-md-5 col-xs-6">
-                                                    <label for="nome">Nome completo</label>
+                                                    <label for="nome">Nome</label>
                                                     <input name="nome" type="text" maxlength="100" id="nome" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>
 
@@ -366,13 +366,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="modal-dialog">
                                             <div class="modal-content bg-success">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Aluno</h4>
+                                                    <h4 class="modal-title">Cadastro de Matrícula</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Deseja salvar o aluno?</p>
+                                                    <p>Deseja salvar a matrícula?</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-between">
                                                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
