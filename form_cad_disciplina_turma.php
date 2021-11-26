@@ -207,7 +207,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </li>
                         <!--Fim ul de cadastros-->
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="form_cad_chamada.php" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Chamada Online
