@@ -2,11 +2,18 @@
 //inclui conexao com banco
 include 'conexao.php';
 
-//pegar dados da tabela
-$buscar_cadastros = "SELECT * FROM turma";
+$id_turma = $_GET['id'];
 
-//fazer busca dados da tabela através da query
-$query_cadastros = mysqli_query($connx, $buscar_cadastros);
+//pegar dados da tabela
+$sql = "SELECT * FROM turma WHERE codigoTurma = $id_turma ";
+
+$result = mysqli_query($connx, $sql);
+
+$dados = mysqli_fetch_assoc($result);
+
+$codigo_turma = $dados['codigoTurma'];
+$descricao_turma = $dados['descricaoTurma'];
+
 
 ?>
 
@@ -16,7 +23,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de DISCIPLINA/TURMA</title>
+    <title>Fateb | Vincular disciplina a turma</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -37,32 +44,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-    <!-- API preenchimento automático -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
     <!-- Função preenchimento automático -->
     <script type='text/javascript'>
         $(document).ready(function() {
             $("input[name='codigo']").blur(function() {
                 var $descricao = $("input[name='descricao']");
-                var $etapa = $("input[name='etapa']");
-                var $semestreAno = $("input[name='semestreAno']");
-                var $calendario = $("select[name='calendario']");
-                var $curso = $("select[name='curso']");
+                var $cargaHoraria = $("input[name='cargaHoraria']");
+                var $qtdeAulasSemanais = $("select[name='qtdeAulasSemanais']");
                 var $situacao = $("select[name='situacao']");
-                $.getJSON('functionTurma.php', {
+                $.getJSON('functionDisciplina.php', {
                     codigo: $(this).val()
                 }, function(json) {
                     $descricao.val(json.descricao);
-                    $etapa.val(json.etapa);
-                    $semestreAno.val(json.semestreAno);
-                    $calendario.val(json.calendario);
-                    $curso.val(json.curso);
+                    $cargaHoraria.val(json.cargaHoraria);
+                    $qtdeAulasSemanais.val(json.qtdeAulasSemanais);
                     $situacao.val(json.situacao);
                 });
             });
         });
+
     </script>
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -100,7 +103,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="./dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Usuário</a>
@@ -228,12 +231,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de DISCIPLINA/TURMA</h1>
+                            <h1>Vincular Disciplina a Turma</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de DISCIPLINA/TURMA</li>
+                                <li class="breadcrumb-item active">Vincular Disciplina a Turma</li>
                             </ol>
                         </div>
                     </div>
@@ -250,148 +253,64 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarDisciplina">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /.modal -->
-                        <form method="POST" action="listar_Turma.php">
-                            <div class="modal fade show" id="modal-listarTurma">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Turmas</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container-fluid">
-                                                <table class="table table-striped">
-                                                    <tr>
-                                                        <td> <?php
-                                                                include("listar_Turma.php");
-                                                                ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                            <!-- /.modal -->
+                            <form method="POST" action="listar_Disciplina.php">
+                                <div class="modal fade show" id="modal-listarDisciplina">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Disciplinas</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <table class="table table-striped">
+                                                        <tr>
+                                                            <td> <?php
+                                                                    include("listar_Disciplina.php");
+                                                                    ?>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
                                             </div>
                                         </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                            <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
-                                        </div>
+                                        <!-- /.modal-content -->
                                     </div>
-                                    <!-- /.modal-content -->
+                                    <!-- /.modal-dialog -->
                                 </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                        </form>
-                        <div class="x_panel">
-                            <div class="card card-default">
-                                <form action="cadastrar_Disciplina_turma.php" method="POST">
-                                    <div class="card-body">
-                                        <div class="x_content" style="display: block;">
-                                            <div class="row">
-                                                <div class="col-md-1 col-xs-3">
-                                                    <label for="codigo">Código</label>
-                                                    <input name="codigo" type="text" id="codigo" class="form-control" maxlength="4">
+                            </form>
+                            <div class="x_panel">
+                                <div class="card card-default">
+                                    <!-- /.card-header -->
+                                    <form action="cadastrar_disciplina_turma.php" method="POST" align="left">
+                                        <div class="card-body">
+                                            <div class="x_content" style="display: block;">
+                                                <div class="row">
+                                                    <div class="col-md-8 col-xs-12">
+                                                        <label for="descricao">Descrição</label>
+                                                        <input name="codigoTurma" type="hidden" readonly id="codigoTurma" class="form-control" value="<?php echo $codigo_turma?>">
+                                                        <input name="descricao" type="text" id="descricao" readonly onblur="this.value=this.value.toUpperCase();" class="form-control" value="<?php echo $descricao_turma?>">
+                                                    </div>
                                                 </div>
 
-                                                <div class="col-md-8 col-xs-12">
-                                                    <label for="descricao">Descrição</label>
-                                                    <input name="descricao" type="text" maxlength="100" id="descricao" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-1 col-xs-12">
-                                                    <label for="etapa">Etapa</label>
-                                                    <input name="etapa" type="text" maxlength="2" id="etapa" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="semestreAno">Semestre/Ano</label>
-                                                    <input name="semestreAno" type="text" maxlength="5" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="calendario">Calendario</label>
-                                                    <select class="form-control" name="calendario" id="calendario">
-                                                        <option>Selecione o calendario...</option>
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT * FROM calendario";
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['semestreAno'] ?>
-                                                            </option>";
-
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
-                                                    <label for="curso">Curso</label>
-                                                    <select class="form-control" name="curso" id="curso">
-                                                        <option>ESCOLHA O CURSO</option>
-
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT * FROM curso";
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
-
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['descricao'] ?>
-                                                            </option>
-
-                                                        <?php
-                                                        }
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-2 col-xs-6" style="padding: 10px">
-                                                    <label for="situacao">Situação</label>
-                                                    <select name="situacao" id="situacao" class="form-control">
-                                                        <option value="ativo">Ativo</option>
-                                                        <option value="inativo">Inativo</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="row" style="padding-top: 20px;">
-                                                <div class="col-md-5">
-                                                    <label for="disciplina">
-                                                        <h4>Selecione as Disciplina da Turma</h4>
-                                                    </label>
-
-
-                                                    <!--INICIO SELECIONAR DIVERSAS DISCIPLINA-->
-
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">Disciplina</th>
-                                                                <th scope="col">Selecionar</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-
+                                                <div class="row" style="padding-top: 20px;">
+                                                    <div class="col-md-3 col-xs-6">
+                                                        <label for="codDisciplina">Disciplina</label>
+                                                        <select class="form-control" name="codDisciplina" id="codDisciplina">
+                                                            <option>Escolha a disciplina</option>
                                                             <?php
                                                             include("conexao.php");
 
@@ -400,78 +319,67 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                             while ($dados = mysqli_fetch_assoc($resultado)) {
                                                             ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?php echo $dados['descricao'] ?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input type="checkbox" value="<?php echo $dados['codigo'] ?>" name="disc_selecionada">
-                                                                    </td>
 
-                                                                    </td>
+                                                                <option value="<?php echo $dados['codigo'] ?>">
+                                                                    <?php echo $dados['descricao'] ?>
+                                                                </option>
 
-                                                                    <td>
-
-                                                                    </td>
-
-                                                                <?php
+                                                            <?php
                                                             }
-                                                                ?>
-                                                                </tr>
-                                                        </tbody>
-                                                    </table>
+                                                            ?>
+
+                                                        </select>
+                                                    </div>
+
                                                 </div>
-                                            </div>
-
-                                            <!-- FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
-
-
-                                            <div class="row">
-                                                <div class="col-md-12" style="margin-top: 90px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                        Salvar
-                                                    </button>
-                                                    <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                <div class="row">
+                                                    <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                            Salvar
+                                                        </button>
+                                                        <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
+                                                        class="btn btn-primary pull-right">-->
+                                                        <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                        <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal fade" id="modal-success">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-success">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Turma</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+
+                                        <div class="modal fade" id="modal-success">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content bg-success">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Vincular Curso a Disciplina</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Deseja salvar?</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                        <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <p>Deseja salvar a turma?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                                </div>
+                                                <!-- /.modal-content -->
                                             </div>
-                                            <!-- /.modal-content -->
+                                            <!-- /.modal-dialog -->
                                         </div>
-                                        <!-- /.modal-dialog -->
+                                        <!-- /.modal -->
+                                    </form>
+
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
                                     </div>
-                                    <!-- /.modal -->
-                                </form>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                                    the plugin. -->
+                                    <!-- /.card-footer -->
                                 </div>
-                                <!-- /.card-footer -->
                             </div>
+                            <!-- /.teste -->
                         </div>
-                        <!-- /.teste -->
                     </div>
-                </div>
-                <!-- /.container-fluid -->
+                    <!-- /.container-fluid -->
             </section>
             <!-- /.content -->
         </div>
@@ -480,7 +388,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
+            reserved.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -553,6 +462,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             var sparkline1 = new Sparkline($('#sparkline-1')[0], {
                 width: 240,
                 height: 70,
+
                 lineColor: '#92c1dc',
                 endColor: '#92c1dc'
             })

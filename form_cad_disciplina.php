@@ -246,7 +246,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <section class="content">
                 <div class="container-fluid">
                     <div class="col-md-12">
-                        <div class="page-title" align="right">
+                        <div class="page-title" text-align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
@@ -295,7 +295,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <div class="x_panel">
                                 <div class="card card-default">
                                     <!-- /.card-header -->
-                                    <form action="cadastrar_Disciplina.php" method="POST" align="left">
+                                    <form action="cadastrar_Disciplina.php" method="POST" text-align="left">
                                         <div class="card-body">
                                             <div class="x_content" style="display: block;">
                                                 <div class="row">
@@ -339,7 +339,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         </select>
                                                     </div>
                                                 </div>
-
 
                                                 <div class="col-md-2 col-xs-12" style="padding-top: 20px;">
                                                     <label for="cursos">INCLUIR DISCIPLINA AOS CURSOS</label><br>
