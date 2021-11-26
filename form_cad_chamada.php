@@ -319,7 +319,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </td>
                                                     <td>
                                                         <div class="icheck-primary d-inline">
-                                                            <input type="checkbox" id="checkboxPrimary13" checked="">
+                                                            <input type="checkbox" id="checkboxPrimary13">
                                                             <label for="checkboxPrimary13">
                                                             </label>
                                                         </div>
@@ -332,7 +332,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </td>
                                                     <td>
                                                         <div class="icheck-primary d-inline">
-                                                            <input type="checkbox" id="checkboxPrimary14" checked="">
+                                                            <input type="checkbox" id="checkboxPrimary14">
                                                             <label for="checkboxPrimary14">
                                                             </label>
                                                         </div>
@@ -377,28 +377,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary1" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary1">
                                                                             <label for="checkboxPrimary1">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary2" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary2">
                                                                             <label for="checkboxPrimary2">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary3" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary3">
                                                                             <label for="checkboxPrimary3">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary4" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary4">
                                                                             <label for="checkboxPrimary4">
                                                                             </label>
                                                                         </div>
@@ -414,28 +414,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary5" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary5">
                                                                             <label for="checkboxPrimary5">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary6" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary6">
                                                                             <label for="checkboxPrimary6">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary7" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary7">
                                                                             <label for="checkboxPrimary7">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary8" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary8">
                                                                             <label for="checkboxPrimary8">
                                                                             </label>
                                                                         </div>
@@ -451,28 +451,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary9" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary9">
                                                                             <label for="checkboxPrimary9">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary10" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary10">
                                                                             <label for="checkboxPrimary10">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary11" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary11">
                                                                             <label for="checkboxPrimary11">
                                                                             </label>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary12" checked="">
+                                                                            <input type="checkbox" id="checkboxPrimary12">
                                                                             <label for="checkboxPrimary12">
                                                                             </label>
                                                                         </div>
