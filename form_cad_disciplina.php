@@ -308,16 +308,16 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <label for="descricao">Descrição</label>
                                                         <input name="descricao" type="text" id="descricao" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                     </div>
-                                                </div>
+                                                </div><br>
 
-                                                <div class="row" style="padding-top: 10px;">
+                                                <div class="row">
                                                     <div class="col-md-2 col-xs-12">
                                                         <label for="cargaHoraria">Carga Horária</label>
                                                         <input name="cargaHoraria" type="text" maxlength="200" id="cargaHoraria" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                     </div>
 
                                                     <div class="col-md-2 col-xs-8">
-                                                        <label for="qtdeAulasSemanais">Qtde de aulas semanais</label>
+                                                        <label for="qtdeAulasSemanais">Aulas semanais</label>
                                                         <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
@@ -340,7 +340,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-12" style="padding-top: 20px;">
+                                                <div class="col-md-3 col-xs-12" style="padding-top: 20px;">
                                                     <label for="cursos">INCLUIR DISCIPLINA AOS CURSOS</label><br>
                                                     <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">CURSOS</a>
                                                 </div>
@@ -403,8 +403,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 3.1.0
             </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> All rights
-            reserved.
+            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
         </footer>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">

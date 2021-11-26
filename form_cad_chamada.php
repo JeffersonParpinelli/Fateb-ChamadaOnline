@@ -310,35 +310,39 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             </div><br>
 
                                             <div class="row">
-                                                <tr>
-                                                    <td>
-                                                        <a style="width: 7%">
-                                                            Presentes
-                                                        </a>
-                                                        <br /><br />
-                                                    </td>
-                                                    <td>
-                                                        <div class="icheck-primary d-inline">
-                                                            <input type="checkbox" id="checkboxPrimary13">
-                                                            <label for="checkboxPrimary13">
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <a style="width: 7%">
-                                                            Ausentes
-                                                        </a>
-                                                        <br /><br />
-                                                    </td>
-                                                    <td>
-                                                        <div class="icheck-primary d-inline">
-                                                            <input type="checkbox" id="checkboxPrimary14">
-                                                            <label for="checkboxPrimary14">
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </div>
+                                                <div class="col-md-8 col-xs-12">
+
+                                                    <tr>
+                                                        <td>
+                                                            <a style="width: 7%">
+                                                                Presentes
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="icheck-primary d-inline">
+                                                                <input type="checkbox" id="checkboxPrimary13">
+                                                                <label for="checkboxPrimary13">
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a style="width: 7%">
+                                                                Ausentes
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="icheck-primary d-inline">
+                                                                <input type="checkbox" id="checkboxPrimary14">
+                                                                <label for="checkboxPrimary14">
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </div>
+                                            </div><br>
 
                                             <!-- Main content -->
                                             <section class="content">
