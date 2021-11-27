@@ -59,160 +59,10 @@ $sit_disciplina = $dados['situacao'];
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="./index.html" class="nav-link">Home</a>
-                </li>
-            </ul>
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="./index.html" class="brand-link">
-                <img src="./dist/img/FatebLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Fateb</span>
-            </a>
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Usuário</a>
-                    </div>
-                </div>
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="fa fa-edit"></i>
-                                <p>
-                                    Cadastro
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <!--Link para cadastro CURSO-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_curso.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Curso</p>
-                                    </a>
-                                </li>
-                                <!--Link para cadastro TURMA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_turma.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Turma</p>
-                                    </a>
-                                </li>
-                                <!--Link para cadastro ALUNO-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_aluno.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Matrícula</p>
-                                    </a>
-                                </li>
-                                <!--Link para VINCULAR ALUNO A TURMA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_matricula_disciplina.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Vincular Aluno</p>
-                                    </a>
-                                </li>
-                                <!--Link para DISCIPLINA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_disciplina.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Disciplina</p>
-                                    </a>
-                                </li>
-                                <!--Link para DETALHES DISCIPLINA-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_detalhes_disciplina.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Detalhes Disciplina</p>
-                                    </a>
-                                </li>
-                                <!--Link para PROFESSOR-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_professor.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Professor</p>
-                                    </a>
-                                </li>
-                                <!--Link para CALENDARIO LETIVO-->
-                                <li class="nav-item">
-                                    <a href="./form_cad_calendario.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Calendário</p>
-                                    </a>
-                                </li>
-                                <!--Link para RELATÓRIO-->
-                                <li class="nav-item">
-                                    <a href="./form_relatorio_administrador.php" class="nav-link">
-                                        <!--Página que será chamada href-->
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Relatório</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--Fim ul de cadastros-->
-                        <li class="nav-item">
-                            <a href="form_cad_chamada.php" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Chamada Online
-                                </p>
-                            </a>
-                        </li>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
+
+        <!-- Navbar MENU-->
+        <?php include_once('templates/menu.php') ?>
+
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -255,23 +105,23 @@ $sit_disciplina = $dados['situacao'];
                                 <div class="col-md-2 col-xs-2">
                                     <label for="qtdeAulasSemanais">Qtde Aulas semana</label>
                                     <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
-                                        
+
                                         <?php
-                                        switch($qtdeAulasSemanais_disciplina){
-                                            case "1":?>
-                                            <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            
-                                                <?php
-                                            break;
+                                        switch ($qtdeAulasSemanais_disciplina) {
+                                            case "1": ?>
+                                                <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
 
-                                            case "2":?>
+                                            <?php
+                                                break;
+
+                                            case "2": ?>
                                                 <option value="1">1</option>
                                                 <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
                                                 <option value="3">3</option>
@@ -280,10 +130,10 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="6">6</option>
                                                 <option value="7">7</option>
                                                 <option value="8">8</option>
-                                                <?php
-                                            break;
+                                            <?php
+                                                break;
 
-                                            case "3":?>
+                                            case "3": ?>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
@@ -292,10 +142,10 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="6">6</option>
                                                 <option value="7">7</option>
                                                 <option value="8">8</option>
-                                                <?php
-                                            break;
+                                            <?php
+                                                break;
 
-                                            case "4":?>
+                                            case "4": ?>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -304,11 +154,11 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="6">6</option>
                                                 <option value="7">7</option>
                                                 <option value="8">8</option>
-                                                    
-                                                <?php
-                                            break;
 
-                                            case "5":?>
+                                            <?php
+                                                break;
+
+                                            case "5": ?>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -317,10 +167,10 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="6">6</option>
                                                 <option value="7">7</option>
                                                 <option value="8">8</option>
-                                                <?php
-                                            break;
+                                            <?php
+                                                break;
 
-                                            case "6":?>
+                                            case "6": ?>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -329,10 +179,10 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
                                                 <option value="7">7</option>
                                                 <option value="8">8</option>
-                                                <?php
-                                            break; 
+                                            <?php
+                                                break;
 
-                                            case "7":?>
+                                            case "7": ?>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -341,11 +191,11 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="6">6</option>
                                                 <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
                                                 <option value="8">8</option>
-                                                <?php 
-                                            break;   
-                                                
-                                            case "8":?>
-                                               <option value="1">1</option>
+                                            <?php
+                                                break;
+
+                                            case "8": ?>
+                                                <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
@@ -353,9 +203,8 @@ $sit_disciplina = $dados['situacao'];
                                                 <option value="6">6</option>
                                                 <option value="7">7</option>
                                                 <option value="<?php echo $qtdeAulasSemanais_disciplina ?>" selected><?php echo $qtdeAulasSemanais_disciplina ?></option>
-                                                <?php 
-                                            break;
-
+                                        <?php
+                                                break;
                                         }
                                         ?>
 
@@ -401,17 +250,6 @@ $sit_disciplina = $dados['situacao'];
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.1.0
-            </div>
-            <strong>Copyright &copy; 2021-2021 <a href="https://www.fateb.br/" target="_blank">Fateb</a>.</strong> Todos os direitos reservados.
-        </footer>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
