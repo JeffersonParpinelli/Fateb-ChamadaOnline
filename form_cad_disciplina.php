@@ -295,13 +295,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <div class="x_panel">
                                 <div class="card card-default">
                                     <!-- /.card-header -->
-                                    <form action="cadastrar_Disciplina.php" method="POST" text-align="left">
+                                    <form action="cadastrar_Disciplina.php" method="POST" align="left">
                                         <div class="card-body">
                                             <div class="x_content" style="display: block;">
                                                 <div class="row">
                                                     <div class="col-md-1 col-xs-3">
                                                         <label for="codigo">Código</label>
                                                         <input name="codigo" type="text" id="codigo" class="form-control" required="">
+                                                        
                                                     </div>
 
                                                     <div class="col-md-8 col-xs-12">

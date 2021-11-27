@@ -8,6 +8,8 @@ $buscar_cadastros = "SELECT * FROM turma";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
+// $codigoTurma = $_POST['codigo'];
+
 ?>
 
 <!DOCTYPE html>
@@ -388,10 +390,21 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                             </div>
 
+
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-12" style="padding-top: 20px;">
-                                                    <label for="disciplina">INCLUIR DISCIPLINA</label><br>
-                                                    <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">DISCIPLINA</a>
+                                                    
+                                                    <?php
+                                                    if ($codigo_turma == null || '') {
+                                                        
+                                                    }else{
+                                                        ?>
+                                                        <label for="disciplina">INCLUIR DISCIPLINA</label><br>
+                                                        <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">DISCIPLINA</a>
+                                                    <?php
+                                                    }
+                                                    ?>
+
                                                 </div>
                                             </div>
 

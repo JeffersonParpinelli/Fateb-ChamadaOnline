@@ -7,11 +7,27 @@ include 'conexao.php';
 echo $cod_turma = $_POST['codigoTurma'];
 echo $cod_disciplina = $_POST['codDisciplina'];
 
+//pegar dados da tabela
+$sql = "SELECT * FROM turma WHERE codigoTurma = $cod_turma ";
+$sql2 = "SELECT * FROM disciplina WHERE codigo = $cod_disciplina ";
+
+$result = mysqli_query($connx, $sql);
+$result2 = mysqli_query($connx, $sql2);
+
+$dados = mysqli_fetch_assoc($result);
+$dados2 = mysqli_fetch_assoc($result2);
+
+$codigo_turma = $dados['codigoTurma'];
+$codigo_disciplina = $dados2['codigo'];
+
 //$recebendo_cadastros é onde puxo todos os dados
 $recebendo_cadastros = "INSERT INTO 
 turmadisc
-VALUES ('$cod_turma',
-        '$cod_disciplina')";
+VALUES ('$codigo_turma',
+        '$codigo_disciplina',
+        null,
+        null,
+        null)";
 
         //query_cadastros = recebe como parametros
         //conexao do banco e dados do cadastros
