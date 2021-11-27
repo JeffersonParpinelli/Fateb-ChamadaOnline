@@ -1,3 +1,8 @@
+<?php
+// Turn off all error reporting
+error_reporting(0);
+?>
+
 <!-- Navbar MENU-->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->

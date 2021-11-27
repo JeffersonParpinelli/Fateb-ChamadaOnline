@@ -151,7 +151,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="cadastrar_Turma.php" method="POST">
+                                <form action="cadastrar_Matricula_Disciplina.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
@@ -262,7 +262,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                                     <?php echo $dados['nome'] ?>
                                                                 </td>
 
-                                                                <td> <input type="checkbox" class="form-check" name="selecionado"></input>
+                                                                <td> <input type="checkbox" class="form-check" name="selecionado[]" id="aluno[]"value="<?php echo $dados['ra'] ?>"></input>
 
                                                                 </td>
 

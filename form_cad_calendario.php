@@ -54,7 +54,10 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         });
 
         function openEvents() {
+            if( document.getElementById("codCalendario").value != "")
             location.href = "form_cad_calendarioEventos.php?id=" + document.getElementById("codCalendario").value;
+        else
+        alert("Preencha o codigo");
         }
     </script>
 

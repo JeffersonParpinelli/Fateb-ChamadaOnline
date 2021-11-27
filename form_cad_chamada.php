@@ -60,6 +60,12 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 a.value = a.value.toUpperCase();
             }, 1);
         }
+
+        function openEvents() {
+            location.href = "form_cad_chamada.php?turma=" + document.getElementById("turma").value +
+                "&disciplina=" + document.getElementById("turma").value +
+                "&data=" + document.getElementById("data").value;
+        }
     </script>
 
 </head>
@@ -109,13 +115,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                         <div class="x_panel">
                             <div class="card card-default">
                                 <!-- /.card-header -->
-                                <form action="cadastrar_Curso.php" method="POST">
+                                <form action="cadastrar_Chamada.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
                                             <div class="row">
                                                 <div class="col-md-3 col-xs-12">
                                                     <label for="turma">Turma</label>
-                                                    <select class="form-control" name="turma">
+                                                    <select class="form-control" name="turma" id="turma">
                                                         <option>ESCOLHA A TURMA</option>
                                                         <?php
                                                         include("conexao.php");
@@ -125,7 +131,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['codigoTurma'] ?>">
+                                                            <option value="<?php echo $dados['codigoTurma'] ?>"
+                                                             <?php if($dados['codigoTurma'] == $_GET["turma"]) echo " selected"?>>
                                                                 <?php echo $dados['descricaoTurma'] ?>
                                                             </option>";
 
@@ -137,8 +144,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                                 <div class="col-md-4 col-xs-6">
-                                                    <label for="codDisc">Disciplina</label>
-                                                    <select class="form-control" name="codDisc" id="codDisc">
+                                                    <label for="disciplina">Disciplina</label>
+                                                    <select class="form-control" name="disciplina" id="disciplina">
                                                         <option>ESCOLHA A DISCIPLINA</option>
                                                         <?php
                                                         include("conexao.php");
@@ -148,7 +155,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                            <option value="<?php echo $dados['codigo'] ?>"
+                                                            <?php if($dados['codigo'] == $_GET["disciplina"]) echo " selected"?>>
                                                                 <?php echo $dados['descricao'] ?>
                                                             </option>";
 
@@ -160,221 +168,190 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                 <div class="col-md-3 col-xs-12">
                                                     <label for="data">Data da aula</label>
-                                                    <input name="data" type="DATE" id="data" onblur="this.value=this.value.toUpperCase();" class="form-control">
+                                                    <input name="data" type="DATE"
+                                                    <?php if($_GET["data"] != null) echo "value=\"".$_GET["data"]."\""?>
+                                                    
+                                                     id="data" onblur="this.value=this.value.toUpperCase();"  class="form-control">
                                                 </div>
 
-                                            </div><br>
+                                                <div class="col-md-1" style="margin-top: 40px" text-align="right">
+                                                    <!-- <button type="button" class="btn btn-success toastrDefaultSuccess" data-toggle="modal" data-target="#modal-success">
+                                                    Salvar
+                                                </button> -->
 
-                                            <div class="row">
-                                                <div class="col-md-8 col-xs-12">
-
-                                                    <tr>
-                                                        <td>
-                                                            <a style="width: 7%">
-                                                                Presentes
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="icheck-primary d-inline">
-                                                                <input type="checkbox" id="checkboxPrimary13">
-                                                                <label for="checkboxPrimary13">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a style="width: 7%">
-                                                                Ausentes
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="icheck-primary d-inline">
-                                                                <input type="checkbox" id="checkboxPrimary14">
-                                                                <label for="checkboxPrimary14">
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
+                                                    <a ref="javascript:void(0);" onclick="openEvents()"><input type="button" name="consultarAlunos" value="Consultar Alunos" id="consultarAlunos" class="btn btn-primary pull-right">
+                                                        <!-- <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a> -->
                                                 </div>
+
+
                                             </div><br>
+                                            <?php if ($_GET["turma"] != null) { ?>
+                                                <div class="row">
+                                                    <div class="col-md-8 col-xs-12">
 
-                                            <!-- Main content -->
-                                            <section class="content">
+                                                        <tr>
+                                                            <td>
+                                                                <a style="width: 7%">
+                                                                    Presentes
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="icheck-primary d-inline">
+                                                                    <input type="checkbox" id="checkboxPrimary13">
+                                                                    <label for="checkboxPrimary13">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a style="width: 7%">
+                                                                    Ausentes
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="icheck-primary d-inline">
+                                                                    <input type="checkbox" id="checkboxPrimary14">
+                                                                    <label for="checkboxPrimary14">
+                                                                    </label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
 
-                                                <!-- Default box -->
-                                                <div class="card">
-
-                                                    <div class="card-body p-0">
-                                                        <table class="table table-striped projects">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th style="width: 30%">
-                                                                        Alunos
-                                                                    </th>
-                                                                    <th>
-                                                                        1ª
-                                                                    </th>
-                                                                    <th>
-                                                                        2ª
-                                                                    </th>
-                                                                    <th>
-                                                                        3ª
-                                                                    </th>
-                                                                    <th>
-                                                                        4ª
-                                                                    </th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <a>
-                                                                            Geovane Cardozo de Oliverira
-                                                                        </a>
-                                                                        <br />
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary1">
-                                                                            <label for="checkboxPrimary1">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary2">
-                                                                            <label for="checkboxPrimary2">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary3">
-                                                                            <label for="checkboxPrimary3">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary4">
-                                                                            <label for="checkboxPrimary4">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        <a>
-                                                                            Guilherme Ferreira Felipe
-                                                                        </a>
-                                                                        <br />
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary5">
-                                                                            <label for="checkboxPrimary5">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary6">
-                                                                            <label for="checkboxPrimary6">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary7">
-                                                                            <label for="checkboxPrimary7">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary8">
-                                                                            <label for="checkboxPrimary8">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        <a>
-                                                                            Jefferson Parpinelli Pereira
-                                                                        </a>
-                                                                        <br />
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary9">
-                                                                            <label for="checkboxPrimary9">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary10">
-                                                                            <label for="checkboxPrimary10">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary11">
-                                                                            <label for="checkboxPrimary11">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="icheck-primary d-inline">
-                                                                            <input type="checkbox" id="checkboxPrimary12">
-                                                                            <label for="checkboxPrimary12">
-                                                                            </label>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
-
-                                                            </tbody>
-                                                        </table>
                                                     </div>
-                                                    <!-- /.card-body -->
-                                                    <!-- /.card -->
+                                                </div><br>
 
-                                            </section>
-                                            <!-- /.content -->
-                                            <!-- /.content-wrapper -->
+                                                <section class="content">
+
+                                                    <div class="card">
+
+                                                        <div class="card-body p-0">
+
+
+                                                            <table class="table" id="aluno">
+                                                                <tbody>
+
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th style="width: 30%">
+                                                                                Alunos
+                                                                            </th>
+                                                                            <th>
+                                                                                1ª
+                                                                            </th>
+                                                                            <th>
+                                                                                2ª
+                                                                            </th>
+                                                                            <th>
+                                                                                3ª
+                                                                            </th>
+                                                                            <th>
+                                                                                4ª
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <?php
+                                                                    include("conexao.php");
+
+                                                                    $sql = "SELECT * FROM aluno WHERE ra IN (select ra FROM turmadiscaluno WHERE codDisc = " . $_GET["disciplina"] . ")";
+                                                                    $resultado = mysqli_query($connx, $sql);
+
+                                                                    while ($dados = mysqli_fetch_assoc($resultado)) {
+                                                                    ?>
+
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <a>
+                                                                                    <?php echo $dados['nome'] ?>
+                                                                                </a>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="icheck-primary d-inline">
+                                                                                <label  > <input type="checkbox" name="presenca[]" id="aluno[]"value="<?php echo $dados['ra'] ?>">
+                                                                                  
+                                                                                    </label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="icheck-primary d-inline">
+                                                                                <label  > <input type="checkbox" name="presenca[]" id="aluno[]"value="<?php echo $dados['ra'] ?>">
+                                                                                    
+                                                                                    </label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="icheck-primary d-inline">
+                                                                                <label ><input type="checkbox" name="presenca[]" id="aluno[]"value="<?php echo $dados['ra'] ?>">
+                                                                                   
+                                                                                    </label>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="icheck-primary d-inline">
+                                                                                <label > <input type="checkbox" name="presenca[]" id="aluno[]"value="<?php echo $dados['ra'] ?>">
+                                                                                  
+                                                                                    </label>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+
+                                                </section>
                                         </div><br>
 
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <!-- /.card-header -->
                                                 <div class="card-body">
-                                                    <textarea id="summernote">
+                                                    <textarea id="summernote" name="conteudo">
                 Resumo <em>do</em> <u>Conteúdo</u> <strong>Ministrado</strong>
               </textarea>
                                                 </div>
                                             </div>
-                                            <!-- /.col-->
                                         </div>
-                                        <!-- ./row -->
-                                        <div class="row">
-                                            <div class="col-md-12" style="margin-top: 40px" text-align="right">
-                                                <button type="button" class="btn btn-success toastrDefaultSuccess" data-toggle="modal" data-target="#modal-success">
-                                                    Salvar
-                                                </button>
+                                    <?php } ?>
+                                    <div class="row">
+                                        <div class="col-md-12" style="margin-top: 40px" text-align="right">
+                                            <button type="button" class="btn btn-success toastrDefaultSuccess" data-toggle="modal" data-target="#modal-success">
+                                                Salvar
+                                            </button>
 
-                                                <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
-                                            </div>
+                                            <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                            <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                         </div>
                                     </div>
+                                    </div>
                             </div>
+                            <div class="modal fade" id="modal-success">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-success">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Cadastro Curso</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja salvar o curso?</p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
                             </form>
                             <!-- /.card-body -->
                             <!-- /.card-footer -->
