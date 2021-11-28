@@ -25,7 +25,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Acessar o sistema</p>
 
-      <form action="./index.html" method="post">
+      <form action="./index.php" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Usuário">
           <div class="input-group-append">
