@@ -201,34 +201,10 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
-                                                    <label for="curso">Disciplina</label>
-                                                    <select class="form-control" name="curso" id="curso">
-                                                        <option>Escolha a disciplina</option>
-                                                        <?php
-                                                        include("conexao.php");
-                                                        $curso_selecionado = $dados['codigo'];
-
-                                                        $sql = "SELECT * FROM disciplina";
-
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['descricao'] ?>
-                                                            </option>";
-
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="aluno">Aluno</label>
                                                     <select class="form-control" name="aluno" id="aluno">
-                                                        <option>Selecione o aluno</option>
+                                                        <option>TODOS</option>
                                                         <?php
                                                         include("conexao.php");
 
@@ -276,7 +252,7 @@
                                                                     ADMINISTRAÇÃO
                                                                 </td>
                                                                 <td>
-                                                                    PROGRAMAÇÃO 10
+                                                                    TOPICOS ESPECIAIS 2
                                                                 </td>
                                                                 <td>
                                                                     <?php echo $dados['nome'] ?>

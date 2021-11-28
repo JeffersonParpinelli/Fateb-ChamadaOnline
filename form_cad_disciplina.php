@@ -95,7 +95,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <section class="content">
                 <div class="container-fluid">
                     <div class="col-md-12">
-                        <div class="page-title" text-align="right">
+                        <div class="page-title" align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">

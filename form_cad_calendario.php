@@ -57,7 +57,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             if( document.getElementById("codCalendario").value != "")
             location.href = "form_cad_calendarioEventos.php?id=" + document.getElementById("codCalendario").value;
         else
-        alert("Preencha o codigo");
+        alert("Preencha o código!");
         }
     </script>
 

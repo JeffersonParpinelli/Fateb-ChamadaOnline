@@ -187,7 +187,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="calendario">Calendario</label>
+                                                    <label for="calendario">Calendário</label>
                                                     <select class="form-control" name="calendario" id="calendario">
                                                         <option>Selecione o calendario...</option>
                                                         <?php
