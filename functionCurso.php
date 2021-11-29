@@ -9,7 +9,7 @@ function retorna($codigo, $connx){
 		$valores['descricao'] = $row_curso['descricao'];
 		$valores['situacao'] = $row_curso['situacao'];
 	}else{
-		$valores['descricao'] = 'CURSO NÃO ENCONTRADO';
+		$valores['descricao'] = 'NÃO EXISTE - CADASTRE AQUI';
 	}
 	return json_encode($valores);
 }

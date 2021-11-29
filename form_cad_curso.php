@@ -65,22 +65,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         });
     </script>
 
-    <script>
-        $(function() {
-            var Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-
-            $('.toastrDefaultSuccess').click(function() {
-                toastr.success('Cadastro efetuado!')
-            });
-
-        });
-    </script>
-
 </head>
 
 <body class="hold-transition sidebar-mini">

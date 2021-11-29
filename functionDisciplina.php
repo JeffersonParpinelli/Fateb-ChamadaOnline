@@ -11,7 +11,9 @@ function retorna($codigo, $connx){
 		$valores['qtdeAulasSemanais'] = $row_disciplina['qtdeAulasSemanais'];
 		$valores['situacao'] = $row_disciplina['situacao'];
 	}else{
-		$valores['descricao'] = 'CURSO NÃO ENCONTRADO';
+		$valores['descricao'] = 'NÃO EXISTE - CADASTRE AQUI';
+		$valores['qtdeAulasSemanais'] = '1';
+		$valores['situacao'] = 'ativo';
 	}
 	return json_encode($valores);
 }

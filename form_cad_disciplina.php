@@ -70,9 +70,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         else
         alert("Preencha o código!");
         }
-    </script>
 
-    
+        function upperCaseF(a) {
+            setTimeout(function() {
+                a.value = a.value.toUpperCase();
+            }, 1);
+        }
+        
+    </script>
 
 </head>
 
@@ -165,7 +170,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                     <div class="col-md-8 col-xs-12">
                                                         <label for="descricao">Descrição</label>
-                                                        <input name="descricao" type="text" id="descricao" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                        <input name="descricao" type="text" id="descricao" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required=""  onkeydown="upperCaseF(this)">
                                                     </div>
                                                 </div><br>
 
@@ -178,7 +183,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <div class="col-md-2 col-xs-8">
                                                         <label for="qtdeAulasSemanais">Aulas semanais</label>
                                                         <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
-                                                            <option value="1">1</option>
+                                                            <option value="1" selected>1</option>
                                                             <option value="2">2</option>
                                                             <option value="3">3</option>
                                                             <option value="4">4</option>
@@ -193,7 +198,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         <!--Display none esconde elemento-->
                                                         <label for="situacao">Situação</label>
                                                         <select name="situacao" id="situacao" class="form-control">
-                                                            <option value="ativo">Ativo</option>
+                                                            <option value="ativo" selected>Ativo</option>
                                                             <option value="inativo">Inativo</option>
                                                         </select>
                                                     </div>

@@ -12,6 +12,7 @@ function retorna($ra, $connx){
 		$valores['situacao'] = $row_aluno['situacao'];
 	}else{
 		$valores['nome'] = 'NÃO EXISTE - CADASTRE AQUI';
+		$valores['situacao'] = 'ativo';
 	}
 	return json_encode($valores);
 }
