@@ -200,7 +200,9 @@
                                                 <div class="col-md-1" style="margin-top: 31px" text-align="right">
                                                     <a ref="javascript:void(0);" onclick="openEvents()"><button class="btn btn-sidebar">
                                                             <i class="fas fa-search fa-fw"></i>
+                                                            <label for="pesquisar">Pesquisar</label>
                                                         </button>
+                                                        
                                                 </div>
 
                                             </div>
