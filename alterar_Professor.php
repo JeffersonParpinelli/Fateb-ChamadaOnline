@@ -13,13 +13,13 @@ $sql = "UPDATE professor SET nome = '$nome_professor', senha = '$senha_professor
 $result = mysqli_query($connx, $sql) or die(mysqli_error($connx));;;
 
 
-if ($result == true) {
-    echo "Alterado com sucesso";
-} else {
-    echo "Erro ao Alterar";
-}
+// if ($result == true) {
+//     echo "Alterado com sucesso";
+// } else {
+//     echo "Erro ao Alterar";
+// }
 
 
 //Faz voltar a página cad_curso.php
-//header('location:form_cad_professor.php');
+header('location:form_cad_professor.php');
 

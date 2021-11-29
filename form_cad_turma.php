@@ -56,6 +56,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         function openEvents() {
             location.href = "form_cad_disciplina_turma.php?id=" + document.getElementById("codigo").value;
         }
+
+        function openEvents() {
+            if( document.getElementById("codigo").value != "")
+            location.href = "form_cad_disciplina_turma.php?id=" + document.getElementById("codigo").value;
+        else
+        alert("Preencha o código!");
+        }
     </script>
 
     <!-- Função preenchimento automático -->
