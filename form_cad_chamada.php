@@ -289,7 +289,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card-body">
-                                                    <textarea id="summernote" name="conteudo"><br><br><br><br><br><br>
+                                                    <textarea id="summernote" name="conteudo">
               </textarea>
                                                 </div>
                                             </div>
