@@ -169,13 +169,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <input name="data" type="DATE" <?php if ($_GET["data"] != null) echo "value=\"" . $_GET["data"] . "\"" ?> id="data" onblur="this.value=this.value.toUpperCase();" class="form-control">
                                                 </div>
 
-                                                <div class="col-md-1" style="margin-top: 40px" text-align="right">
-                                                    <!-- <button type="button" class="btn btn-success toastrDefaultSuccess" data-toggle="modal" data-target="#modal-success">
-                                                    Salvar
-                                                </button> -->
-
-                                                    <a ref="javascript:void(0);" onclick="openEvents()"><input type="button" name="consultarAlunos" value="Consultar Alunos" id="consultarAlunos" class="btn btn-primary pull-right">
-                                                        <!-- <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a> -->
+                                                <div class="col-md-2" style="margin-top: 31px" text-align="right">
+                                                    <a ref="javascript:void(0);" onclick="openEvents()"><input type="button" name="consultarAlunos" value="Consultar Alunos" id="consultarAlunos" class="btn btn-block btn-dark">
                                                 </div>
 
 
@@ -186,28 +181,26 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                         <tr>
                                                             <td>
-                                                                <a style="width: 7%">
+                                                                <a>
                                                                     Presentes
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <div class="icheck-primary d-inline">
-                                                                    <input type="checkbox" id="checkboxPrimary13">
-                                                                    <label for="checkboxPrimary13">
+                                                                <div class="icheck d-inline">
+                                                                <label><input type="checkbox" id="checkboxPrimary13" checked="">
                                                                     </label>
                                                                 </div>
                                                             </td>
-                                                        </tr>
+                                                        </tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         <tr>
                                                             <td>
-                                                                <a style="width: 7%">
+                                                                <a>
                                                                     Ausentes
                                                                 </a>
                                                             </td>
                                                             <td>
-                                                                <div class="icheck-primary d-inline">
-                                                                    <input type="checkbox" id="checkboxPrimary14">
-                                                                    <label for="checkboxPrimary14">
+                                                                <div class="icheck d-inline">
+                                                                <label><input type="checkbox" id="checkboxPrimary14">
                                                                     </label>
                                                                 </div>
                                                             </td>
@@ -215,32 +208,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                     </div>
                                                 </div><br>
-
+                                                <div class="row">
+                                            <div class="col-md-12">
                                                 <section class="content">
-
                                                     <div class="card">
-
                                                         <div class="card-body p-0">
-
-
                                                             <table class="table" id="aluno">
                                                                 <tbody>
-
                                                                     <thead>
                                                                         <tr>
-                                                                            <th style="width: 30%">
+                                                                            <th style="width: 39%">
                                                                                 Alunos
                                                                             </th>
-                                                                            <th>
+                                                                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                 1ª
                                                                             </th>
-                                                                            <th>
+                                                                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                 2ª
                                                                             </th>
-                                                                            <th>
+                                                                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                 3ª
                                                                             </th>
-                                                                            <th>
+                                                                            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                 4ª
                                                                             </th>
                                                                         </tr>
@@ -254,8 +243,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                                                     while ($dados = mysqli_fetch_assoc($resultado)) {
                                                                     ?>
-
-
                                                                         <tr>
                                                                             <td>
                                                                                 <a>
@@ -286,30 +273,28 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                                             <td>
                                                                                 <div class="icheck-primary d-inline">
                                                                                     <label> <input type="checkbox" name="presenca[]" id="aluno[]" value="<?php echo $dados['ra'] ?>">
+<<<<<<< HEAD
 
+=======
+>>>>>>> b1cf52fb15b4759e51c300b224594cf59dd5d704
                                                                                     </label>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
-
                                                                     <?php
                                                                     }
                                                                     ?>
                                                                 </tbody>
                                                             </table>
-
                                                         </div>
-
-                                                </section>
-                                        </div>
-                                        <br>
+                                                </section></div></div>
+                                        </div><br>
 
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card-body">
                                                     <textarea id="summernote" name="conteudo">
-                                                    Resumo <em>do</em> <u>Conteúdo</u> <strong>Ministrado</strong>
-                                                    </textarea>
+              </textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,13 +315,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                 <div class="modal-dialog">
                                     <div class="modal-content bg-success">
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Cadastro Curso</h4>
+                                            <h4 class="modal-title">Chamada Online</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Deseja salvar o curso?</p>
+                                            <p>Deseja salvar a chamada?</p>
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>

@@ -60,6 +60,13 @@
     <!-- API preenchimento automático -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
+    <script>
+        function openEvents() {
+            location.href = "form_relatorio_administrador.php?curso=" + document.getElementById("curso").value +
+                "&disciplina=" + document.getElementById("disciplina").value +
+                "&aluno=" + document.getElementById("aluno").value;
+        }
+    </script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -97,64 +104,31 @@
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
+                                                <!-- <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma"> -->
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.modal -->
-                        <form method="POST" action="listar_Turma.php">
-                            <div class="modal fade show" id="modal-listarTurma">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Relatório</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="container-fluid">
-                                                <table class="table table-striped">
-                                                    <tr>
-                                                        <td> <?php
-                                                                include("listar_Turma.php");
-                                                                ?>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer justify-content-between">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                            <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                        </form>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="gerarRelatorio.php" method="POST">
+                                <form action="form_relatorio_administrador.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
 
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="semestreAno">Data Inicial</label>
-                                                    <input name="semestreAno" type="date" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="dataInicio">Data Inicial</label>
+                                                    <input name="dataInicio" type="date" <?php if ($_GET["dataInicio"] != null) echo "value=\"" . $_GET["dataInicio"] . "\"" ?>id="dataInicio" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="semestreAno">Data Final</label>
-                                                    <input name="semestreAno" type="date" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <label for="dataFim">Data Final</label>
+                                                    <input name="dataFim" type="date" <?php if ($_GET["dataFim"] != null) echo "value=\"" . $_GET["dataFim"] . "\"" ?> id="dataFim" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
 
-                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="curso">Curso</label>
                                                     <select class="form-control" name="curso" id="curso">
                                                         <option>Escolha o curso</option>
@@ -167,7 +141,7 @@
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
 
-                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                            <option value="<?php echo $dados['codigo'] ?>" <?php if ($dados['codigo'] == $_GET["curso"]) echo " selected" ?>>
                                                                 <?php echo $dados['descricao'] ?>
                                                             </option>";
 
@@ -178,8 +152,8 @@
                                                 </div>
 
                                                 <div class="col-md-3 col-xs-8" style="padding: 10px;">
-                                                    <label for="curso">Disciplina</label>
-                                                    <select class="form-control" name="curso" id="curso">
+                                                    <label for="disciplina">Disciplina</label>
+                                                    <select class="form-control" name="disciplina" id="disciplina">
                                                         <option>Escolha a disciplina</option>
                                                         <?php
                                                         include("conexao.php");
@@ -191,31 +165,7 @@
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
-                                                                <?php echo $dados['descricao'] ?>
-                                                            </option>";
-
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
-                                                    <label for="curso">Disciplina</label>
-                                                    <select class="form-control" name="curso" id="curso">
-                                                        <option>Escolha a disciplina</option>
-                                                        <?php
-                                                        include("conexao.php");
-                                                        $curso_selecionado = $dados['codigo'];
-
-                                                        $sql = "SELECT * FROM disciplina";
-
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>">
+                                                            <option value="<?php echo $dados['codigo'] ?>" <?php if ($dados['codigo'] == $_GET["disciplina"]) echo " selected" ?>>
                                                                 <?php echo $dados['descricao'] ?>
                                                             </option>";
 
@@ -228,7 +178,7 @@
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="aluno">Aluno</label>
                                                     <select class="form-control" name="aluno" id="aluno">
-                                                        <option>Selecione o aluno</option>
+                                                        <option>TODOS</option>
                                                         <?php
                                                         include("conexao.php");
 
@@ -237,7 +187,7 @@
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['ra'] ?>">
+                                                            <option value="<?php echo $dados['ra'] ?>" <?php if ($dados['ra'] == $_GET["ra"]) echo " selected" ?>>
                                                                 <?php echo $dados['nome'] ?>
                                                             </option>";
 
@@ -247,51 +197,71 @@
                                                     </select>
                                                 </div>
 
+                                                <div class="col-md-1" style="margin-top: 31px" text-align="right">
+                                                    <a ref="javascript:void(0);" onclick="openEvents()"><button class="btn btn-sidebar">
+                                                            <i class="fas fa-search fa-fw"></i>
+                                                            <label for="pesquisar">Pesquisar</label>
+                                                        </button>
+                                                        
+                                                </div>
+
                                             </div>
-
-                                            <div class="row" style="padding-top: 20px;">
-                                                <table class="table" id="aluno">
-                                                    <thead>
-                                                        <tr>
-                                                        <th scope="col">Curso</th>
-                                                        <th scope="col">Disciplina</th>
-                                                            <th scope="col">Professor</th>
-                                                            <th scope="col">Aluno</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <?php
-                                                        include("conexao.php");
-
-                                                        $sql = "SELECT * FROM curso, disciplina, professor, aluno WHERE curso.codigo = 1 
-                                                        AND disciplina.codigo = 1 
-                                                        AND professor.cpf = 1";
-                                                        $resultado = mysqli_query($connx, $sql);
-
-                                                        while ($dados = mysqli_fetch_assoc($resultado)) {
-                                                        ?>
+                                            <?php if ($_GET["curso"] != null) { ?>
+                                                <div class="row" style="padding-top: 30px;">
+                                                    <table class="table" id="aluno">
+                                                        <thead>
                                                             <tr>
-                                                                <td>
-                                                                    ADMINISTRAÇÃO
-                                                                </td>
-                                                                <td>
-                                                                    PROGRAMAÇÃO 10
-                                                                </td>
-                                                                <td>
-                                                                    <?php echo $dados['nome'] ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php echo $dados['nome'] ?>
-                                                                </td>
+                                                                <th scope="col">Curso</th>
+                                                                <th scope="col">Disciplina</th>
+                                                                <th scope="col">Professor</th>
+                                                                <th scope="col">Aluno</th>
+                                                                <th scope="col">Presenças</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
 
                                                             <?php
-                                                        }
+                                                            include("conexao.php");
+
+                                                            $sql = "SELECT td.dataInicio, td.dataFim, c.descricao as Curso, d.descricao as Disciplina, pro.nome as Professor, a.nome,(select count(p.codChamada) from presenca p
+                                                        JOIN aluno al on al.ra = p.ra
+                                                        JOIN turmadiscaluno ta on ta.ra = al.ra
+                                                        WHERE al.ra = a.ra AND ta.codDisc = td.codDisc) as 'Presenças' FROM turma as t 
+                                                        JOIN curso c on c.codigo = t.codCurso
+                                                        JOIN turmadisc td on td.codTurma = t.codigoTurma
+                                                        JOIN disciplina d on d.codigo = td.codDisc
+                                                        JOIN turmadiscaluno ta on ta.codTurma = td.codTurma
+                                                        JOIN professor pro on pro.cpf = td.cpfProfessor
+                                                        JOIN aluno a on a.ra = ta.ra;";
+                                                            $resultado = mysqli_query($connx, $sql);
+
+                                                            while ($dados = mysqli_fetch_assoc($resultado)) {
                                                             ?>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                                <tr>
+                                                                    <td>
+                                                                        <?php echo $dados['Curso'] ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $dados['Disciplina'] ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $dados['Professor'] ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $dados['nome'] ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $dados['Presenças'] ?>
+                                                                    </td>
+
+                                                                <?php
+                                                            }
+                                                                ?>
+                                                                </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            <?php } ?>
 
                                             <!-- FIM TESTE SELECIONAR DIVERSAS DISCIPLINAS -->
 
@@ -301,36 +271,15 @@
                                                         Visualizar relatório
                                                     </button>
 
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                    <a href="gerar_relatorio.php"><button type="button" class="btn btn-success">
                                                         Gerar relatório
                                                     </button>
                                                     <input type="submit" name="btnLimpar" value="Limpar Campos" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                    <a href="gerar_relatorio.php"><abbr title="Exportar Excel"><img src="dist/img/excel.png" height="70" width="70" type="button" text-align="right" style="margin-left: 500px"></abbr></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="modal-success">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content bg-success">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Cadastro Turma</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Deseja salvar a turma?</p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                    <button type="subtmit" class="btn btn-outline-light">Salvar</button>
-                                                </div>
-                                            </div>
-                                            <!-- /.modal-content -->
-                                        </div>
-                                        <!-- /.modal-dialog -->
-                                    </div>
-                                    <!-- /.modal -->
                                 </form>
                                 <!-- /.card-body -->
                                 <div class="card-footer">

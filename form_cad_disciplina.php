@@ -63,7 +63,16 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         function openEvents() {
             location.href = "form_cad_disciplina_curso.php?id=" + document.getElementById("codigo").value;
         }
+
+        function openEvents() {
+            if( document.getElementById("codigo").value != "")
+            location.href = "form_cad_disciplina_curso.php?id=" + document.getElementById("codigo").value;
+        else
+        alert("Preencha o código!");
+        }
     </script>
+
+    
 
 </head>
 
@@ -95,7 +104,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             <section class="content">
                 <div class="container-fluid">
                     <div class="col-md-12">
-                        <div class="page-title" text-align="right">
+                        <div class="page-title" align="right">
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">

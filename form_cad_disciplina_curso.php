@@ -194,8 +194,8 @@ $situacao_disciplina = $dados['situacao'];
                                                         </button>
                                                         <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
                                                         class="btn btn-primary pull-right">-->
-                                                        <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                        <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                        <a href="form_cad_disciplina.php"><input type="button" name="btnLimpar" value="Voltar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                        <!-- <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right"> -->
                                                     </div>
                                                 </div>
                                             </div>

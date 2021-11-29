@@ -31,7 +31,7 @@ $codDisc = $dados['codDisc'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Eventos do Calendário</title>
+    <title>Fateb | Alterar Eventos do Calendário</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -76,12 +76,12 @@ $codDisc = $dados['codDisc'];
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Cadastro de Eventos do Calendário</h1>
+                            <h1>Alterar Eventos do Calendário</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                                <li class="breadcrumb-item active">Cadastro de Eventos do Calendário</li>
+                                <li class="breadcrumb-item active">Alterar Eventos do Calendário</li>
                             </ol>
                         </div>
                     </div>

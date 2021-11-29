@@ -56,6 +56,13 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         function openEvents() {
             location.href = "form_cad_disciplina_turma.php?id=" + document.getElementById("codigo").value;
         }
+
+        function openEvents() {
+            if( document.getElementById("codigo").value != "")
+            location.href = "form_cad_disciplina_turma.php?id=" + document.getElementById("codigo").value;
+        else
+        alert("Preencha o código!");
+        }
     </script>
 
     <!-- Função preenchimento automático -->
@@ -187,7 +194,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
-                                                    <label for="calendario">Calendario</label>
+                                                    <label for="calendario">Calendário</label>
                                                     <select class="form-control" name="calendario" id="calendario">
                                                         <option>Selecione o calendario...</option>
                                                         <?php
