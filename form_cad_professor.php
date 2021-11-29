@@ -152,7 +152,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="cpf">CPF</label>
-                                                    <input name="cpf" type="text" id="cpf" maxlength="11" class="form-control">
+                                                    <input name="cpf" type="text" id="cpf" maxlength="11" class="form-control" placeholder="111.111.111-11">
                                                 </div>
 
                                                 <div class="col-md-4 col-xs-6">
@@ -177,7 +177,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 160px" text-align="right">
                                                     <input type="button" class="btn btn-success" value="Salvar" data-toggle="modal" data-target="#modal-success"></input>
-                                                    <!-- <a href="alterar_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-primary pull-right">Alterar</a> -->
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                     <a href="excluir_Professor.php?id=<?php echo $cpf_professor ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>

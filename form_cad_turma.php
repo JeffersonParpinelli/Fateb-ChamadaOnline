@@ -242,17 +242,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-12" style="padding-top: 20px;">
-                                                    
-                                                    <?php
-                                                    if ($codigo_turma == null || '') {
-                                                        
-                                                    }else{
-                                                        ?>
                                                         <label for="disciplina">INCLUIR DISCIPLINA</label><br>
                                                         <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">DISCIPLINA</a>
-                                                    <?php
-                                                    }
-                                                    ?>
 
                                                 </div>
                                             </div>
