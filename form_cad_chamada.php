@@ -273,10 +273,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                                             <td>
                                                                                 <div class="icheck-primary d-inline">
                                                                                     <label> <input type="checkbox" name="presenca[]" id="aluno[]" value="<?php echo $dados['ra'] ?>">
-<<<<<<< HEAD
-
-=======
->>>>>>> b1cf52fb15b4759e51c300b224594cf59dd5d704
                                                                                     </label>
                                                                                 </div>
                                                                             </td>
