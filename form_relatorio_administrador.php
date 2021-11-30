@@ -30,6 +30,11 @@
 </body>
 </html> -->
 
+<?php
+// Turn off all error reporting
+error_reporting(3);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -61,8 +66,16 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
     <script>
+        // function openEvents() {
+        //     location.href = "form_relatorio_administrador.php?curso=" + document.getElementById("curso").value +
+        //         "&disciplina=" + document.getElementById("disciplina").value +
+        //         "&aluno=" + document.getElementById("aluno").value;
+        // }
+
         function openEvents() {
-            location.href = "form_relatorio_administrador.php?curso=" + document.getElementById("curso").value +
+            location.href = "form_relatorio_administrador.php?dataInicio=" + document.getElementById("dataInicio").value +
+                "&dataFim=" + document.getElementById("dataFim").value +
+                "&curso=" + document.getElementById("curso").value +
                 "&disciplina=" + document.getElementById("disciplina").value +
                 "&aluno=" + document.getElementById("aluno").value;
         }
@@ -120,12 +133,12 @@
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="dataInicio">Data Inicial</label>
-                                                    <input name="dataInicio" type="date" <?php if ($_GET["dataInicio"] != null) echo "value=\"" . $_GET["dataInicio"] . "\"" ?>id="dataInicio" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <input name="dataInicio" type="date" <?php if ($_GET["dataInicio"] != null) echo "value=\"" . $_GET["dataInicio"] . "\"" ?>id="dataInicio" class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="dataFim">Data Final</label>
-                                                    <input name="dataFim" type="date" <?php if ($_GET["dataFim"] != null) echo "value=\"" . $_GET["dataFim"] . "\"" ?> id="dataFim" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                    <input name="dataFim" type="date" <?php if ($_GET["dataFim"] != null) echo "value=\"" . $_GET["dataFim"] . "\"" ?> id="dataFim" class="form-control" required="">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
@@ -202,7 +215,7 @@
                                                             <i class="fas fa-search fa-fw"></i>
                                                             <label for="pesquisar">Pesquisar</label>
                                                         </button>
-                                                        
+
                                                 </div>
 
                                             </div>
@@ -223,16 +236,35 @@
                                                             <?php
                                                             include("conexao.php");
 
-                                                            $sql = "SELECT td.dataInicio, td.dataFim, c.descricao as Curso, d.descricao as Disciplina, pro.nome as Professor, a.nome,(select count(p.codChamada) from presenca p
+                                                            $sql = "SELECT c.descricao as Curso, d.descricao as Disciplina, pro.nome as Professor, a.nome,(
+                                                                select count(p.codChamada) FROM presenca p
                                                         JOIN aluno al on al.ra = p.ra
                                                         JOIN turmadiscaluno ta on ta.ra = al.ra
-                                                        WHERE al.ra = a.ra AND ta.codDisc = td.codDisc) as 'Presenças' FROM turma as t 
+                                                        WHERE al.ra = a.ra AND ta.codDisc = td.codDisc";
+                                                            if ($_GET["dataInicio"] != "") {
+                                                                $sql .= " AND p.codChamada BETWEEN " . $_GET["dataInicio"] . " AND " . $_GET["dataFim"];
+                                                            }
+                                                            $sql .= " ) as 'Presenças' FROM turma as t 
                                                         JOIN curso c on c.codigo = t.codCurso
                                                         JOIN turmadisc td on td.codTurma = t.codigoTurma
                                                         JOIN disciplina d on d.codigo = td.codDisc
                                                         JOIN turmadiscaluno ta on ta.codTurma = td.codTurma
                                                         JOIN professor pro on pro.cpf = td.cpfProfessor
-                                                        JOIN aluno a on a.ra = ta.ra;";
+                                                        JOIN aluno a on a.ra = ta.ra
+                                                        WHERE 1=1";
+                                                            if ($_GET["curso"] != "") {
+                                                                $sql .= " AND c.codigo = " . $_GET["curso"];
+                                                            }
+                                                            if ($_GET["disciplina"] != "") {
+                                                                $sql .= " AND d.codigo = " . $_GET["disciplina"];
+                                                            }
+                                                            if($_GET["aluno"] != "TODOS"){
+                                                                $sql.=" AND a.ra = ".$_GET["aluno"];
+
+                                                            }
+
+                                                            // print_r($sql);
+
                                                             $resultado = mysqli_query($connx, $sql);
 
                                                             while ($dados = mysqli_fetch_assoc($resultado)) {
@@ -272,10 +304,10 @@
                                                     </button>
 
                                                     <a href="gerar_relatorio.php"><button type="button" class="btn btn-success">
-                                                        Gerar relatório
-                                                    </button>
-                                                    <input type="submit" name="btnLimpar" value="Limpar Campos" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <a href="gerar_relatorio.php"><abbr title="Exportar Excel"><img src="dist/img/excel.png" height="70" width="70" type="button" text-align="right" style="margin-left: 500px"></abbr></a>
+                                                            Gerar relatório
+                                                        </button>
+                                                        <input type="submit" name="btnLimpar" value="Limpar Campos" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                        <a href="gerar_relatorio.php"><abbr title="Exportar Excel"><img src="dist/img/excel.png" height="70" width="70" type="button" text-align="right" style="margin-left: 500px"></abbr></a>
                                                 </div>
                                             </div>
                                         </div>
