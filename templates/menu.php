@@ -18,9 +18,7 @@ error_reporting(0);
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
+          <a href="login.php" type="button" class="btn btn-danger pull-right">SAIR</a>
         </li>
       </ul>
     </nav>
@@ -85,12 +83,48 @@ error_reporting(0);
                   </a>
                 </li>
 
+                <!--Link para CALENDARIO LETIVO-->
+                <li class="nav-item">
+                  <a href="./form_cad_calendario.php" class="nav-link">
+                    <!--Página que será chamada href-->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Calendário</p>
+                  </a>
+                </li>
+
+                 <!--Link para DISCIPLINA-->
+                 <li class="nav-item">
+                  <a href="./form_cad_disciplina.php" class="nav-link">
+                    <!--Página que será chamada href-->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Disciplina</p>
+                  </a>
+                </li>
+
+                 <!--Link para PROFESSOR-->
+                 <li class="nav-item">
+                  <a href="./form_cad_professor.php" class="nav-link">
+                    <!--Página que será chamada href-->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Professor</p>
+                  </a>
+                </li>
+
                 <!--Link para cadastro TURMA-->
                 <li class="nav-item">
                   <a href="./form_cad_turma.php" class="nav-link">
                     <!--Página que será chamada href-->
                     <i class="far fa-circle nav-icon"></i>
                     <p>Turma</p>
+                  </a>
+                </li>
+
+                <!--Link para DETALHES DISCIPLINA-->
+                <li class="nav-item">
+                  <a href="./form_cad_detalhes_disciplina.php" class="nav-link">
+                    <!--Página que será chamada href-->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Detalhes Disciplina</p>
                   </a>
                 </li>
 
@@ -110,43 +144,8 @@ error_reporting(0);
                     <i class="far fa-circle nav-icon"></i>
                     <p>Vincular Aluno</p>
                   </a>
-                </li>
-
-                <!--Link para DISCIPLINA-->
-                <li class="nav-item">
-                  <a href="./form_cad_disciplina.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Disciplina</p>
-                  </a>
-                </li>
-
-                <!--Link para DETALHES DISCIPLINA-->
-                <li class="nav-item">
-                  <a href="./form_cad_detalhes_disciplina.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Detalhes Disciplina</p>
-                  </a>
-                </li>
-
-                <!--Link para PROFESSOR-->
-                <li class="nav-item">
-                  <a href="./form_cad_professor.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Professor</p>
-                  </a>
-                </li>
-
-                <!--Link para CALENDARIO LETIVO-->
-                <li class="nav-item">
-                  <a href="./form_cad_calendario.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Calendário</p>
-                  </a>
-                </li>
+                </li>          
+              
               </ul>
             </li>
             <li class="nav-item menu-open">
