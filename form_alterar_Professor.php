@@ -5,7 +5,7 @@ $cpf_professor = $_GET['id'];
 //Abre conexao com banco
 include 'conexao.php';
 
-$sql = "SELECT * FROM professor WHERE cpf = $cpf_professor ";
+$sql = "SELECT * FROM professor WHERE cpf = '$cpf_professor' ";
 
 $result = mysqli_query($connx, $sql);
 

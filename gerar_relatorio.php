@@ -50,9 +50,10 @@
 			$html .= '<td>'.$row_chamada["Professor"].'</td>';
 			$html .= '<td>'.$row_chamada["nome"].'</td>';
 			$html .= '<td>'.$row_chamada["Presenças"].'</td>';
-			$html .= '</tr>';
+			$html .= '</tr>';			
 			;
 		}
+		$html .= '</table>';
 		// Configurações header para forçar o download
 		header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 		header ("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");

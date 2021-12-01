@@ -1,38 +1,7 @@
-<!-- 
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Combos Dependentes</title>
-<script src="jquery-1.11.0.min.js" type="text/javascript"></script>
-</head>
-<body>
-<select id="CmbCurso"> 
-    <option value="">Selecione a o curso</option>
-</select>
-<select id="CmbCidade"> 
-</select>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#CmbCurso').change(function(e) {
-            $('#CmbDisciplina').empty();
-            var id = $(this).val();
-            $.post('call_disciplinas.php', {ufid:id}, function(data){
-                var cmb = '<option value="">Selecione a Disciplina</option>';
-                $.each(data, function (index, value){
-                    cmb = cmb + '<option value="' + value.disciplina_codigo + '">' + value.disciplina + '</option>';;
-                });
-                $('#CmbDisciplina').html(cmb);
-            }, 'json');
-        });
-    });
-</script>
-</body>
-</html> -->
-
 <?php
-// Turn off all error reporting
+
 error_reporting(3);
+
 ?>
 
 <!DOCTYPE html>
@@ -66,12 +35,7 @@ error_reporting(3);
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
     <script>
-        // function openEvents() {
-        //     location.href = "form_relatorio_administrador.php?curso=" + document.getElementById("curso").value +
-        //         "&disciplina=" + document.getElementById("disciplina").value +
-        //         "&aluno=" + document.getElementById("aluno").value;
-        // }
-
+ 
         function openEvents() {
             location.href = "form_relatorio_administrador.php?dataInicio=" + document.getElementById("dataInicio").value +
                 "&dataFim=" + document.getElementById("dataFim").value +
@@ -133,12 +97,12 @@ error_reporting(3);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="dataInicio">Data Inicial</label>
-                                                    <input name="dataInicio" type="date" <?php if ($_GET["dataInicio"] != null) echo "value=\"" . $_GET["dataInicio"] . "\"" ?>id="dataInicio" class="form-control" required="">
+                                                    <input name="dataInicio" type="date" <?php if ($_GET["dataInicio"] != null) echo "value=\"" . $_GET["dataInicio"] . "\"" ?>id="dataInicio" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="dataFim">Data Final</label>
-                                                    <input name="dataFim" type="date" <?php if ($_GET["dataFim"] != null) echo "value=\"" . $_GET["dataFim"] . "\"" ?> id="dataFim" class="form-control" required="">
+                                                    <input name="dataFim" type="date" <?php if ($_GET["dataFim"] != null) echo "value=\"" . $_GET["dataFim"] . "\"" ?> id="dataFim" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-2 col-xs-8" style="padding: 10px;">
@@ -211,10 +175,10 @@ error_reporting(3);
                                                 </div>
 
                                                 <div class="col-md-1" style="margin-top: 31px" text-align="right">
-                                                    <a ref="javascript:void(0);" onclick="openEvents()"><button class="btn btn-sidebar">
+                                                    <a ref="javascript:void(0);" onclick="openEvents();">
                                                             <i class="fas fa-search fa-fw"></i>
                                                             <label for="pesquisar">Pesquisar</label>
-                                                        </button>
+                                                      
 
                                                 </div>
 

@@ -5,9 +5,9 @@ include 'conexao.php';
 
 $cpf_professor = $_GET["id"];
 
-$sql = "DELETE FROM professor WHERE cpf = $cpf_professor";
+$sql = "DELETE FROM professor WHERE cpf = '$cpf_professor'";
 
-$result = mysqli_query($connx, $sql);
+$result = mysqli_query($connx, $sql) or die(mysqli_error($connx));;;
 
 // if ($result == true) {
 //     echo "Excluído com sucesso";
