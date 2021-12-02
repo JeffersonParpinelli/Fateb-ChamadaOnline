@@ -74,7 +74,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <div class="wrapper">
 
         <!-- Navbar MENU-->
-        <?php include_once('templates/menu.php') ?>
+        <?php include_once('templates/menuu.php') ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -102,12 +102,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <div id="pnlPesquisa" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnPesquisar')">
                                 <div class="title_right">
                                     <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
-                                        <div class="input-group">
-                                            <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
-                                            <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCurso">
-                                            </span>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

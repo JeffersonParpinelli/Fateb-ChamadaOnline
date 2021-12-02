@@ -18,7 +18,7 @@ error_reporting(0);
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="loginn.php" type="button" class="btn btn-danger pull-right">SAIR</a>
+          <a href="login.php" type="button" class="btn btn-danger pull-right">SAIR</a>
         </li>
       </ul>
     </nav>
@@ -43,7 +43,7 @@ error_reporting(0);
             <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Administrador</a>
+            <a href="#" class="d-block">Professor</a>
           </div>
         </div>
 
@@ -73,15 +73,7 @@ error_reporting(0);
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <!--Link para cadastro CURSO-->
-                <li class="nav-item">
-                  <a href="./form_cad_curso.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Curso</p>
-                  </a>
-                </li>
+              <ul class="nav nav-treeview">                
 
                 <!--Link para CALENDARIO LETIVO-->
                 <li class="nav-item">
@@ -90,62 +82,7 @@ error_reporting(0);
                     <i class="far fa-circle nav-icon"></i>
                     <p>Calendário</p>
                   </a>
-                </li>
-
-                 <!--Link para DISCIPLINA-->
-                 <li class="nav-item">
-                  <a href="./form_cad_disciplina.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Disciplina</p>
-                  </a>
-                </li>
-
-                 <!--Link para PROFESSOR-->
-                 <li class="nav-item">
-                  <a href="./form_cad_professor.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Professor</p>
-                  </a>
-                </li>
-
-                <!--Link para cadastro TURMA-->
-                <li class="nav-item">
-                  <a href="./form_cad_turma.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Turma</p>
-                  </a>
-                </li>
-
-                <!--Link para DETALHES DISCIPLINA-->
-                <li class="nav-item">
-                  <a href="./form_cad_detalhes_disciplina.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Detalhes Disciplina</p>
-                  </a>
-                </li>
-
-                <!--Link para cadastro ALUNO-->
-                <li class="nav-item">
-                  <a href="form_cad_aluno.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Matrícula</p>
-                  </a>
-                </li>
-
-                <!--Link para VINCULAR ALUNO A TURMA-->
-                <li class="nav-item">
-                  <a href="./form_cad_matricula_disciplina.php" class="nav-link">
-                    <!--Página que será chamada href-->
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Vincular Aluno</p>
-                  </a>
-                </li>          
-              
+                </li>              
               </ul>
             </li>
             <li class="nav-item menu-open">
@@ -157,6 +94,16 @@ error_reporting(0);
                 </p>
               </a>
               <ul class="nav nav-treeview">
+                <!--Link para CHAMADA-->
+                <li class="nav-item">
+                  <a href="form_cad_chamada.php" class="nav-link">
+                    <!--Página que será chamada href-->
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Chamada
+                    </p>
+                  </a>
+                </li>
                 <!--Link para RELATÓRIO-->
                 <li class="nav-item">
                   <a href="./form_relatorio_administrador.php" class="nav-link">
