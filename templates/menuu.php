@@ -106,7 +106,7 @@ error_reporting(0);
                 </li>
                 <!--Link para RELATÓRIO-->
                 <li class="nav-item">
-                  <a href="./form_relatorio_administrador.php" class="nav-link">
+                  <a href="./form_relatorio_administradorr.php" class="nav-link">
                     <!--Página que será chamada href-->
                     <i class="far fa-circle nav-icon"></i>
                     <p>Relatório</p>
