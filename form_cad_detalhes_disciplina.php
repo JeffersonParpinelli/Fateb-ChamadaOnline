@@ -239,7 +239,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
                                             <div class="row" style="padding-top: 20px;">
                                                 <div class="col-md-3 col-xs-8">
-                                                    <label for="diaSemana1">Dia da semana 1</label>
+                                                    <label for="diaSemana">Dia da semana</label>
                                                     <select class="form-control" name="diaSemana1" id="diaSemana1">
                                                         <option>Escolha o dia</option>
                                                         <option value="segunda">Segunda-feira</option>
@@ -252,14 +252,14 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
 
                                                 </div>
-                                                <div class="col-md-8 col-xs-2" style="padding-top: 40px; padding-right: 20px">
+
+                                                <div class="col-md-8 col-xs-2" style="padding-top: 40px; padding-right: 20px" name="">
                                                     <input type="checkbox" name="aula1" value="1">   1ª
                                                     <input type="checkbox" name="aula2" value="2">   2ª
                                                     <input type="checkbox" name="aula3" value="3">   3ª
                                                     <input type="checkbox" name="aula4" value="4">   4ª
                                                     <input type="checkbox" name="aula5" value="5">   5ª
                                                     <input type="checkbox" name="aula6" value="6">   6ª
-
                                                 </div>
 
                                             </div>

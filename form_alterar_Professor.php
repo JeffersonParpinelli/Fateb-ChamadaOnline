@@ -98,7 +98,7 @@ $sit_professor = $dados['situacao'];
 
                                 <div class="col-md-2 col-xs-6">
                                     <label for="senha">SENHA</label>
-                                    <input name="senha" type="password" id="senha" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $senha_professor ?>">
+                                    <input name="senha" type="text" id="senha" onblur="this.value=this.value.toUpperCase();" class="form-control" onkeydown="upperCaseF(this)" value="<?php echo $senha_professor ?>">
                                 </div>
 
                                 <div class="col-md-2 col-xs-6">
