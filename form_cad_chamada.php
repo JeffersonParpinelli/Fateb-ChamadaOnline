@@ -370,7 +370,17 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 mode: "htmlmixed",
                 theme: "monokai"
             });
-        })
+        });
+
+        const picker = document.getElementById('data');
+        picker.addEventListener('input', function(e){
+        var day = new Date(this.value).getUTCDay();
+        if([6,0].includes(day)){
+            e.preventDefault();
+            this.value = '';
+            alert('FIM DE SEMANA NÃO PERMITIDO!');
+        }
+        });
     </script>
 
     <script>

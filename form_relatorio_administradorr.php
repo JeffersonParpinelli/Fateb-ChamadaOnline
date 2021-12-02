@@ -175,8 +175,8 @@ error_reporting(3);
 
                                                 <div class="col-md-1" style="margin-top: 31px" text-align="right">
                                                     <a ref="javascript:void(0);" onclick="openEvents();">
-                                                            <i class="fas fa-search fa-fw"></i>
-                                                            <label for="pesquisar">Pesquisar</label>
+                                                        <i class="fas fa-search fa-fw"></i>
+                                                        <label for="pesquisar">Pesquisar</label>
                                                 </div>
 
                                             </div>
@@ -198,12 +198,13 @@ error_reporting(3);
                                                             include("conexao.php");
 
                                                             $sql = "SELECT c.descricao as Curso, d.descricao as Disciplina, pro.nome as Professor, a.nome,(
-                                                                select count(p.codChamada) FROM presenca p
+                                                                select coalesce(sum(p.presencas),0) FROM presenca p
                                                         JOIN aluno al on al.ra = p.ra
                                                         JOIN turmadiscaluno ta on ta.ra = al.ra
+                                                        JOIN chamada cha on cha.codChamada = p.codChamada
                                                         WHERE al.ra = a.ra AND ta.codDisc = td.codDisc";
                                                             if ($_GET["dataInicio"] != "") {
-                                                                $sql .= " AND p.codChamada BETWEEN " . $_GET["dataInicio"] . " AND " . $_GET["dataFim"];
+                                                                $sql .= " AND cha.dataAula BETWEEN '" . $_GET["dataInicio"] . "' AND '" . $_GET["dataFim"] . "'";
                                                             }
                                                             $sql .= " ) as 'Presenças' FROM turma as t 
                                                         JOIN curso c on c.codigo = t.codCurso
@@ -219,12 +220,11 @@ error_reporting(3);
                                                             if ($_GET["disciplina"] != "") {
                                                                 $sql .= " AND d.codigo = " . $_GET["disciplina"];
                                                             }
-                                                            if($_GET["aluno"] != "TODOS"){
-                                                                $sql.=" AND a.ra = ".$_GET["aluno"];
-
+                                                            if ($_GET["aluno"] != "TODOS") {
+                                                                $sql .= " AND a.ra = " . $_GET["aluno"];
                                                             }
 
-                                                            // print_r($sql);
+                                                            //print_r($sql);
 
                                                             $resultado = mysqli_query($connx, $sql);
 

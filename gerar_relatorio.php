@@ -31,16 +31,18 @@
 		$html .= '</tr>';
 		
 		//Selecionar todos os itens da tabela 
-		$result_chamada = "SELECT td.dataInicio, td.dataFim, c.descricao as Curso, d.descricao as Disciplina, pro.nome as Professor, a.nome,(select count(p.codChamada) from presenca p
-        JOIN aluno al on al.ra = p.ra
-        JOIN turmadiscaluno ta on ta.ra = al.ra
-        WHERE al.ra = a.ra AND ta.codDisc = td.codDisc) as 'Presenças' FROM turma as t 
-        JOIN curso c on c.codigo = t.codCurso
-        JOIN turmadisc td on td.codTurma = t.codigoTurma
-        JOIN disciplina d on d.codigo = td.codDisc
-        JOIN turmadiscaluno ta on ta.codTurma = td.codTurma
-        JOIN professor pro on pro.cpf = td.cpfProfessor
-        JOIN aluno a on a.ra = ta.ra;";
+		$result_chamada = "SELECT c.descricao as Curso, d.descricao as Disciplina, pro.nome as Professor, a.nome,
+		(select coalesce(sum(p.presencas),0) FROM presenca p
+		JOIN aluno al on al.ra = p.ra
+		JOIN turmadiscaluno ta on ta.ra = al.ra
+		JOIN chamada cha on cha.codChamada = p.codChamada
+		WHERE al.ra = a.ra AND ta.codDisc = td.codDisc) as 'Presenças' FROM turma as t 
+		JOIN curso c on c.codigo = t.codCurso
+		JOIN turmadisc td on td.codTurma = t.codigoTurma
+		JOIN disciplina d on d.codigo = td.codDisc
+		JOIN turmadiscaluno ta on ta.codTurma = td.codTurma
+		JOIN professor pro on pro.cpf = td.cpfProfessor
+		JOIN aluno a on a.ra = ta.ra;";
 		$resultado_chamada = mysqli_query($connx , $result_chamada);
 		
 		while($row_chamada = mysqli_fetch_assoc($resultado_chamada)){
