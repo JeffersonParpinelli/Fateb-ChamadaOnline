@@ -63,7 +63,7 @@ $semestreAno_calendario = $dados['semestreAno'];
     <div class="wrapper">
 
         <!-- Navbar MENU-->
-        <?php include_once('templates/menu.php') ?>
+        <?php include_once('templates/menuu.php') ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -116,8 +116,8 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                 <div class="col-md-2,5 col-xs-12">
                                                     <label for="tipo">Tipo</label>
                                                     <select required="" class="form-control" name="tipo" id="tipo">
-                                                        <option value="FERIADO">FERIADO</option>
-                                                        <option value="RECESSO">RECESSO</option>
+                                                        <option value="REPOSICAO AULA">REPOSIÇÃO DE AULA</option>
+                                                        <option value="AULA EXTRA">AULA EXTRA</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -130,7 +130,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;" hidden>
+                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
                                                     <label for="qtdeAulas">Quantidade de aulas</label>
                                                     <select name="qtdeAulas" id="qtdeAulas" class="form-control">
                                                         <option value="1">1</option>
@@ -140,7 +140,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-3 col-xs-12" style="padding: 10px;" hidden>
+                                                <div class="col-md-3 col-xs-12" style="padding: 10px;">
                                                     <label for="turma">Turma</label>
                                                     <select class="form-control" name="turma">
                                                         <option>ESCOLHA A TURMA</option>
@@ -152,7 +152,7 @@ $semestreAno_calendario = $dados['semestreAno'];
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['codigoTurma'] ?>" selected>
+                                                            <option value="<?php echo $dados['codigoTurma'] ?>">
                                                                 <?php echo $dados['descricaoTurma'] ?>
                                                             </option>";
 
@@ -163,7 +163,7 @@ $semestreAno_calendario = $dados['semestreAno'];
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-4 col-xs-6" style="padding: 10px;" hidden>
+                                                <div class="col-md-4 col-xs-6" style="padding: 10px;">
                                                     <label for="codDisc">Disciplina</label>
                                                     <select class="form-control" name="codDisc" id="codDisc">
                                                         <option>ESCOLHA A DISCIPLINA</option>
@@ -175,7 +175,7 @@ $semestreAno_calendario = $dados['semestreAno'];
 
                                                         while ($dados = mysqli_fetch_assoc($resultado)) {
                                                         ?>
-                                                            <option value="<?php echo $dados['codigo'] ?>" selected>
+                                                            <option value="<?php echo $dados['codigo'] ?>">
                                                                 <?php echo $dados['descricao'] ?>
                                                             </option>";
 

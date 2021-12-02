@@ -29,11 +29,17 @@ VALUES ('$codigo',
 //conexao do banco e dados do cadastros
 $query_cadastros = mysqli_query($connx, $recebendo_cadastros) or die(mysqli_error($connx));;;
 
-if ($query_cadastros == true) {
-        echo "Cadastro Efetuado com sucesso!!!";
-} else {
-        echo "Erro ao cadastrar";
-}
+// if ($query_cadastros == true) {
+//         echo "Cadastro Efetuado com sucesso!!!";
+// } else {
+//         echo "Erro ao cadastrar";
+// }
 
 //Faz voltar a página cad_curso.php
-// header('location:form_cad_calendario.php');
+if ($tipo == "FERIADO") {
+        header('location:form_cad_calendario.php');
+} else if ($tipo == "RECESSO") {
+        header('location:form_cad_calendario.php');
+} else {
+        header('location:form_cad_calendarioo.php');
+}
