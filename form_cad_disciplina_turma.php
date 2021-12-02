@@ -14,7 +14,6 @@ $dados = mysqli_fetch_assoc($result);
 $codigo_turma = $dados['codigoTurma'];
 $descricao_turma = $dados['descricaoTurma'];
 
-
 ?>
 
 <!DOCTYPE html>

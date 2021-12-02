@@ -2,8 +2,18 @@
 
 error_reporting(0);
 
-//Abre conexao com banco
 include 'conexao.php';
+
+// $id_turma = $_POST['turma'];
+// $id_disc = $_POST['disciplina'];
+
+// $sql = "SELECT * FROM turmadisc WHERE codTurma = $id_turma AND codDisc = $id_disc";
+
+// $result = mysqli_query($connx, $sql);
+
+// $dados = mysqli_fetch_assoc($result);
+
+//Abre conexao com banco
 
 //recebimento dos dados das váriaveis
 //$ o que esta em Cifrão$ é a variavel que ira receber os dados do input, entre '' é o name do input onde estao os dados
@@ -16,35 +26,34 @@ echo $dataFim = $_POST['dataFim'];
 echo $professor = $_POST['professor'];
 
 /**TABELA HORÁRIO INSERT**/ 
-/**código horário**/
-echo $codTurma = $_POST['turma'];
-echo $codDisc = $_POST['disciplina'];
-echo $diaSemana = $_POST['diaSemana'];
-echo $aula1 = $_POST['aula1'];
-echo $aula2 = $_POST['aula2'];
-echo $aula3 = $_POST['aula3'];
-echo $aula4 = $_POST['aula4'];
-echo $aula5 = $_POST['aula5'];
-echo $aula6 = $_POST['aula6'];
+// /**código horário**/
+// echo $codTurma = $_POST['turma'];
+// echo $codDisc = $_POST['disciplina'];
+// echo $diaSemana = $_POST['diaSemana'];
+// echo $aula1 = $_POST['aula1'];
+// echo $aula2 = $_POST['aula2'];
+// echo $aula3 = $_POST['aula3'];
+// echo $aula4 = $_POST['aula4'];
+// echo $aula5 = $_POST['aula5'];
+// echo $aula6 = $_POST['aula6'];
 
-$recebendo_cadastros = "UPDATE INTO 
-turmadisc
-VALUES ()";
+$recebendo_cadastros = "UPDATE 
+turmadisc SET dataInicio = '$dataInicio', dataFim = '$dataFim', cpfProfessor = '$professor'
+WHERE codTurma = $codTurma";
 
+// // $recebendo_cadastros = "INSERT INTO 
+// // horario
+// // VALUES (,
+// //         '$diaSemana',
+// //         '$aula1',
+// //         '$aula2',
+// //         '$aula3',
+// //         '$aula4',
+// //         '$aula5',
+// //         '$aula6',)";
 
-$recebendo_cadastros = "INSERT INTO 
-horario
-VALUES (,
-        '$diaSemana',
-        '$aula1',
-        '$aula2',
-        '$aula3',
-        '$aula4',
-        '$aula5',
-        '$aula6',)";
-
-// //query_cadastros = recebe como parametros
-// //conexao do banco e dados do cadastros
+// // //query_cadastros = recebe como parametros
+// // //conexao do banco e dados do cadastros
 $query_cadastros = mysqli_query($connx, $recebendo_cadastros) or die(mysqli_error($connx));;;
 
 if($query_cadastros == true){
@@ -54,7 +63,7 @@ if($query_cadastros == true){
         }
 
         //Faz voltar a página cad_curso.php
-// header('location:form_cad_chamada.php');
+// header('location:form_cad_detalhes_disciplina.php');
 
 /*********************************************************************************************************************************/
 // foreach (($_POST["presenca"]) as $value)
@@ -97,11 +106,11 @@ if($query_cadastros == true){
 //         $query_cadastros = mysqli_query($connx, $recebendo_cadastros) or die(mysqli_error($connx));;;
 // }
 
-// /*if($query_cadastros == true){
-//                 echo "Cadastro Efetuado com sucesso!!!";
-//         }else{
-//                 echo "Erro ao cadastrar";
-//         }
-//         */
-// //Faz voltar a página cad_curso.php
+/*if($query_cadastros == true){
+                echo "Cadastro Efetuado com sucesso!!!";
+        }else{
+                echo "Erro ao cadastrar";
+        }
+        */
+//Faz voltar a página cad_curso.php
 // header('location:form_cad_chamada.php');
