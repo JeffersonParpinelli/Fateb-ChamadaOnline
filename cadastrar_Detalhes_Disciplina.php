@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0);
+error_reporting(3);
 
 include 'conexao.php';
 
@@ -54,16 +54,16 @@ WHERE codTurma = $codTurma";
 
 // // //query_cadastros = recebe como parametros
 // // //conexao do banco e dados do cadastros
-$query_cadastros = mysqli_query($connx, $recebendo_cadastros) or die(mysqli_error($connx));;;
+$query_cadastros = mysqli_query($connx, $recebendo_cadastros);
 
-if($query_cadastros == true){
-                echo "Cadastro Efetuado com sucesso!!!";
-        }else{
-                echo "Erro ao cadastrar";
-        }
+// if($query_cadastros == true){
+//                 echo "Cadastro Efetuado com sucesso!!!";
+//         }else{
+//                 echo "Erro ao cadastrar";
+//         }
 
         //Faz voltar a página cad_curso.php
-// header('location:form_cad_detalhes_disciplina.php');
+header('location:form_cad_detalhes_disciplina.php');
 
 /*********************************************************************************************************************************/
 // foreach (($_POST["presenca"]) as $value)
