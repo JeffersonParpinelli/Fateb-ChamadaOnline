@@ -32,6 +32,12 @@ $result = mysqli_query($connx, $sql);
 // }
 
 //Direciona para pagina inicial do cadastro
-header('location:form_cad_calendario.php'); 
+if ($tipo == "FERIADO") {
+    header('location:form_cad_calendario.php');
+} else if ($tipo == "RECESSO") {
+    header('location:form_cad_calendario.php');
+} else {
+    header('location:form_cad_calendarioo.php');
+}
 
 ?>

@@ -108,16 +108,16 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendario">
-                                                <input type="submit" name="btnPesquisarEvento" value="Pesquisar Eventos" id="btnPesquisarEvento" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendarioEvento">
+                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendarioo">
+                                                <input type="submit" name="btnPesquisarEvento" value="Pesquisar Eventos" id="btnPesquisarEvento" class="btn btn-default" data-toggle="modal" data-target="#modal-listarCalendarioEventoo">
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.modal calendário -->
-                            <form method="POST" action="listarCalendario.php">
-                                <div class="modal fade show" id="modal-listarCalendario">
+                            <form method="POST" action="listarCalendarioo.php">
+                                <div class="modal fade show" id="modal-listarCalendarioo">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -131,7 +131,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <table class="table table-striped">
                                                         <tr>
                                                             <td> <?php
-                                                                    include("listar_Calendario.php");
+                                                                    include("listar_Calendarioo.php");
                                                                     ?>
                                                             </td>
                                                         </tr>
@@ -151,8 +151,8 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                             <!-- /.modal -->
 
                             <!-- /.modal calendário de eventos -->
-                            <form method="POST" action="listarCalendarioEvento.php">
-                                <div class="modal fade show" id="modal-listarCalendarioEvento">
+                            <form method="POST" action="listarCalendarioEventoo.php">
+                                <div class="modal fade show" id="modal-listarCalendarioEventoo">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -166,7 +166,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <table class="table table-striped">
                                                         <tr>
                                                             <td> <?php
-                                                                    include("listar_CalendarioEvento.php");
+                                                                    include("listar_CalendarioEventoo.php");
                                                                     ?>
                                                             </td>
                                                         </tr>

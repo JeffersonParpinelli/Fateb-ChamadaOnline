@@ -35,7 +35,7 @@ $query_cadastros = mysqli_query($connx, $recebendo_cadastros) or die(mysqli_erro
 //         echo "Erro ao cadastrar";
 // }
 
-//Faz voltar a página cad_curso.php
+//Faz voltar a página cad_calendario.php
 if ($tipo == "FERIADO") {
         header('location:form_cad_calendario.php');
 } else if ($tipo == "RECESSO") {

@@ -16,4 +16,10 @@ $result = mysqli_query($connx, $sql);
 // }
 
 //Faz voltar a página cad_calendario.php
-header('location:form_cad_calendario.php');
+if ($tipo == "FERIADO") {
+    header('location:form_cad_calendario.php');
+} else if ($tipo == "RECESSO") {
+    header('location:form_cad_calendario.php');
+} else {
+    header('location:form_cad_calendarioo.php');
+}
