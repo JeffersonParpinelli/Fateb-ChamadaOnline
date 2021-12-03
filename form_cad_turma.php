@@ -193,10 +193,10 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     <input name="semestreAno" type="text" maxlength="5" id="semestreAno" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
                                                     <label for="calendario">Calendário</label>
                                                     <select class="form-control" name="calendario" id="calendario">
-                                                        <option>Selecione o calendario...</option>
+                                                        <option>SELECIONE O CALENDÁRIO</option>
                                                         <?php
                                                         include("conexao.php");
 
@@ -261,7 +261,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                         Salvar
                                                     </button>
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                    <a href="excluir_Turma.php?id=<?php echo $codigo_turma ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -290,11 +290,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <!-- /.modal -->
                                 </form>
                                 <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                                    the plugin. -->
-                                </div>
-                                <!-- /.card-footer -->
                             </div>
                         </div>
                         <!-- /.teste -->

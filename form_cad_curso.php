@@ -176,7 +176,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                     </button>
 
                                                     <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <a href="excluirCurso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
+                                                    <a href="excluir_Curso.php?id=<?php echo $id_curso ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                                 </div>
                                             </div>
                                         </div>

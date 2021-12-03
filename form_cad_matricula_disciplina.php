@@ -109,7 +109,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         <div class="input-group">
                                             <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma">
+                                                <!-- <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma"> -->
                                             </span>
                                         </div>
                                     </div>

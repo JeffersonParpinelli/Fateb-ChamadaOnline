@@ -15,7 +15,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fateb | Cadastro de Curso</title>
+    <title>Fateb | Cadastro de Disciplina</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -65,10 +65,10 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
         }
 
         function openEvents() {
-            if( document.getElementById("codigo").value != "")
-            location.href = "form_cad_disciplina_curso.php?id=" + document.getElementById("codigo").value;
-        else
-        alert("Preencha o código!");
+            if (document.getElementById("codigo").value != "")
+                location.href = "form_cad_disciplina_curso.php?id=" + document.getElementById("codigo").value;
+            else
+                alert("Preencha o código!");
         }
 
         function upperCaseF(a) {
@@ -76,7 +76,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                 a.value = a.value.toUpperCase();
             }, 1);
         }
-        
     </script>
 
 </head>
@@ -146,7 +145,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 </div>
                                             </div>
                                             <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                                                 <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
                                             </div>
                                         </div>
@@ -155,114 +154,115 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                     <!-- /.modal-dialog -->
                                 </div>
                             </form>
-                            <div class="x_panel">
-                                <div class="card card-default">
-                                    <!-- /.card-header -->
-                                    <form action="cadastrar_Disciplina.php" method="POST" align="left">
-                                        <div class="card-body">
-                                            <div class="x_content" style="display: block;">
-                                                <div class="row">
-                                                    <div class="col-md-1 col-xs-3">
-                                                        <label for="codigo">Código</label>
-                                                        <input name="codigo" type="text" id="codigo" class="form-control" required="">
-                                                        
-                                                    </div>
+                        </div>
+                        <div class="x_panel">
+                            <div class="card card-default">
+                                <!-- /.card-header -->
+                                <form action="cadastrar_Disciplina.php" method="POST" align="left">
+                                    <div class="card-body">
+                                        <div class="x_content" style="display: block;">
+                                            <div class="row">
+                                                <div class="col-md-1 col-xs-3">
+                                                    <label for="codigo">Código</label>
+                                                    <input name="codigo" type="text" id="codigo" class="form-control" required="">
 
-                                                    <div class="col-md-8 col-xs-12">
-                                                        <label for="descricao">Descrição</label>
-                                                        <input name="descricao" type="text" id="descricao" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required=""  onkeydown="upperCaseF(this)">
-                                                    </div>
-                                                </div><br>
-
-                                                <div class="row">
-                                                    <div class="col-md-2 col-xs-12">
-                                                        <label for="cargaHoraria">Carga Horária</label>
-                                                        <input name="cargaHoraria" type="text" maxlength="200" id="cargaHoraria" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
-                                                    </div>
-
-                                                    <div class="col-md-2 col-xs-8">
-                                                        <label for="qtdeAulasSemanais">Aulas semanais</label>
-                                                        <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
-                                                            <option value="1" selected>1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="col-md-2 col-xs-6">
-                                                        <!--Display none esconde elemento-->
-                                                        <label for="situacao">Situação</label>
-                                                        <select name="situacao" id="situacao" class="form-control">
-                                                            <option value="ativo" selected>Ativo</option>
-                                                            <option value="inativo">Inativo</option>
-                                                        </select>
-                                                    </div>
                                                 </div>
 
-                                                <div class="col-md-3 col-xs-12" style="padding-top: 20px;">
-                                                    <label for="cursos">INCLUIR DISCIPLINA AOS CURSOS</label><br>
-                                                    <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">CURSOS</a>
+                                                <div class="col-md-8 col-xs-12">
+                                                    <label for="descricao">Descrição</label>
+                                                    <input name="descricao" type="text" id="descricao" maxlength="100" onblur="this.value=this.value.toUpperCase();" class="form-control" required="" onkeydown="upperCaseF(this)">
                                                 </div>
-
-                                            </div>
+                                            </div><br>
 
                                             <div class="row">
-                                                <div class="col-md-12" style="margin-top: 160px" text-align="right">
-                                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
-                                                        Salvar
-                                                    </button>
-                                                    <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
-                                                        class="btn btn-primary pull-right">-->
-                                                    <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                    <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                <div class="col-md-2 col-xs-12">
+                                                    <label for="cargaHoraria">Carga Horária</label>
+                                                    <input name="cargaHoraria" type="text" maxlength="200" id="cargaHoraria" onblur="this.value=this.value.toUpperCase();" class="form-control" required="">
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-8">
+                                                    <label for="qtdeAulasSemanais">Aulas semanais</label>
+                                                    <select name="qtdeAulasSemanais" id="qtdeAulasSemanais" class="form-control">
+                                                        <option value="1" selected>1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-2 col-xs-6">
+                                                    <!--Display none esconde elemento-->
+                                                    <label for="situacao">Situação</label>
+                                                    <select name="situacao" id="situacao" class="form-control">
+                                                        <option value="ativo" selected>Ativo</option>
+                                                        <option value="inativo">Inativo</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                </div>
 
-                                <div class="modal fade" id="modal-success">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content bg-success">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Cadastro Disciplina</h4>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                            <div class="col-md-3 col-xs-12" style="padding-top: 20px;">
+                                                <label for="cursos">INCLUIR DISCIPLINA AOS CURSOS</label><br>
+                                                <a ref="javascript:void(0);" onclick="openEvents()" type="button" class="btn btn-primary pull-right">CURSOS</a>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12" style="margin-top: 160px" text-align="right">
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
+                                                    Salvar
                                                 </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Deseja salvar o disciplina?</p>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
-                                                <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                                <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
+                                                        class="btn btn-primary pull-right">-->
+                                                <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                <a href="excluir_Disciplina.php?id=<?php echo $id_disciplina ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                             </div>
                                         </div>
-                                        <!-- /.modal-content -->
                                     </div>
-                                    <!-- /.modal-dialog -->
-                                </div>
-                                <!-- /.modal -->
-                                </form>
-
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                </div>
-                                <!-- /.card-footer -->
                             </div>
+
+                            <div class="modal fade" id="modal-success">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-success">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Cadastro Disciplina</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" text-align="left">
+                                            <p>Deseja salvar a disciplina?</p>
+                                        </div>
+                                        <div class="modal-footer justify-content-between">
+                                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Fechar</button>
+                                            <button type="subtmit" class="btn btn-outline-light">Salvar</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+                            </form>
+
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                            </div>
+                            <!-- /.card-footer -->
                         </div>
-                        <!-- /.teste -->
                     </div>
+                    <!-- /.teste -->
                 </div>
-                <!-- /.container-fluid -->
-            </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->

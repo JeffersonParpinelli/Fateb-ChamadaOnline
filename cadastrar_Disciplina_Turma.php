@@ -40,5 +40,5 @@ VALUES ('$codigo_turma',
         // }
         
         //Faz voltar a página cad_curso.php
-        header('location:form_cad_disciplina_turma.php');
+        header('location:form_cad_turma.php');
 ?>

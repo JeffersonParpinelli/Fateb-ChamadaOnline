@@ -194,9 +194,9 @@ $descricao_turma = $dados['descricaoTurma'];
                                                         </button>
                                                         <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
                                                         class="btn btn-primary pull-right">-->
-                                                        <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
+                                                        <!-- <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()"> -->
                                                         <a href="form_cad_turma.php" type="button" class="btn btn-primary pull-right">Voltar</a>
-                                                        <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right">
+                                                        <!-- <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right"> -->
                                                     </div>
                                                 </div>
                                             </div>
