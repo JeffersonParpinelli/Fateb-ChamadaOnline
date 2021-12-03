@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(3);
+error_reporting(0);
 
 include 'conexao.php';
 
