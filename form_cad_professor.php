@@ -38,7 +38,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
     <!-- API preenchimento automático -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-    
+
 
     <!-- Função para deixar letra maiúscula colocar no input (onkeydown="upperCaseF(this)") -->
     <script>
@@ -46,6 +46,15 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
             setTimeout(function() {
                 a.value = a.value.toUpperCase();
             }, 1);
+        }
+
+        function formatar(mascara, documento) {
+            var i = documento.value.length;
+            var saida = mascara.substring(0, 1);
+            var texto = mascara.substring(i)
+            if (texto.substring(0, 1) != saida) {
+                documento.value += texto.substring(0, 1);
+            }
         }
     </script>
 
@@ -153,7 +162,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             <div class="row">
                                                 <div class="col-md-2 col-xs-3">
                                                     <label for="id">CPF</label>
-                                                    <input name="cpf" type="text" id="cpf" minlength="14" maxlength="14" class="form-control" placeholder="111.111.111-11">
+                                                    <input name="cpf" type="text" id="cpf" minlength="14" maxlength="14" class="form-control" onkeypress="formatar('###.###.###-##', this)">
                                                 </div>
 
                                                 <div class="col-md-4 col-xs-6">
