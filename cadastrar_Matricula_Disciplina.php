@@ -16,7 +16,8 @@ foreach (($_POST["selecionado"]) as $value)
 turmadiscaluno
 VALUES ('$ra',
         '$codDisciplina',
-        '$codTurma')";
+        '$codTurma',
+        null)";
 
         //query_cadastros = recebe como parametros
         //conexao do banco e dados do cadastros
