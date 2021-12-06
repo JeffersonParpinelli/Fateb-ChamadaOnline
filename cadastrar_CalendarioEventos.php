@@ -22,8 +22,8 @@ VALUES ('$codigo',
         '$descMotivo',
         '$qtdeAulas',
         '$codCalendario',
-        '$turma',
-        '$codDisc')";
+        null,
+        null)";
 
 //query_cadastros = recebe como parametros
 //conexao do banco e dados do cadastros
