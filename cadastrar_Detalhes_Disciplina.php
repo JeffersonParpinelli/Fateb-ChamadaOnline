@@ -39,7 +39,7 @@ echo $professor = $_POST['professor'];
 
 $recebendo_cadastros = "UPDATE 
 turmadisc SET dataInicio = '$dataInicio', dataFim = '$dataFim', cpfProfessor = '$professor'
-WHERE codTurma = $codTurma";
+WHERE codTurma = $codTurma AND codDisc = $codDisc";
 
 // // $recebendo_cadastros = "INSERT INTO 
 // // horario

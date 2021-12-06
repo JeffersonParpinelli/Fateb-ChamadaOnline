@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(3);
+error_reporting(0);
 
 ?>
 
@@ -35,9 +35,8 @@ error_reporting(3);
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 
     <script>
- 
         function openEvents() {
-            location.href = "form_relatorio_administrador.php?dataInicio=" + document.getElementById("dataInicio").value +
+            location.href = "form_relatorio_administradorr.php?dataInicio=" + document.getElementById("dataInicio").value +
                 "&dataFim=" + document.getElementById("dataFim").value +
                 "&curso=" + document.getElementById("curso").value +
                 "&disciplina=" + document.getElementById("disciplina").value +
@@ -90,7 +89,7 @@ error_reporting(3);
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="form_relatorio_administrador.php" method="POST">
+                                <form action="form_relatorio_administradorr.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
 
@@ -105,7 +104,7 @@ error_reporting(3);
                                                     <input name="dataFim" type="date" <?php if ($_GET["dataFim"] != null) echo "value=\"" . $_GET["dataFim"] . "\"" ?> id="dataFim" class="form-control">
                                                 </div>
 
-                                                <div class="col-md-2 col-xs-8" style="padding: 10px;">
+                                                <div class="col-md-3 col-xs-8" style="padding: 10px;">
                                                     <label for="curso">Curso</label>
                                                     <select class="form-control" name="curso" id="curso">
                                                         <option>Escolha o curso</option>
@@ -174,14 +173,6 @@ error_reporting(3);
                                                     </select>
                                                 </div>
 
-                                                <div class="col-md-1" style="margin-top: 31px" text-align="right">
-                                                    <a ref="javascript:void(0);" onclick="openEvents();">
-                                                            <i class="fas fa-search fa-fw"></i>
-                                                            <label for="pesquisar">Pesquisar</label>
-                                                      
-
-                                                </div>
-
                                             </div>
                                             <?php if ($_GET["curso"] != null) { ?>
                                                 <div class="row" style="padding-top: 30px;">
@@ -227,7 +218,7 @@ error_reporting(3);
                                                                 $sql .= " AND a.ra = " . $_GET["aluno"];
                                                             }
 
-                                                            // print_r($sql);
+                                                            //print_r($sql);
 
                                                             $resultado = mysqli_query($connx, $sql);
 
@@ -263,15 +254,14 @@ error_reporting(3);
 
                                             <div class="row">
                                                 <div class="col-md-12" style="margin-top: 90px" text-align="right">
-                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-success">
-                                                        Visualizar relatório
-                                                    </button>
+                                                    <a ref="javascript:void(0);" onclick="openEvents();"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-success">
+                                                            Visualizar relatório
+                                                        </button></a>
 
-                                                    <a href="gerar_relatorio.php"><button type="button" class="btn btn-success">
-                                                            Gerar relatório
-                                                        </button>
+                                                    <a href="gerar_relatorio.php"><abbr title="Exportar Excel"><button type="button" class="btn btn-success">
+                                                                Gerar relatório
+                                                            </button></abbr>
                                                         <input type="submit" name="btnLimpar" value="Limpar Campos" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
-                                                        <a href="gerar_relatorio.php"><abbr title="Exportar Excel"><img src="dist/img/excel.png" height="70" width="70" type="button" text-align="right" style="margin-left: 500px"></abbr></a>
                                                 </div>
                                             </div>
                                         </div>
