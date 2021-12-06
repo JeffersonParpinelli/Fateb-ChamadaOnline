@@ -42,7 +42,7 @@
 		JOIN disciplina d on d.codigo = td.codDisc
 		JOIN turmadiscaluno ta on ta.codDisc = d.codigo
 		JOIN professor pro on pro.cpf = td.cpfProfessor
-		JOIN aluno a on a.ra = ta.ra;";
+		JOIN aluno a on a.ra = ta.ra";
 		$resultado_chamada = mysqli_query($connx , $result_chamada);
 		
 		while($row_chamada = mysqli_fetch_assoc($resultado_chamada)){
