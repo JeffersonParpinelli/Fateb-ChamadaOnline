@@ -36,7 +36,7 @@ error_reporting(0);
 
     <script>
         function openEvents() {
-            location.href = "form_relatorio_administradorr.php?dataInicio=" + document.getElementById("dataInicio").value +
+            location.href = "form_relatorio_administrador.php?dataInicio=" + document.getElementById("dataInicio").value +
                 "&dataFim=" + document.getElementById("dataFim").value +
                 "&curso=" + document.getElementById("curso").value +
                 "&disciplina=" + document.getElementById("disciplina").value +
@@ -89,7 +89,7 @@ error_reporting(0);
                         </div>
                         <div class="x_panel">
                             <div class="card card-default">
-                                <form action="form_relatorio_administradorr.php" method="POST">
+                                <form action="form_relatorio_administrador.php" method="POST">
                                     <div class="card-body">
                                         <div class="x_content" style="display: block;">
 
@@ -196,7 +196,7 @@ error_reporting(0);
                                                         JOIN aluno al on al.ra = p.ra
                                                         JOIN turmadiscaluno ta on ta.ra = al.ra
                                                         JOIN chamada cha on cha.codChamada = p.codChamada
-                                                        WHERE al.ra = a.ra AND ta.codDisc = td.codDisc";
+                                                        WHERE al.ra = a.ra AND ta.codDisc = td.codDisc AND cha.codDisc = d.codigo";
                                                             if ($_GET["dataInicio"] != "") {
                                                                 $sql .= " AND cha.dataAula BETWEEN '" . $_GET["dataInicio"] . "' AND '" . $_GET["dataFim"] . "'";
                                                             }
@@ -204,7 +204,7 @@ error_reporting(0);
                                                         JOIN curso c on c.codigo = t.codCurso
                                                         JOIN turmadisc td on td.codTurma = t.codigoTurma
                                                         JOIN disciplina d on d.codigo = td.codDisc
-                                                        JOIN turmadiscaluno ta on ta.codTurma = td.codTurma
+                                                        JOIN turmadiscaluno ta on ta.codDisc = d.codigo
                                                         JOIN professor pro on pro.cpf = td.cpfProfessor
                                                         JOIN aluno a on a.ra = ta.ra
                                                         WHERE 1=1";

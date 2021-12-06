@@ -63,7 +63,7 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
         function openEvents() {
             location.href = "form_cad_chamada.php?turma=" + document.getElementById("turma").value +
-                "&disciplina=" + document.getElementById("turma").value +
+                "&disciplina=" + document.getElementById("disciplina").value +
                 "&data=" + document.getElementById("data").value;
         }
     </script>

@@ -36,11 +36,11 @@
 		JOIN aluno al on al.ra = p.ra
 		JOIN turmadiscaluno ta on ta.ra = al.ra
 		JOIN chamada cha on cha.codChamada = p.codChamada
-		WHERE al.ra = a.ra AND ta.codDisc = td.codDisc) as 'Presenças' FROM turma as t 
+		WHERE al.ra = a.ra AND ta.codDisc = td.codDisc AND cha.codDisc = d.codigo) as 'Presenças' FROM turma as t 
 		JOIN curso c on c.codigo = t.codCurso
 		JOIN turmadisc td on td.codTurma = t.codigoTurma
 		JOIN disciplina d on d.codigo = td.codDisc
-		JOIN turmadiscaluno ta on ta.codTurma = td.codTurma
+		JOIN turmadiscaluno ta on ta.codDisc = d.codigo
 		JOIN professor pro on pro.cpf = td.cpfProfessor
 		JOIN aluno a on a.ra = ta.ra;";
 		$resultado_chamada = mysqli_query($connx , $result_chamada);
