@@ -139,7 +139,6 @@ $descricao_turma = $dados['descricaoTurma'];
                                             </div>
                                             <div class="modal-footer justify-content-between">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
                                             </div>
                                         </div>
                                         <!-- /.modal-content -->
@@ -192,11 +191,7 @@ $descricao_turma = $dados['descricaoTurma'];
                                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
                                                             Salvar
                                                         </button>
-                                                        <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
-                                                        class="btn btn-primary pull-right">-->
-                                                        <!-- <input type="button" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()"> -->
                                                         <a href="form_cad_turma.php" type="button" class="btn btn-primary pull-right">Voltar</a>
-                                                        <!-- <input type="submit" name="btnExcluir" value="Excluir" id="btnExcluir" class="btn btn-danger pull-right"> -->
                                                     </div>
                                                 </div>
                                             </div>

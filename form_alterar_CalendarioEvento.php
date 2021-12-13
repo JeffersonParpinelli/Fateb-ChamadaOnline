@@ -7,8 +7,6 @@ include 'conexao.php';
 
 $sql = "SELECT * FROM evento WHERE codigo = $id_calendarioEvento ";
 
-// $sql = "SELECT * FROM evento AS E INNER JOIN calendario AS C ON C.codigo = E.codigo WHERE E.codigo = $cod_calendario ";
-
 $result = mysqli_query($connx, $sql);
 
 $dados = mysqli_fetch_assoc($result);

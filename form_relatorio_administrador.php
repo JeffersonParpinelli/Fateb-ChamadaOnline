@@ -78,9 +78,7 @@ error_reporting(0);
                                 <div class="title_right">
                                     <div class="col-md-1 col-sm-8 col-xs-12 form-group pull-right top_search">
                                         <div class="input-group">
-                                            <!-- <input name="txtFiltro" type="text" id="txtFiltro" class="form-control" placeholder="Pesquisar"> -->
                                             <span class="input-group-btn">
-                                                <!-- <input type="submit" name="btnPesquisar" value="Pesquisar" id="btnPesquisar" class="btn btn-default" data-toggle="modal" data-target="#modal-listarTurma"> -->
                                             </span>
                                         </div>
                                     </div>
@@ -267,12 +265,6 @@ error_reporting(0);
                                         </div>
                                     </div>
                                 </form>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <!-- Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                                    the plugin. -->
-                                </div>
-                                <!-- /.card-footer -->
                             </div>
                         </div>
                         <!-- /.teste -->

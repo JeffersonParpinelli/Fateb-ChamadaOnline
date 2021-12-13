@@ -8,8 +8,6 @@ $buscar_cadastros = "SELECT * FROM turma";
 //fazer busca dados da tabela através da query
 $query_cadastros = mysqli_query($connx, $buscar_cadastros);
 
-// $codigoTurma = $_POST['codigo'];
-
 ?>
 
 <!DOCTYPE html>
@@ -157,7 +155,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                         </div>
                                         <div class="modal-footer justify-content-between">
                                             <button type="button" class="btn btn-default" data-dismiss="modal" align="right">Fechar</button>
-                                            <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
                                         </div>
                                     </div>
                                     <!-- /.modal-content -->

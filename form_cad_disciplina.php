@@ -146,7 +146,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                             </div>
                                             <div class="modal-footer justify-content-between">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                <!-- <button type="subtmit" class="btn btn-outline-light">Salvar</button> -->
                                             </div>
                                         </div>
                                         <!-- /.modal-content -->
@@ -216,8 +215,6 @@ $query_cadastros = mysqli_query($connx, $buscar_cadastros);
                                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-success">
                                                     Salvar
                                                 </button>
-                                                <!--<input type="button" name="btnSalvar" value="Salvar" id="btnSalvar"
-                                                        class="btn btn-primary pull-right">-->
                                                 <input type="submit" name="btnLimpar" value="Limpar" id="btnLimpar" class="btn btn-primary pull-right" onclick="limparCampo()">
                                                 <a href="excluir_Disciplina.php?id=<?php echo $id_disciplina ?>" type="button" class="btn btn-danger pull-right">Excluir</a>
                                             </div>
